@@ -2,13 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { posts, users} from './components/WPAPI';
+import Footer from './components/Footer';
 
 export default function App() {
   posts();
+  // console.log(posts)
   users();
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* {posts.categories} */}
+      <Footer/>
       <StatusBar style="auto" />
     </View>
   );
