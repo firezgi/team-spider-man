@@ -11,9 +11,6 @@ function Footer() {
           onPress={() => Linking.openURL("")}
         >
           About
-        <a>Rules</a>
-        <a>Contact</a>
-        <a>Terms</a>
         </Text>
         <Text
           style={{ color: "blue" }}
