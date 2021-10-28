@@ -6,6 +6,7 @@ import { posts, users} from './components/WPAPI';
 import Footer from './components/Footer';
 import Messages from './components/Messages';
 
+
 export default function App() {
   const [allPosts, setAllPosts] = useState([]);
   useEffect(
@@ -19,7 +20,6 @@ export default function App() {
         <Text key={index}>{allpost.title.rendered}</Text>
       )  
       )}
-      
       
       <Messages/>
       <Footer/>
