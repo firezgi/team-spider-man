@@ -7,11 +7,14 @@ function Header() {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.header}> 
+        <View style={styles.logoContainer}>
             <Image source={{
-              uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-              }}
-              style={{ width: 50, height: 50,}}>
-              </Image>
+                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
+                }}
+                style={{ width: 50, height: 50,}}>
+            </Image>
+            <Text>MarvelSpace</Text>
+        </View>
             <View style={styles.searchBar}>
               <TextInput style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
                 defaultValue=""
@@ -27,21 +30,23 @@ function Header() {
             
             <View style={styles.loginLink}>
               <Text 
-                onPress={() =>Linking.openURL('https://www.google.com/')}>Login/Logout 
+                onPress={() =>Linking.openURL('https://www.google.com/')}>Logout 
               </Text>
             </View>
+
         </View>
+
         <View style={styles.navBar}>
           <Text 
+            onPress={() =>Linking.openURL('https://www.google.com/')}>NewsFeed</Text>
+          <Text
+            onPress={() =>Linking.openURL('https://www.google.com/')}>Friends</Text>
+          <Text
             onPress={() =>Linking.openURL('https://www.google.com/')}>Profile</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Photos</Text>
+            onPress={() =>Linking.openURL('https://www.google.com/')}>Images</Text>
           <Text
             onPress={() =>Linking.openURL('https://www.google.com/')}>Messages</Text>
-          <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Search</Text>
-          <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>NewsFeed</Text>
         </View>
       </View>
     )  
@@ -62,11 +67,15 @@ const styles = StyleSheet.create({
       margin: 10,
       padding: 5,
     },
+   logoContainer: {
+
+    },
     navBar: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         textAlign: 'center',
+        marginTop: 10,
     },
   searchBar: {
     flexDirection: 'row',
