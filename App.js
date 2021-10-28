@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { posts, users} from './components/WPAPI';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { ProfilePage } from './components/ProfilePage';
 
 export default function App() {
   posts();
