@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { posts, users} from './components/WPAPI';
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 export default function App() {
   posts();
@@ -10,10 +11,13 @@ export default function App() {
   users();
   return (
     <View style={styles.container}>
-      {/* {posts.categories} */}
+      <Header />
       <Footer/>
       <StatusBar style="auto" />
+      
     </View>
+
+
   );
 }
 
