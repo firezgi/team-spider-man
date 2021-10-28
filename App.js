@@ -6,6 +6,7 @@ import { posts, users} from './components/WPAPI';
 import Footer from './components/Footer';
 import Messages from './components/Messages';
 
+import Header from './components/Header';
 
 export default function App() {
   const [allPosts, setAllPosts] = useState([]);
@@ -22,9 +23,13 @@ export default function App() {
       )}
       
       <Messages/>
+      <Header />
       <Footer/>
       <StatusBar style="auto" />
+      
     </View>
+
+
   );
 }
 
