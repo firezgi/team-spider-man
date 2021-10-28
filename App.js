@@ -1,16 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { posts, users} from './components/WPAPI';
+
 import Footer from './components/Footer';
+import Messages from './components/Messages';
 
 export default function App() {
-  posts();
-  // console.log(posts)
-  users();
+  const [allPosts, setAllPosts] = useState([]);
+  useEffect(
+    ()=>posts().then(data=>setAllPosts(data)),
+    []);
+    console.log(allPosts)
+    users()
   return (
     <View style={styles.container}>
-      {/* {posts.categories} */}
+      {allPosts.map((allpost,index)=>(
+        <Text key={index}>{allpost.title.rendered}</Text>
+      )  
+      )}
+      
+      
+      <Messages/>
       <Footer/>
       <StatusBar style="auto" />
     </View>
