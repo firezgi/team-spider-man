@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { posts, users} from './components/WPAPI';
 import Header from './components/Header';
+import PhotoGallery from './components/PhotoGallery';
 
 export default function App() {
   posts();
@@ -11,6 +12,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header />
+      <PhotoGallery />
     </View>
 
 
