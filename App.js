@@ -5,6 +5,10 @@ import { posts, users} from './components/WPAPI';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { ProfilePage } from './components/ProfilePage';
+import { LoginPage } from './components/LoginPage';
+import { ResetPassword } from './components/ResetPassword';
+import { SignupPage } from './components/SignupPage';
+
 
 export default function App() {
   posts();
@@ -12,8 +16,12 @@ export default function App() {
   users();
   return (
     <View style={styles.container}>
-      <Header />
-      <ProfilePage />
+      {/* <Header /> */}
+      {/* <LoginPage/> */}
+      {/* <ResetPassword/>      */}
+      {/* <ProfilePage /> */}
+      <SignupPage/>
+
       <Footer/>
       <StatusBar style="auto" />
       
@@ -30,4 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  LoginPage: {
+
+  }
 });
