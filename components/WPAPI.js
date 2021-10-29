@@ -14,5 +14,5 @@ export function posts () {
 
 export function users(){
     fetch(`${BASE_URL}wp/v2/users`).then(response => response.json()).then(data => console.log(data));
- }
+}
 
