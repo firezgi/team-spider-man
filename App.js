@@ -7,6 +7,10 @@ import Footer from "./components/Footer";
 import Messages from "./components/Messages";
 import Header from "./components/Header";
 import NewsFeed from "./components/NewsFeed";
+import { LoginPage } from './components/LoginPage';
+import { ResetPassword } from './components/ResetPassword';
+import { SignupPage } from './components/SignupPage';
+
 
 export default function App() {
   const[user,setUser]=useState([])
@@ -20,8 +24,7 @@ export default function App() {
       {user.map((ind, index) => (
         <Text key={ind.id}>{ind.link}
       </Text>))}
-
-      
+      <SignupPage/>
       <Header /> 
       <NewsFeed posts={posts}/>
       <Messages/>
@@ -40,4 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  LoginPage: {
+
+  }
 });
