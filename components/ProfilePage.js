@@ -1,21 +1,24 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 
 export function ProfilePage() {
     return (
         <View style={profileStyles.profileWrap}>
             <View style={profileStyles.profileLeft}>
+                <Image
+                    style={profileStyles.profileImage}
+                    source={require('../assets/profile.webp')}
+                />
                 <View style={profileStyles.nameWrap}>
-                    <Text>Name</Text>
-                </View>
-                <View style={profileStyles.profileImageWrap}>
-                    <Image
-                        source={'https://picsum.photos/200'}
-                    />
+                    <Text>Wolverine</Text>
                 </View>
                 <View style={profileStyles.locationWrap}>
-                    <Text>City:</Text>
+                    <Text>City: </Text>
                 </View>
+                <Button
+                    style={profileStyles.editProfile}
+                    title="Edit profile"
+                />
             </View>
             <View style={profileStyles.profileRight}>
                 <Text>About Me</Text>
@@ -32,18 +35,23 @@ const profileStyles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
+        maxWidth: '960px',
+        // borderWidth: '1px',
+        // borderColor: 'red',
+        // borderStyle: 'solid',
     },
     profileLeft: {
-        width: '40%',
+        maxWidth: '250px',
         height: 400,
         borderWidth: '1px',
         borderColor: '#000',
         borderStyle: 'solid',
         padding: '10px',
         margin: '5px',
+        alignItems: 'center',
     },
     profileRight: {
-        width: '40%',
+        flex: 1,
         height: 400,
         borderWidth: '1px',
         borderColor: '#000',
@@ -51,7 +59,10 @@ const profileStyles = StyleSheet.create({
         padding: '10px',
         margin: '5px',
     },
-    imageWrap: {
-        
+    profileImage: {
+        width: '200px',
+        height: '200px',
+        borderRadius: '10px',
+        margin: '5px',
     }
 });

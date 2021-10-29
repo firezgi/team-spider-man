@@ -16,11 +16,11 @@ export default function App() {
   users();
   return (
     <View style={styles.container}>
-      {/* <Header /> */}
+      <Header />
       {/* <LoginPage/> */}
       {/* <ResetPassword/>      */}
-      {/* <ProfilePage /> */}
-      <SignupPage/>
+      <ProfilePage />
+      {/* <SignupPage/> */}
 
       <Footer/>
       <StatusBar style="auto" />
