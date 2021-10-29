@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import Footer from './Footer';
 
 const LoginPage = () => {
     return (
@@ -25,6 +26,7 @@ const LoginPage = () => {
                     title="Sign Up"
                     />
                 </View>
+                <Footer/>
         </View>
     )
 }
