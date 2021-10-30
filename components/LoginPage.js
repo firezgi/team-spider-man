@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import React, {useCallback, useState} from 'react';
+import { View, Button, Text, StyleSheet, TextInput, Linking } from "react-native";
+import { Link } from "react-router-dom";
 import Footer from './Footer';
 
 const LoginPage = () => {
@@ -7,7 +8,8 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const finalUser = username;
     const finalPassword = password;
-    
+
+        
     return (
         <View style={styles.loginPage}>
             <Text style={styles.header}>MarvelSpace</Text>
@@ -27,13 +29,16 @@ const LoginPage = () => {
                     <Button
                         title="Login"
                     />
-                    <Text>reset password</Text>
+                    <Text onPress={() =>Linking.openURL('http://localhost:19006/#/resetpassword')}>reset password</Text>
                 </View>
                 <View style={styles.signupKey}>
+                    
                     <Button
                     style={styles.signupbutton}
                     title="Sign Up"
+                    onPress={() =>Linking.openURL('http://localhost:19006/#/signup')}
                     />
+                    
                 </View>
                 <Footer/>
         </View>

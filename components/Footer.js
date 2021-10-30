@@ -16,17 +16,13 @@ export function Footer() {
         <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
           Contact
         </Text>
-        <Text
-          style={{ color: "blue" }}
-          onPress={() => Linking.openURL("")}
-        >
+        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
           Terms
         </Text>
       </View>
-      <View  style={{ textAlign:'center'}}>
-      <Text>©2021 MarvelSpace. All Rights Reserved.</Text>
+      <View style={{ textAlign: "center" }}>
+        <Text>©2021 MarvelSpace. All Rights Reserved.</Text>
       </View>
-      
     </View>
   );
 }

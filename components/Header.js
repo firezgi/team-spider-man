@@ -30,7 +30,7 @@ function Header() {
             
             <View style={styles.loginLink}>
               <Text 
-                onPress={() =>Linking.openURL('https://www.google.com/')}>Logout 
+                onPress={() =>Linking.openURL('http://localhost:19006/#/signin')}>Logout 
               </Text>
             </View>
 
@@ -38,15 +38,15 @@ function Header() {
 
         <View style={styles.navBar}>
           <Text 
-            onPress={() =>Linking.openURL('https://www.google.com/')}>NewsFeed</Text>
+            onPress={() =>Linking.openURL('http://localhost:19006/#/newsfeed')}>NewsFeed</Text>
           <Text
             onPress={() =>Linking.openURL('https://www.google.com/')}>Friends</Text>
           <Text
             onPress={() =>Linking.openURL('https://www.google.com/')}>Profile</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Images</Text>
+            onPress={() =>Linking.openURL('http://localhost:19006/#/photogallery')}>Images</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Messages</Text>
+            onPress={() =>Linking.openURL('http://localhost:19006/#/messages')}>Messages</Text>
         </View>
       </View>
     )  
