@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Linking } from "react-native";
 
-function Footer() {
+export function Footer() {
   return (
     <View>
       <Text>Brought to you by your friendly neighborhood team-spider-man</Text>
@@ -31,4 +31,4 @@ function Footer() {
   );
 }
 
-export default {Footer};
+export default Footer;
