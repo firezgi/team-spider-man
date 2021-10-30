@@ -1,35 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, Button, Image, ScrollView, TextInput, StatusBar} from 'react-native';
-
+import { media } from './WPAPI'
 
 
 function PhotoGallery() {
 
-  //const [uploadPhoto, setUploadPhoto] = useState(false);
+ const [imageArray, setImageArray] = useState([]);
+ useEffect(() => {media()
+    .then((data) => setImageArray(data))
+  }, [])
 
+console.log(imageArray);
 
+const deleteImage = (index) => {
+  setImageArray(
+      imageArray.filter((image, selected) => selected != index)
+      );
+}
 
-  // onUpload = e =>[
-  //   photos = Array.from(e.target.photos),
-  //   setUploadPhoto(true)
-  //   ];
+const generateGallery = imageArray.map((img, index) => {
+    const imageWidth = 300;
+    const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
+      
+      return(
+        <View key={index}>
+          <Image 
+            style={{width: imageWidth, height: imageHeight}}
+            source={img.source_url} 
+          />
 
-  //   const formData = photos.forEach((photo, index) => {
-  //     formData.append(index, photo)
-  //   });
+          <Button
+            key={index}
+            onPress={() => deleteImage(index)}
+            title='Delete'
+          />
 
-  // const displayGallery = photos.map((photo, index) => (
-  //   <View key={index} style={styles.photoGalleryContainer}>
-  //     <Image
-  //     source={{
-  //       uri: 'https://unsplash.com/photos/qU7E8cfnxao',
-  //       }}
-  //       style={{ width: 225, height: 3000,}}>{item.todo}
-  //     </Image>
-  //   </View>))
+        </View>
+    )
+  }
+)
 
-
-    return (
+      return (
 
       <View style={styles.galleryMainContainer}>
           <View style={styles.uploadPhoto}>
@@ -38,54 +49,15 @@ function PhotoGallery() {
               <Button
                 onPress={''}
                 title="Add a New Photo"
-                //color="#841584"
                 style={{height: 20}}
-                //accessibilityLabel="Learn more about this purple button"
               /> 
-        </View>
+          </View>
 
           <ScrollView style={styles.scrollViewContainer}>
-            
-          <Image
-                source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                  }}
-                style={{ width: 225, height: 300,}}>
-            </Image>
-            <Image
-                source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                  }}
-                style={{ width: 225, height: 300,}}>
-            </Image>
-            <Image
-                source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                  }}
-                style={{ width: 225, height: 300,}}>
-            </Image>
-            <Image
-                source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                  }}
-                style={{ width: 300, height: 225,}}>
-            </Image>
-          </ScrollView>
-{/*   
-                                        <TextInput
-                                          placeholder="Add a task..."
-                                          style={styles.textInputField}
-                                          onChangeText={(text) => setNewPhoto(photo)}
-                                          value={newPhoto}
-                                        />
-                                        <Button title="Add to List" onPress={''} />
-                                        <Button title="delete" onPress={() => setNewPhoto("")} /> */}
-      <StatusBar style="auto" />
-    </View>
-
-
-
-
+            {generateGallery}
+          </ScrollView>                                     
+        <StatusBar style="auto" />
+      </View>
     )
 }
 
@@ -98,32 +70,28 @@ const styles = StyleSheet.create({
   },
   textInputField: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   uploadPhoto: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   photoTitle: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   photoGalleryContainer: {
     //flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,
-    width: '100%',
+    //width: '100%',
     flexDirection: 'row',
     backgroundColor: 'red',
     

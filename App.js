@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { HashRouter, Switch, Route } from "react-router-dom";
+//import { HashRouter, Switch } from "react-router-dom";
 
 //API Endpoints
 import { posts, users, media } from "./components/WPAPI";
@@ -24,20 +24,10 @@ export default function App() {
   
   
   return (
-    <HashRouter>
-      {/* <Switch> */}
-      {user.map((ind, index) => (
-        <Text key={ind.id}>{ind.link}
-      </Text>))}
-      <SignupPage/>
-      <Header /> 
-      <NewsFeed posts={posts}/>
-      <Messages/>
-      <Footer />
-      
-      {/* </Switch> */}
-      <StatusBar style="auto" />
-      </HashRouter>
+
+    <View>
+      <PhotoGallery />
+    </View>
   );
 }
 
