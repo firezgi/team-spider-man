@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-//import { HashRouter, Switch } from "react-router-dom";
+import { HashRouter, Switch } from "react-router-dom";
 
 //API Endpoints
 import { posts, users, media } from "./components/WPAPI";
