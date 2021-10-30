@@ -1,11 +1,16 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { HashRouter, Switch, Route } from "react-router-dom";
-import { posts, users,media } from "./components/WPAPI";
-import Footer from "./components/Footer";
+import { HashRouter, Switch } from "react-router-dom";
+
+//API Endpoints
+import { posts, users, media } from "./components/WPAPI";
+
+//components
+import Footer from './components/Footer';
+import Header from './components/Header';
+import PhotoGallery from './components/PhotoGallery';
 import Messages from "./components/Messages";
-import Header from "./components/Header";
 import NewsFeed from "./components/NewsFeed";
 import { LoginPage } from './components/LoginPage';
 import { ResetPassword } from './components/ResetPassword';
@@ -24,12 +29,13 @@ export default function App() {
       {user.map((ind, index) => (
         <Text key={ind.id}>{ind.link}
       </Text>))}
-      {/* <SignupPage/> */}
-    
+      <SignupPage/>
+      <PhotoGallery />
       <Header /> 
       <NewsFeed posts={posts}/>
       <Messages/>
-      {/* <Footer />  */}
+      <Footer />
+      <LoginPage/>
       
       {/* </Switch> */}
       <StatusBar style="auto" />
