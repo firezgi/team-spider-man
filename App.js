@@ -29,6 +29,7 @@ export default function App() {
       <NewsFeed posts={posts}/>
       <Messages/>
       <Footer />
+      <LoginPage/>
       
       {/* </Switch> */}
       <StatusBar style="auto" />
