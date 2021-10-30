@@ -3,6 +3,11 @@ import { View, Button, Text, StyleSheet, TextInput } from "react-native";
 import Footer from './Footer';
 
 const LoginPage = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const finalUser = username;
+    const finalPassword = password;
+    
     return (
         <View style={styles.loginPage}>
             <Text style={styles.header}>MarvelSpace</Text>
@@ -10,11 +15,15 @@ const LoginPage = () => {
                     <Text style={styles.usernameTitle}>Username</Text>
                     <TextInput
                         style={styles.input}
+                        onChangeText={setUsername}
                     />
+                    {console.log(finalUser)}
                     <Text style={styles.passwordTitle}>Password</Text>
                     <TextInput
                         style={styles.input}
+                        onChangeText={setPassword}
                     />
+                    {console.log(finalPassword)}
                     <Button
                         title="Login"
                     />

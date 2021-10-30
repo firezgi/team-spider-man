@@ -24,10 +24,22 @@ export default function App() {
   
   
   return (
-
-    <View>
+    <HashRouter>
+      {/* <Switch> */}
+      {user.map((ind, index) => (
+        <Text key={ind.id}>{ind.link}
+      </Text>))}
+      <SignupPage/>
       <PhotoGallery />
-    </View>
+      <Header /> 
+      <NewsFeed posts={posts}/>
+      <Messages/>
+      <Footer />
+      <LoginPage/>
+      
+      {/* </Switch> */}
+      <StatusBar style="auto" />
+      </HashRouter>
   );
 }
 
