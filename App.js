@@ -24,11 +24,12 @@ export default function App() {
       {user.map((ind, index) => (
         <Text key={ind.id}>{ind.link}
       </Text>))}
-      <SignupPage/>
+      {/* <SignupPage/> */}
+    
       <Header /> 
       <NewsFeed posts={posts}/>
       <Messages/>
-      <Footer />
+      {/* <Footer />  */}
       
       {/* </Switch> */}
       <StatusBar style="auto" />
