@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, Linking, TextInput, Button} from "react-native";
+import { View, TextInput, Button} from "react-native";
 import { SearchBar } from 'react-native-elements';
-import Footer from './Footer';
-import Header from "./Header";
-function Messages() {
+import ThemeLoggedIn from './ThemeLoggedIn';
+
+function Messages({ navigation }) {
     const hab=()=>{
         <View></View>
 
     }
   return (
+    <ThemeLoggedIn navigation={navigation}>
     <View>
-      <Header/>
       <SearchBar
         placeholder="Search a friend"
         // onChangeText={}
@@ -33,8 +33,8 @@ function Messages() {
         title="Delete"
         // onPress={() => {function}} //change "function" with your function for the button pressing
       />      
-      <Footer/>
     </View>
+    </ThemeLoggedIn>
   );
 }
 

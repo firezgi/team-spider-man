@@ -1,33 +1,36 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import ThemeLoggedIn from './ThemeLoggedIn';
 import { media } from "./WPAPI";
 
-export function ProfilePage() {
+export default function ProfilePage({ navigation }) {
     return (
-        <View style={profileStyles.profileWrap}>
-            <View style={profileStyles.profileLeft}>
-                <Image
-                    style={profileStyles.profileImage}
-                    source={'https://jualuc1.dreamhosters.com/wp-json/wp/v2/users/1'}
-                />
-                <View style={profileStyles.nameWrap}>
-                    <Text>Professor Xavier</Text>
+        <ThemeLoggedIn navigation={navigation}>
+            <View style={profileStyles.profileWrap}>
+                <View style={profileStyles.profileLeft}>
+                    <Image
+                        style={profileStyles.profileImage}
+                        source={'https://jualuc1.dreamhosters.com/wp-json/wp/v2/users/1'}
+                    />
+                    <View style={profileStyles.nameWrap}>
+                        <Text>Professor Xavier</Text>
+                    </View>
+                    <View style={profileStyles.locationWrap}>
+                        <Text>City: </Text>
+                    </View>
+                    <Button
+                        style={profileStyles.editProfile}
+                        title="Edit profile"
+                    />
                 </View>
-                <View style={profileStyles.locationWrap}>
-                    <Text>City: </Text>
+                <View style={profileStyles.profileRight}>
+                    <Text>About Me</Text>
+                    <View style={profileStyles.descriptionWrap}>
+                        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatibus, incidunt obcaecati modi ex magnam minus suscipit et cum odit repudiandae iure praesentium nulla aperiam! Minus delectus modi ipsa alias.</Text>
+                    </View>
                 </View>
-                <Button
-                    style={profileStyles.editProfile}
-                    title="Edit profile"
-                />
             </View>
-            <View style={profileStyles.profileRight}>
-                <Text>About Me</Text>
-                <View style={profileStyles.descriptionWrap}>
-                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptatibus, incidunt obcaecati modi ex magnam minus suscipit et cum odit repudiandae iure praesentium nulla aperiam! Minus delectus modi ipsa alias.</Text>
-                </View>
-            </View>
-        </View>
+        </ThemeLoggedIn>
     )
 }
 

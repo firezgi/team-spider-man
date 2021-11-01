@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View, Button, Text, StyleSheet, TextInput, Linking } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
+import NewsFeed from './NewsFeed';
 
 function SignupPage ({ navigation }) {
     return (
@@ -32,7 +33,7 @@ function SignupPage ({ navigation }) {
                 />
                 <Button
                 title="Sign Up!"
-                onPress={() =>Linking.openURL('http://localhost:19006/#/newsfeed')}
+                onPress={() =>navigation.navigate('NewsFeed')}
                 />
             </View>
         </ThemeLoggedOut>
@@ -50,4 +51,4 @@ const styles = StyleSheet.create({
       }
   });
 
-export default SignupPage
+export default SignupPage;

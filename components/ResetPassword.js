@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet, TextInput, Linking } from "react-native";
-import {Footer} from './Footer';
+import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import SignupPage from './SignupPage';
+import ThemeLoggedOut from './ThemeLoggedOut';
 
-const ResetPassword = () => {
+const ResetPassword = ({ navigation }) => {
     return (
+        <ThemeLoggedOut navigation={navigation}>
         <View style={styles.resetPage}>
             <Text>Username</Text>
             <TextInput 
@@ -23,10 +25,10 @@ const ResetPassword = () => {
             />
             <Button
             title="Reset password"
-            onPress={() =>Linking.openURL('http://localhost:19006/#/signin')}
+            onPress={() => navigation.navigate({SignupPage})}
             />
-            <Footer/>
         </View>
+        </ThemeLoggedOut>
         
     )
 
@@ -40,4 +42,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export {ResetPassword}
+export default ResetPassword;

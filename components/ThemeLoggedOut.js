@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ThemeLoggedOut
+export default ThemeLoggedOut;

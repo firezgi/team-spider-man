@@ -12,6 +12,7 @@ const NewsFeed = ({ navigation }) => {
   
   const generatePosts = allPosts.map((allpost,index) => {
     return (
+      
       <View key={index}>
         <Text >{allpost.title.rendered}</Text>
           <View style={{ flexDirection: "Row" }}>

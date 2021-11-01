@@ -1,22 +1,23 @@
 import React from "react";
-import { View, Text, Linking } from "react-native";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
-export function Footer() {
+function Footer({ navigation }) {
   return (
     <View>
       <Text>Brought to you by your friendly neighborhood team-spider-man</Text>
 
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
+        <Text style={{ color: "blue" }} onPress={() => navigation.navigate("")}>
           About
         </Text>
-        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
+        <Text style={{ color: "blue" }} onPress={() => navigation.navigate("")}>
           Rules
         </Text>
-        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
+        <Text style={{ color: "blue" }} onPress={() => navigation.navigate("")}>
           Contact
         </Text>
-        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
+        <Text style={{ color: "blue" }} onPress={() => navigation.navigate("")}>
           Terms
         </Text>
       </View>
