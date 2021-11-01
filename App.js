@@ -14,21 +14,22 @@ import { SignupPage } from './components/SignupPage';
 
 
 export default function App() {
-  const[user,setUser]=useState([])
-  useEffect(() => users().then((data) => setUser(data)), []);
-  console.log(user);
-  
-  
+  // const[user,setUser]=useState([])
+  // useEffect(() => users().then((data) => setUser(data)), []);
+  // console.log(user);
+
+
   return (
     <HashRouter>
       {/* <Switch> */}
-      {user.map((ind, index) => (
+      {/* {user.map((ind, index) => (
         <Text key={ind.id}>{ind.link}
-      </Text>))}
-      <SignupPage/>
+      </Text>))} */}
+      {/* <SignupPage/> */}
       <Header /> 
-      <NewsFeed posts={posts}/>
-      <Messages/>
+      {/* <NewsFeed posts={posts}/> */}
+      {/* <Messages/> */}
+      <ProfilePage/>
       <Footer />
       
       {/* </Switch> */}

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { media } from "./WPAPI";
 
 export function ProfilePage() {
     return (
@@ -7,10 +8,10 @@ export function ProfilePage() {
             <View style={profileStyles.profileLeft}>
                 <Image
                     style={profileStyles.profileImage}
-                    source={require('../assets/profile.webp')}
+                    source={'https://jualuc1.dreamhosters.com/wp-json/wp/v2/users/1'}
                 />
                 <View style={profileStyles.nameWrap}>
-                    <Text>Wolverine</Text>
+                    <Text>Professor Xavier</Text>
                 </View>
                 <View style={profileStyles.locationWrap}>
                     <Text>City: </Text>
@@ -33,9 +34,10 @@ export function ProfilePage() {
 const profileStyles = StyleSheet.create({
     profileWrap: {
         display: 'flex',
-        flexDirection: 'row',
+        flexWrap: 'wrap',
         justifyContent: 'center',
         maxWidth: '960px',
+        margin: 'auto',
         // borderWidth: '1px',
         // borderColor: 'red',
         // borderStyle: 'solid',
@@ -43,9 +45,9 @@ const profileStyles = StyleSheet.create({
     profileLeft: {
         maxWidth: '250px',
         height: 400,
-        borderWidth: '1px',
-        borderColor: '#000',
-        borderStyle: 'solid',
+        // borderWidth: '1px',
+        // borderColor: '#000',
+        // borderStyle: 'solid',
         padding: '10px',
         margin: '5px',
         alignItems: 'center',
@@ -53,9 +55,9 @@ const profileStyles = StyleSheet.create({
     profileRight: {
         flex: 1,
         height: 400,
-        borderWidth: '1px',
-        borderColor: '#000',
-        borderStyle: 'solid',
+        // borderWidth: '1px',
+        // borderColor: '#000',
+        // borderStyle: 'solid',
         padding: '10px',
         margin: '5px',
     },
