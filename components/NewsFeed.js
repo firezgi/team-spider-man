@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { Text, View, TextInput, Button } from "react-native";
 import ThemeLoggedIn from './ThemeLoggedIn';
 import {posts} from './WPAPI'
 
 
-const NewsFeed = ({ navigation }) => {
+function NewsFeed ({ navigation }) {
   console.log(posts())
   const [allPosts, setAllPosts] = useState([]);
   useEffect(() =>posts().then((data) => setAllPosts(data)), []);
@@ -43,7 +43,7 @@ const NewsFeed = ({ navigation }) => {
               margin: "20px",
             }}
             onChangeText={(text) => onChangeText(text)}
-            placeholder="What is in your mind"
+            placeholder="What is on your mind?"
             //   value={value}
           />
       </View>

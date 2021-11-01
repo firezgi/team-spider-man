@@ -4,10 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import ThemeLoggedIn from './ThemeLoggedIn';
 
 function Messages({ navigation }) {
-    const hab=()=>{
-        <View></View>
-
-    }
+    
+    
   return (
     <ThemeLoggedIn navigation={navigation}>
     <View>
