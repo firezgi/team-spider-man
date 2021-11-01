@@ -5,8 +5,6 @@ import Footer from './Footer';
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const finalUser = username;
-    const finalPassword = password;
     
     return (
         <View style={styles.loginPage}>
@@ -17,17 +15,16 @@ const LoginPage = () => {
                         style={styles.input}
                         onChangeText={setUsername}
                     />
-                    {console.log(finalUser)}
                     <Text style={styles.passwordTitle}>Password</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setPassword}
                     />
-                    {console.log(finalPassword)}
                     <Button
                         title="Login"
+                        onPress={() => console.log("password: ", password, "username:", username)}
                     />
-                    <Text>reset password</Text>
+                    <a href="www.google.com">reset password</a>
                 </View>
                 <View style={styles.signupKey}>
                     <Button
