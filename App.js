@@ -30,7 +30,7 @@ export default function App() {
       <Messages/>
       <Footer />
       <LoginPage/>
-      
+      <ResetPassword/>
       {/* </Switch> */}
       <StatusBar style="auto" />
       </HashRouter>
