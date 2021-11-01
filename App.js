@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import NavigationContainer from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ProfilePage } from './components/ProfilePage';
 import PhotoGallery from "./components/PhotoGallery";
 import Messages from "./components/Messages";
 import NewsFeed from "./components/NewsFeed";
@@ -14,7 +15,10 @@ import SignupPage from "./components/SignupPage";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  
+
+  // const[user,setUser]=useState([])
+  // useEffect(() => users().then((data) => setUser(data)), []);
+  // console.log(user);
 
   return (
     <View style={styles.container}>
@@ -43,5 +47,5 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 	
 	},
-});
-
+}
+);
