@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, Button, Image, ScrollView, TextInput, StatusBar} from 'react-native';
 import { media } from './WPAPI';
-import Footer from './Footer';
-import Header from "./Header";
+import ThemeLoggedIn from './ThemeLoggedIn';
 
-function PhotoGallery() {
+function PhotoGallery({ naviagtion }) {
 console.log(media())
  const [imageArray, setImageArray] = useState([]);
  useEffect(() =>{
@@ -24,19 +23,21 @@ const generateGallery = imageArray.map((img, index) => {
     const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
       
       return(
-        <View key={index}>
-          <Image 
-            style={{width: imageWidth, height: imageHeight}}
-            source={img.source_url} 
-          />
 
-          <Button
-            key={index}
-            onPress={() => deleteImage(index)}
-            title='Delete'
-          />
+        <ThemeLoggedIn navigation={navigation}>
+          <View key={index}>
+            <Image 
+              style={{width: imageWidth, height: imageHeight}}
+              source={img.source_url} 
+            />
 
-        </View>
+            <Button
+              key={index}
+              onPress={() => deleteImage(index)}
+              title='Delete'
+            />
+          </View>
+        </ThemeLoggedIn>
     )
   }
 )

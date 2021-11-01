@@ -1,40 +1,41 @@
 import React, {useState} from 'react';
 import { View, Button, Text, StyleSheet, TextInput, Linking } from "react-native";
-import Footer from './Footer';
+import ThemeLoggedOut from './ThemeLoggedOut';
 
-const SignupPage = () => {
+function SignupPage ({ navigation }) {
     return (
-        <View style={styles.resetPage}>
-            <Text>Enter your first name</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Text>Enter your last name</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Text>Enter a Username</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Text>Enter a valid email address</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Text>Enter a unique password</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Text>Re-enter your password</Text>
-            <TextInput 
-                style={styles.input}
-            />
-            <Button
-            title="Sign Up!"
-            onPress={() =>Linking.openURL('http://localhost:19006/#/newsfeed')}
-            />
-            <Footer/> 
-        </View>
+        <ThemeLoggedOut navigation={navigation}>
+            <View style={styles.resetPage}>
+                <Text>Enter your first name</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Text>Enter your last name</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Text>Enter a Username</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Text>Enter a valid email address</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Text>Enter a unique password</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Text>Re-enter your password</Text>
+                <TextInput 
+                    style={styles.input}
+                />
+                <Button
+                title="Sign Up!"
+                onPress={() =>Linking.openURL('http://localhost:19006/#/newsfeed')}
+                />
+            </View>
+        </ThemeLoggedOut>
     )
 }
 const styles = StyleSheet.create({
@@ -43,7 +44,10 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
-    }
+    },
+    resetPage: {
+        
+      }
   });
 
-export {SignupPage}
+export default SignupPage

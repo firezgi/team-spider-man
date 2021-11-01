@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
-import Footer from './Footer';
-import Header from "./Header";
+import ThemeLoggedIn from './ThemeLoggedIn';
 import {posts} from './WPAPI'
-const NewsFeed = () => {
+
+
+const NewsFeed = ({ navigation }) => {
   console.log(posts())
   const [allPosts, setAllPosts] = useState([]);
   useEffect(() =>posts().then((data) => setAllPosts(data)), []);
@@ -30,22 +31,22 @@ const NewsFeed = () => {
   });
 
   return (
-    <View>
-      <Header/>
-      {generatePosts}
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: "gray",
-          borderWidth: 1,
-          margin: "20px",
-        }}
-        onChangeText={(text) => onChangeText(text)}
-        placeholder="What is in your mind"
-        //   value={value}
-      />
-      <Footer/>
-    </View>
+    <ThemeLoggedIn navigation={navigation}>
+      <View>
+        {generatePosts}
+          <TextInput
+            style={{
+              height: 40,
+              borderColor: "gray",
+              borderWidth: 1,
+              margin: "20px",
+            }}
+            onChangeText={(text) => onChangeText(text)}
+            placeholder="What is in your mind"
+            //   value={value}
+          />
+      </View>
+    </ThemeLoggedIn>
   );
 };
 
