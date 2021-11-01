@@ -1,41 +1,52 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View,TextInput, Button } from "react-native";
-const NewsFeed=({posts})=> {
-    const [allPosts, setAllPosts] = useState([]);
-  useEffect(() => posts().then((data) => setAllPosts(data)), []);
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import Footer from './Footer';
+import Header from "./Header";
+import {posts} from './WPAPI'
+const NewsFeed = () => {
+  console.log(posts())
+  const [allPosts, setAllPosts] = useState([]);
+  useEffect(() =>posts().then((data) => setAllPosts(data)), []);
   console.log(allPosts);
   
+  const generatePosts = allPosts.map((allpost,index) => {
     return (
-        <View>
-            {allPosts.map((allpost, index) => (
-        <Text key={allPosts.id}>{allpost.title.rendered}
-        <View style={{flexDirection:'Row'}}>
-      <Button style={{margin:10}}
-        title="like"
-        // onPress={() => {function}} //change "function" with your function for the button pressing
-      />
-      
-      <Button
-        title="dislike"
-    //     // onPress={() => {function}} //change "function" with your function for the button pressing
-      />
+      <View key={index}>
+        <Text >{allpost.title.rendered}</Text>
+          <View style={{ flexDirection: "Row" }}>
+          <Button
+            style={{ margin: 10 }}
+            title="like"
+            // onPress={() => {function}} //change "function" with your function for the button pressing
+          />
+
+          <Button
+            title="dislike"
+            //     // onPress={() => {function}} //change "function" with your function for the button pressing
+          />
+        </View>
       </View>
-      
-        </Text>
-        
-      ))}
-         {/* {allPosts.map((allpost, index) => (
-        <Text key={allPosts.id}>{allPosts.id}</Text>
-      ))} */}
+    );
+  });
+
+  return (
+    <View>
+      <Header/>
+      {generatePosts}
       <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 ,margin:'20px'}}
+        style={{
+          height: 40,
+          borderColor: "gray",
+          borderWidth: 1,
+          margin: "20px",
+        }}
         onChangeText={(text) => onChangeText(text)}
         placeholder="What is in your mind"
         //   value={value}
       />
-      
-        </View>
-    )
-}
+      <Footer/>
+    </View>
+  );
+};
 
-export default NewsFeed
+export default NewsFeed;

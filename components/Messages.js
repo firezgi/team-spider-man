@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, Linking, TextInput, Button} from "react-native";
 import { SearchBar } from 'react-native-elements';
+import Footer from './Footer';
+import Header from "./Header";
 function Messages() {
     const hab=()=>{
         <View></View>
@@ -8,6 +10,7 @@ function Messages() {
     }
   return (
     <View>
+      <Header/>
       <SearchBar
         placeholder="Search a friend"
         // onChangeText={}
@@ -29,10 +32,8 @@ function Messages() {
       <Button
         title="Delete"
         // onPress={() => {function}} //change "function" with your function for the button pressing
-      />
-
-      
-      
+      />      
+      <Footer/>
     </View>
   );
 }

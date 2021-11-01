@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import { View, Button, Text, StyleSheet, TextInput, Linking } from "react-native";
 import {Footer} from './Footer';
 
 const ResetPassword = () => {
@@ -23,6 +23,7 @@ const ResetPassword = () => {
             />
             <Button
             title="Reset password"
+            onPress={() =>Linking.openURL('http://localhost:19006/#/signin')}
             />
             <Footer/>
         </View>

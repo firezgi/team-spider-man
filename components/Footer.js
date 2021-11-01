@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Linking } from "react-native";
 
-function Footer() {
+export function Footer() {
   return (
     <View>
       <Text>Brought to you by your friendly neighborhood team-spider-man</Text>
@@ -16,17 +16,13 @@ function Footer() {
         <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
           Contact
         </Text>
-        <Text
-          style={{ color: "blue" }}
-          onPress={() => Linking.openURL("")}
-        >
+        <Text style={{ color: "blue" }} onPress={() => Linking.openURL("")}>
           Terms
         </Text>
       </View>
-      <View  style={{ textAlign:'center'}}>
-      <Text>©2021 MarvelSpace. All Rights Reserved.</Text>
+      <View style={{ textAlign: "center" }}>
+        <Text>©2021 MarvelSpace. All Rights Reserved.</Text>
       </View>
-      
     </View>
   );
 }
