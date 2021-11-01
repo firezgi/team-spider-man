@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Button, Text, StyleSheet, TextInput } from "react-native";
-import Footer from './Footer';
+import ThemeLoggedOut from './ThemeLoggedOut';
 
-const LoginPage = () => {
+const LoginPage = ({ navigation }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
     return (
+        <ThemeLoggedOut navigation={navigation}>
         <View style={styles.loginPage}>
             <Text style={styles.header}>MarvelSpace</Text>
                 <View style={styles.login}>
@@ -24,16 +25,19 @@ const LoginPage = () => {
                         title="Login"
                         onPress={() => console.log("password: ", password, "username:", username)}
                     />
-                    <a href="www.google.com">reset password</a>
+                    <Text onPress={() =>navigation.navigate('http://localhost:19006/#/resetpassword')}>reset password</Text>
                 </View>
                 <View style={styles.signupKey}>
+                    
                     <Button
                     style={styles.signupbutton}
                     title="Sign Up"
+                    onPress={() =>navigation.navigate('SignupPage')}
                     />
+                    
                 </View>
-                <Footer/>
         </View>
+        </ThemeLoggedOut>
     )
 }
 const styles = StyleSheet.create({
@@ -63,4 +67,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export {LoginPage}
+export default LoginPage;

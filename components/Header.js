@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TextInput, Button, Linking } from 'react-native'
+import { NavigationContainer } from "@react-navigation/native";
 
-
-function Header() {
+function Header({ navigation }) {
 
     return (
       <View style={styles.headerContainer}>
@@ -30,7 +30,7 @@ function Header() {
             
             <View style={styles.loginLink}>
               <Text 
-                onPress={() =>Linking.openURL('https://www.google.com/')}>Logout 
+                onPress={() =>navigation.navigate('http://localhost:19006/#/signin')}>Logout 
               </Text>
             </View>
 
@@ -38,15 +38,15 @@ function Header() {
 
         <View style={styles.navBar}>
           <Text 
-            onPress={() =>Linking.openURL('https://www.google.com/')}>NewsFeed</Text>
+            onPress={() =>navigation.navigate('NewsFeed')}>NewsFeed</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Friends</Text>
+            onPress={() =>navigation.navigate('https://www.google.com/')}>Friends</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Profile</Text>
+            onPress={() =>navigation.navigate('ProfilePage')}>Profile</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Images</Text>
+            onPress={() =>navigation.navigate('PhotoGallery')}>Photo Gallery</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Messages</Text>
+            onPress={() =>navigation.navigate('Messages')}>Messages</Text>
         </View>
       </View>
     )  
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default Header
+export default Header;

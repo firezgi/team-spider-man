@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, Linking, TextInput, Button} from "react-native";
+import { View, TextInput, Button} from "react-native";
 import { SearchBar } from 'react-native-elements';
-function Messages() {
-    const hab=()=>{
-        <View></View>
+import ThemeLoggedIn from './ThemeLoggedIn';
 
-    }
+function Messages({ navigation }) {
+    
+    
   return (
+    <ThemeLoggedIn navigation={navigation}>
     <View>
       <SearchBar
         placeholder="Search a friend"
@@ -29,11 +30,9 @@ function Messages() {
       <Button
         title="Delete"
         // onPress={() => {function}} //change "function" with your function for the button pressing
-      />
-
-      
-      
+      />      
     </View>
+    </ThemeLoggedIn>
   );
 }
 

@@ -1,50 +1,51 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { HashRouter, Switch, Route } from "react-router-dom";
-import { posts, users,media } from "./components/WPAPI";
-import Footer from "./components/Footer";
-import Messages from "./components/Messages";
-import Header from "./components/Header";
-import NewsFeed from "./components/NewsFeed";
-import { LoginPage } from './components/LoginPage';
-import { ResetPassword } from './components/ResetPassword';
-import { SignupPage } from './components/SignupPage';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+//components
+import ProfilePage from "./components/ProfilePage";
+import PhotoGallery from "./components/PhotoGallery";
+import Messages from "./components/Messages";
+import NewsFeed from "./components/NewsFeed";
+import  LoginPage  from "./components/LoginPage";
+import ResetPassword from "./components/ResetPassword";
+import SignupPage from "./components/SignupPage";
+import { posts, users } from "./components/WPAPI";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const[user,setUser]=useState([])
-  useEffect(() => users().then((data) => setUser(data)), []);
-  console.log(user);
-  
-  
+  posts();
+  users();
+  // const[user,setUser]=useState([])
+  // useEffect(() => users().then((data) => setUser(data)), []);
+  // console.log(user);
+
   return (
-    <HashRouter>
-      {/* <Switch> */}
-      {user.map((ind, index) => (
-        <Text key={ind.id}>{ind.link}
-      </Text>))}
-      <SignupPage/>
-      <Header /> 
-      <NewsFeed posts={posts}/>
-      <Messages/>
-      <Footer />
-      <LoginPage/>
-      <ResetPassword/>
-      {/* </Switch> */}
+    <View style={styles.container}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          {/* <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="Sign Up" component={SignupPage} /> */}
+          <Stack.Screen name="Newsfeed" component={NewsFeed} />
+          <Stack.Screen name="Profile" component={ProfilePage} />
+          <Stack.Screen name="Messages" component={Messages} />
+          <Stack.Screen name="Photo Gallery" component={PhotoGallery} />
+        </Stack.Navigator>
+      </NavigationContainer>
       <StatusBar style="auto" />
-      </HashRouter>
+    </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  LoginPage: {
-
-  }
 });
