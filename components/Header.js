@@ -7,7 +7,8 @@ function Header({ navigation }) {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.header}> 
-        <View style={styles.logoContainer}>
+        <View style={styles.logoContainer}
+        onPress={() => navigation.navigate('NewsFeed')}>
             <Image source={{
                 uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
                 }}
@@ -24,13 +25,12 @@ function Header({ navigation }) {
                 title="Search"
                 color="#841584"
                 style={{height: 20}}
-                accessibilityLabel="Learn more about this purple button"
               />
             </View>
             
             <View style={styles.loginLink}>
               <Text 
-                onPress={() =>navigation.navigate('http://localhost:19006/#/signin')}>Logout 
+                onPress={() =>navigation.navigate('SignupPage')}>Logout 
               </Text>
             </View>
 
@@ -38,15 +38,15 @@ function Header({ navigation }) {
 
         <View style={styles.navBar}>
           <Text 
-            onPress={() =>navigation.navigate('NewsFeed')}>NewsFeed</Text>
+            onPress={() => navigation.navigate('NewsFeed')}>NewsFeed</Text>
           <Text
-            onPress={() =>navigation.navigate('https://www.google.com/')}>Friends</Text>
+            onPress={() => navigation.navigate('https://www.google.com/')}>Friends</Text>
           <Text
-            onPress={() =>navigation.navigate('ProfilePage')}>Profile</Text>
+            onPress={() => navigation.navigate('ProfilePage')}>Profile</Text>
           <Text
-            onPress={() =>navigation.navigate('PhotoGallery')}>Photo Gallery</Text>
+            onPress={() => navigation.navigate('PhotoGallery')}>Photo Gallery</Text>
           <Text
-            onPress={() =>navigation.navigate('Messages')}>Messages</Text>
+            onPress={() => navigation.navigate('Messages')}>Messages</Text>
         </View>
       </View>
     )  
