@@ -5,10 +5,7 @@ import ThemeLoggedOut from './ThemeLoggedOut';
 const LoginPage = ({ navigation }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const finalUser = username;
-    const finalPassword = password;
-
-        
+    
     return (
         <ThemeLoggedOut navigation={navigation}>
         <View style={styles.loginPage}>
@@ -19,15 +16,14 @@ const LoginPage = ({ navigation }) => {
                         style={styles.input}
                         onChangeText={setUsername}
                     />
-                    {console.log(finalUser)}
                     <Text style={styles.passwordTitle}>Password</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={setPassword}
                     />
-                    {console.log(finalPassword)}
                     <Button
                         title="Login"
+                        onPress={() => console.log("password: ", password, "username:", username)}
                     />
                     <Text onPress={() =>navigation.navigate('http://localhost:19006/#/resetpassword')}>reset password</Text>
                 </View>
