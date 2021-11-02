@@ -37,6 +37,9 @@ export default function App() {
         <Route path="/resetpassword">
           <ResetPassword />
         </Route>
+        <Route path="/profilepage">
+          <ProfilePage />
+        </Route>
       </Switch>
     </HashRouter>
   );
