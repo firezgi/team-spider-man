@@ -42,7 +42,7 @@ function Header({ navigation }) {
           <Text
             onPress={() =>navigation.navigate('https://www.google.com/')}>Friends</Text>
           <Text
-            onPress={() =>navigation.navigate('ProfilePage')}>Profile</Text>
+            onPress={() =>navigation.navigate('Profile')}>Profile</Text>
           <Text
             onPress={() =>navigation.navigate('PhotoGallery')}>Photo Gallery</Text>
           <Text
