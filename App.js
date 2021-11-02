@@ -36,7 +36,7 @@ export default function App() {
           <Stack.Screen name="Newsfeed" component={NewsFeed} />
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Messages" component={Messages} />
-          <Stack.Screen name="Photo Gallery" component={PhotoGallery} />
+          <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
