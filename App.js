@@ -17,8 +17,8 @@ import { posts, users } from "./components/WPAPI";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  posts();
-  users();
+  // posts();
+  // users();
   // const[user,setUser]=useState([])
   // useEffect(() => users().then((data) => setUser(data)), []);
   // console.log(user);
@@ -34,7 +34,7 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="SignupPage" component={SignupPage} />
           <Stack.Screen name="NewsFeed" component={NewsFeed} />
-          <Stack.Screen name="Profile" component={ProfilePage} />
+          {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
         </Stack.Navigator>
