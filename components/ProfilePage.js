@@ -1,21 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { media, users } from "./WPAPI";
+import { media, users, members, WP_GET } from "./WPAPI";
 
 export function ProfilePage() {
+
+    // console.log(media()); <--- For test
+
+    // media function from WPAPI wasn't working right
+    // Currently is set up for testing
+    // const images = () => {
+    //     return fetch('https://jualuc1.dreamhosters.com/buddypress/v1')
+    //         .then(response => response.json())
+    //         .catch(error => error)
+    // }
+    // console.log(images()); <-- For testing
+
+    let userId = 1;
+
+
     const [profileImage, setProfileImage] = useState([]);
-    useEffect(() => media().then((data) => setProfileImage(data)), []);
+    useEffect(() => media()
+                    .then(
+                        (data) => setProfileImage(data)
+                    ), []);
+    // console.log(profileImage); <-- For testing
 
-    const [userData, setUserData] = useState([]);
-    useEffect(() => users().then((data) => setUserData(data)), []);
 
-    const getProfileImage = profileImage.filter(img => (img.id === 50));
+    const getProfileImage = profileImage.filter(img => (img.author === userId));
     const imgData = getProfileImage.map(data => {
         return data.source_url;
     });
     const profileImg = imgData[0];
+    console.log(getProfileImage);
 
-    const getUserData = userData.filter(user => (user.id === 1));
+    const [userData, setUserData] = useState([]);
+    useEffect(() => users().then((data) => setUserData(data)), []);
+    console.log(userData);
+
+    const getUserData = userData.filter(user => (user.id === userId));
     const userDisplayName = getUserData.map(name => {
         return name.name;
     })
@@ -60,16 +82,13 @@ const profileStyles = StyleSheet.create({
         justifyContent: 'center',
         maxWidth: '960px',
         margin: 'auto',
-        // borderWidth: '1px',
-        // borderColor: 'red',
-        // borderStyle: 'solid',
     },
     profileLeft: {
         maxWidth: '250px',
         height: 400,
-        // borderWidth: '1px',
-        // borderColor: '#000',
-        // borderStyle: 'solid',
+        borderWidth: '1px',
+        borderColor: '#000',
+        borderStyle: 'solid',
         padding: '10px',
         margin: '5px',
         alignItems: 'center',
@@ -77,9 +96,9 @@ const profileStyles = StyleSheet.create({
     profileRight: {
         flex: 1,
         height: 400,
-        // borderWidth: '1px',
-        // borderColor: '#000',
-        // borderStyle: 'solid',
+        borderWidth: '1px',
+        borderColor: '#000',
+        borderStyle: 'solid',
         padding: '10px',
         margin: '5px',
     },

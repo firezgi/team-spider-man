@@ -1,11 +1,18 @@
 import React from 'react'
 
 
-const BASE_URL = 'https://jualuc1.dreamhosters.com/wp-json';
+// const BASE_URL = 'https://jualuc1.dreamhosters.com/wp-json';
+const BUDDY_URL = 'https://jualuc1.dreamhosters.com/buddypress/v1';
 
+const BASE_URL = 'https://jualuc1.dreamhosters.com/wp-json';
 
 export const posts= ()=> {
     return fetch(`${BASE_URL}/wp/v2/posts`).then(response => response.json())
+    .catch(error=>error)
+}
+
+export const members = () => {
+    return fetch(`${BUDDY_URL}/wp/v2/posts`).then(response => response.json())
     .catch(error=>error)
 }
 
