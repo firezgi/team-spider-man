@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import ThemeLoggedIn from "./ThemeLoggedIn";
 import { media, users, members, WP_GET } from "./WPAPI";
 
-export default function ProfilePage() {
+export default function ProfilePage({ navigation }) {
 
     // console.log(media()); <--- For test
 
@@ -48,31 +49,35 @@ export default function ProfilePage() {
 
 
     return (
-        <View style={profileStyles.profileWrap}>
-            <View style={profileStyles.profileLeft}>
-                <Image
-                    style={profileStyles.profileImage}
-                    source={profileImg}
-                />
-                <View style={profileStyles.nameWrap}>
-                    <Text>{userDisplayName}</Text>
+        <ThemeLoggedIn navigation={navigation}>
+            <View style={profileStyles.profileWrap}>
+                <View style={profileStyles.profileLeft}>
+                    <Image
+                        style={profileStyles.profileImage}
+                        source={profileImg}
+                    />
+                    <View style={profileStyles.nameWrap}>
+                        <Text>{userDisplayName}</Text>
+                    </View>
+                </View>
+                <View style={profileStyles.profileRight}>
+                    <Text>About Me</Text>
+                    <View style={profileStyles.descriptionWrap}>
+                        <Text>{userDescription}</Text>
+                    </View>
                 </View>
             </View>
-            <View style={profileStyles.profileRight}>
-                <Text>About Me</Text>
-                <View style={profileStyles.descriptionWrap}>
-                    <Text>{userDescription}</Text>
-                </View>
-            </View>
-        </View>
+        </ThemeLoggedIn>
     )
 }
 
 const profileStyles = StyleSheet.create({
     profileWrap: {
         display: 'flex',
+        flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        alignItems: 'flex-start',
         maxWidth: '960px',
         margin: 'auto',
     },

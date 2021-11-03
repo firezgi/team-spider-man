@@ -46,23 +46,23 @@ const generateGallery = imageArray.map((img, index) => {
 )
 
       return (
-<ThemeLoggedIn navigation={navigation}>
-      <View style={styles.galleryMainContainer}>
-          <View style={styles.uploadPhoto}>
-              <Text style={styles.photoTitle}>Your Photos</Text>
+      <ThemeLoggedIn navigation={navigation}>
+        <View style={styles.galleryMainContainer}>
+            <View style={styles.uploadPhoto}>
+                <Text style={styles.photoTitle}>Your Photos</Text>
 
-              <Button
-                onPress={''}
-                title="Add a New Photo"
-                style={{height: 20}}
-              /> 
-          </View>
+                <Button
+                  onPress={''}
+                  title="Add a New Photo"
+                  style={{height: 20}}
+                /> 
+            </View>
 
-          <ScrollView style={styles.scrollViewContainer}>
-            {generateGallery}
-          </ScrollView>                                     
-        <StatusBar style="auto" />
-      </View>
+            <ScrollView style={styles.scrollViewContainer}>
+              {generateGallery}
+            </ScrollView>                                     
+          <StatusBar style="auto" />
+        </View>
       </ThemeLoggedIn>
     )
 }
