@@ -2,15 +2,28 @@ import React, { useEffect, useState } from "react";
 import { Text, View, TextInput, Button, Image } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { posts, media } from "./WPAPI";
+import { WP_GET } from "./WPAPI";
 
 function NewsFeed({ navigation }) {
-  console.log(media());
-  console.log(posts());
+
   const [allPosts, setAllPosts] = useState([]);
   const [displayPicture, setDisplayPicture] = useState(false);
-  useEffect(() => posts().then((data) => setAllPosts(data)), []);
+  
+
   const [allmedias, setAllmedias] = useState([]);
-  useEffect(() => media().then((data) => setAllmedias(data)), []);
+  // useEffect(() => posts().then((data) => setAllPosts(data)), []);
+  useEffect(() => {
+    WP_GET("posts").then((data) => {
+      setAllPosts(data);
+    });
+  }, []);
+  // useEffect(() => media().then((data) => setAllmedias(data)), []);
+  useEffect(() => {
+    WP_GET("media").then((data) => {
+      setAllmedias(data);
+    });
+  }, []);
+
     const [featureMedia, setFeaturedMedia] = useState("");
   const generatemedia = allmedias.map((med, index) => {
     return (

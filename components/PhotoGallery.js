@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, Button, Image, ScrollView, StatusBar} from 'react-native';
-import { media } from './WPAPI';
+import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from './ThemeLoggedIn';
 
 function PhotoGallery({ navigation }) {
-console.log(media())
+// console.log(media())
  const [imageArray, setImageArray] = useState([]);
- useEffect(() =>{
-   media()
-   .then((data) => setImageArray(data))}, []);
+//  useEffect(() =>{
+//    media()
+//    .then((data) => setImageArray(data))}, []);
+   useEffect(() => {
+    WP_GET("media").then((data) => {
+      setImageArray(data);
+    });
+  }, []);
 
 console.log(imageArray);
 
