@@ -31,6 +31,9 @@ function Friends({ navigation }) {
                     />
 
                 <View style={styles.friendListContainer}>
+                    <View style={styles.friendCard}>
+
+                    </View>
 
                 </View>    
             </View>
@@ -40,13 +43,18 @@ function Friends({ navigation }) {
 }
 const styles = StyleSheet.create({
     friendsMainContainer: {
-      flex: 1,
-      backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#fff",
     },
     friendSearchBar: {
-        flexDirection: 'row',
-        height: 40,
-        justifyContent: 'center',
+    flexDirection: 'row',
+    height: 40,
+    justifyContent: 'center',
+      },
+    friendCard: {
+    flexDirection: 'row',
+    height: 40,
+    justifyContent: 'center',
       },
   });
 
