@@ -26,10 +26,12 @@ function SignupPage ({ navigation }) {
                 <Text>Enter a unique password</Text>
                 <TextInput 
                     style={styles.input}
+                    secureTextEntry={true}
                 />
                 <Text>Re-enter your password</Text>
                 <TextInput 
                     style={styles.input}
+                    secureTextEntry={true}
                 />
                 <Button
                 title="Sign Up!"

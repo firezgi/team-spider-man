@@ -5,6 +5,16 @@ import ThemeLoggedOut from './ThemeLoggedOut';
 const LoginPage = ({ navigation }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const checker = "root";
+
+    const verifier = () => {
+        if (username == checker && password == checker)
+        return (
+            console.log('right credentials'), navigation.navigate('NewsFeed')
+        )
+            console.log('wrong credentials')
+    }
+    
     
     return (
         <ThemeLoggedOut navigation={navigation}>
@@ -20,10 +30,12 @@ const LoginPage = ({ navigation }) => {
                     <TextInput
                         style={styles.input}
                         onChangeText={setPassword}
+                        secureTextEntry={true}
                     />
                     <Button
                         title="Login"
-                        onPress={() => console.log("password: ", password, "username:", username)}
+                        // onPress={() => console.log("password: ", password, "username:", username)}
+                        onPress={() => verifier()}
                     />
                     <Text onPress={() =>navigation.navigate('http://localhost:19006/#/resetpassword')}>reset password</Text>
                 </View>
@@ -33,6 +45,7 @@ const LoginPage = ({ navigation }) => {
                     style={styles.signupbutton}
                     title="Sign Up"
                     onPress={() =>navigation.navigate('SignupPage')}
+
                     />
                     
                 </View>

@@ -31,8 +31,8 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* <Stack.Screen name="Login" component={LoginPage} />
-          <Stack.Screen name="Sign Up" component={SignupPage} /> */}
+          <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="SignupPage" component={SignupPage} />
           <Stack.Screen name="NewsFeed" component={NewsFeed} />
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Messages" component={Messages} />

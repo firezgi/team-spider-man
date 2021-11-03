@@ -20,16 +20,19 @@ export const ResetPassword = ({ navigation }) => {
             <TextInput 
                 style={styles.input}
                 onChangeText={setCurrentPassword}
+                secureTextEntry={true}
             />
             <Text>Enter new password</Text>
             <TextInput 
                 style={styles.input}
                 onChangeText={setNewPassword}
+                secureTextEntry={true}
             />
             <Text>Re-enter new password</Text>
             <TextInput 
                 style={styles.input}
                 onChangeText={setVerifyNewPassword}
+                secureTextEntry={true}
             />
             <Button
             title="Reset password"
