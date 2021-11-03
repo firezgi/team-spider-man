@@ -35,6 +35,7 @@ export default function App() {
           <Stack.Screen name="SignupPage" component={SignupPage} />
           <Stack.Screen name="NewsFeed" component={NewsFeed} />
           {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
         </Stack.Navigator>

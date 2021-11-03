@@ -37,7 +37,7 @@ const LoginPage = ({ navigation }) => {
                         // onPress={() => console.log("password: ", password, "username:", username)}
                         onPress={() => verifier()}
                     />
-                    <Text onPress={() =>navigation.navigate('http://localhost:19006/#/resetpassword')}>reset password</Text>
+                    <Text onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
                 </View>
                 <View style={styles.signupKey}>
                     
