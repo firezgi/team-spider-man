@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, Button, Image, ScrollView, StatusBar} from 'react-native';
-import { media } from './WPAPI';
+import { users } from './WPAPI';
 import ThemeLoggedIn from './ThemeLoggedIn';
 
 function PhotoGallery({ navigation }) {
 console.log(media())
  const [imageArray, setImageArray] = useState([]);
  useEffect(() =>{
-   media()
+   users()
    .then((data) => setImageArray(data))}, []);
 
 console.log(imageArray);
