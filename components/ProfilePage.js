@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { media, users, members, WP_GET } from "./WPAPI";
 
-export function ProfilePage() {
+export default function ProfilePage() {
 
     // console.log(media()); <--- For test
 
@@ -57,13 +57,6 @@ export function ProfilePage() {
                 <View style={profileStyles.nameWrap}>
                     <Text>{userDisplayName}</Text>
                 </View>
-                <View style={profileStyles.locationWrap}>
-                    <Text>City: </Text>
-                </View>
-                <Button
-                    style={profileStyles.editProfile}
-                    title="Edit profile"
-                />
             </View>
             <View style={profileStyles.profileRight}>
                 <Text>About Me</Text>

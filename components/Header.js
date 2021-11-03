@@ -1,13 +1,14 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TextInput, Button, Linking } from 'react-native'
+import { NavigationContainer } from "@react-navigation/native";
 
-
-function Header() {
+function Header({ navigation }) {
 
     return (
       <View style={styles.headerContainer}>
         <View style={styles.header}> 
-        <View style={styles.logoContainer}>
+        <View style={styles.logoContainer}
+        onPress={() => navigation.navigate('NewsFeed')}>
             <Image source={{
                 uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
                 }}
@@ -24,13 +25,12 @@ function Header() {
                 title="Search"
                 color="#841584"
                 style={{height: 20}}
-                accessibilityLabel="Learn more about this purple button"
               />
             </View>
             
             <View style={styles.loginLink}>
               <Text 
-                onPress={() =>Linking.openURL('http://localhost:19006/#/signin')}>Logout 
+                onPress={() =>navigation.navigate('SignupPage')}>Logout 
               </Text>
             </View>
 
@@ -38,15 +38,15 @@ function Header() {
 
         <View style={styles.navBar}>
           <Text 
-            onPress={() =>Linking.openURL('http://localhost:19006/#/newsfeed')}>NewsFeed</Text>
+            onPress={() => navigation.navigate('NewsFeed')}>NewsFeed</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Friends</Text>
+            onPress={() => navigation.navigate('Friends')}>Friends</Text>
           <Text
-            onPress={() =>Linking.openURL('https://www.google.com/')}>Profile</Text>
+            onPress={() =>navigation.navigate('Profile')}>Profile</Text>
           <Text
-            onPress={() =>Linking.openURL('http://localhost:19006/#/photogallery')}>Images</Text>
+            onPress={() => navigation.navigate('PhotoGallery')}>Photo Gallery</Text>
           <Text
-            onPress={() =>Linking.openURL('http://localhost:19006/#/messages')}>Messages</Text>
+            onPress={() => navigation.navigate('Messages')}>Messages</Text>
         </View>
       </View>
     )  
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default Header
+export default Header;

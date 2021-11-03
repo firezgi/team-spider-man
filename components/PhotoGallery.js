@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, Button, Image, ScrollView, TextInput, StatusBar} from 'react-native';
-import { media } from './WPAPI';
-import Footer from './Footer';
-import Header from "./Header";
+import { StyleSheet, Text, View, Button, Image, ScrollView, StatusBar} from 'react-native';
+import { WP_GET } from "./WPAPI";
+import ThemeLoggedIn from './ThemeLoggedIn';
 
-function PhotoGallery() {
-console.log(media())
+function PhotoGallery({ navigation }) {
+// console.log(media())
  const [imageArray, setImageArray] = useState([]);
- useEffect(() =>{
-   media()
-   .then((data) => setImageArray(data))}, []);
+//  useEffect(() =>{
+//    media()
+//    .then((data) => setImageArray(data))}, []);
+   useEffect(() => {
+    WP_GET("media").then((data) => {
+      setImageArray(data);
+    });
+  }, []);
 
 console.log(imageArray);
 
@@ -24,27 +28,26 @@ const generateGallery = imageArray.map((img, index) => {
     const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
       
       return(
-        <View key={index}>
-          <Image 
-            style={{width: imageWidth, height: imageHeight}}
-            source={img.source_url} 
-          />
 
-          <Button
-            key={index}
-            onPress={() => deleteImage(index)}
-            title='Delete'
-          />
+          <View key={index}>
+            <Image 
+              style={{width: imageWidth, height: imageHeight}}
+              source={img.source_url} 
+            />
 
-        </View>
+            <Button
+              key={index}
+              onPress={() => deleteImage(index)}
+              title='Delete'
+            />
+          </View>
     )
   }
 )
 
       return (
-
+<ThemeLoggedIn navigation={navigation}>
       <View style={styles.galleryMainContainer}>
-        <Header/>
           <View style={styles.uploadPhoto}>
               <Text style={styles.photoTitle}>Your Photos</Text>
 
@@ -59,8 +62,8 @@ const generateGallery = imageArray.map((img, index) => {
             {generateGallery}
           </ScrollView>                                     
         <StatusBar style="auto" />
-        <Footer/>
       </View>
+      </ThemeLoggedIn>
     )
 }
 
@@ -100,4 +103,4 @@ const styles = StyleSheet.create({
     
   },
 });
-export default PhotoGallery
+export default PhotoGallery;
