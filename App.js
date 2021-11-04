@@ -13,16 +13,13 @@ import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
-import { posts, users } from "./components/WPAPI";
+import Practice from "./components/Practice";
+// import Practice2 from "./components/Members";
+import Members from "./components/Members";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // posts();
-  // users();
-  // const[user,setUser]=useState([])
-  // useEffect(() => users().then((data) => setUser(data)), []);
-  // console.log(user);
 
   return (
     <View style={styles.container}>
@@ -40,6 +37,7 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
+          <Stack.Screen name="Members" component={Members} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
