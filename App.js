@@ -13,6 +13,7 @@ import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
+import EditProfile from "./components/EditProfile";
 import { posts, users } from "./components/WPAPI";
 
 const Stack = createNativeStackNavigator();
@@ -26,22 +27,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
           }}
         >
-          {/* <Stack.Screen name="Login" component={LoginPage} /> */}
-          {/* <Stack.Screen name="SignupPage" component={SignupPage} /> */}
+          <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="SignupPage" component={SignupPage} />
           <Stack.Screen name="NewsFeed" component={NewsFeed} />
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
           <Stack.Screen name="Friends" component={Friends} />
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
+          <Stack.Screen name="EditProfile" component={EditProfile} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
+      <EditProfile></EditProfile>
       <StatusBar style="auto" />
     </View>
   );
