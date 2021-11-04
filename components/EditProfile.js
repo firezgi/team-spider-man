@@ -67,7 +67,7 @@ export default function EditProfile({ navigation, userId = 1 }) {
                         <Button
                             style={profileStyles.btn}
                             title="Cancel"
-                            onPress={() =>navigation.navigate('ProfilePage')}
+                            onPress={() =>navigation.navigate('Profile')}
                         />
                     </View>
                 </View>

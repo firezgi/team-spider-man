@@ -14,7 +14,6 @@ import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
-import Practice from "./components/Practice";
 import Members from "./components/Members";
 
 const Stack = createNativeStackNavigator();
