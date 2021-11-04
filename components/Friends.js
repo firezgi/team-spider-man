@@ -7,6 +7,8 @@ import { WP_GET } from './WPAPI'
 function Friends({ navigation }) {
 
     const [friends,setFriends] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredFriends, setFilteredFriends] = ([]);
     
 
     //fetching all members from Buddypress members endpoint
