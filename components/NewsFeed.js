@@ -1,63 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, TextInput, Button, Image } from "react-native";
+import {
+  Text,
+  View,
+  TextInput,
+  Button,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
-import { posts, media } from "./WPAPI";
 import { WP_GET } from "./WPAPI";
 
 function NewsFeed({ navigation }) {
-
   const [allPosts, setAllPosts] = useState([]);
   const [displayPicture, setDisplayPicture] = useState(false);
-  
 
-  const [allmedias, setAllmedias] = useState([]);
-  // useEffect(() => posts().then((data) => setAllPosts(data)), []);
   useEffect(() => {
     WP_GET("posts").then((data) => {
       setAllPosts(data);
     });
   }, []);
-  // useEffect(() => media().then((data) => setAllmedias(data)), []);
-  useEffect(() => {
-    WP_GET("media").then((data) => {
-      setAllmedias(data);
-    });
-  }, []);
-
-    const [featureMedia, setFeaturedMedia] = useState("");
-  const generatemedia = allmedias.map((med, index) => {
-    return (
-      <View key={index}>
-        <Image style={{ width: 100, height: 50 }} source={med.source_url} />
-      </View>
-    );
-  });
 
   const generatePosts = allPosts.map((posted, index) => {
-    return (<>
-    {()=>setFeatureMedia(posted.featured_media)}
-    <View key={index}>
-        <Text>{posted.title.rendered}</Text>
-        {/* <Text>{posted.featured_media}</Text> */}
-        {generatemedia}
-        <View style={{ flexDirection: "Row" }}>
-          <Button
-            style={{ margin: 10 }}
-            title="like"
-            // onPress={() => {function}} //change "function" with your function for the button pressing
-          />
+    let excerpt = posted.excerpt.rendered;
+    excerpt = excerpt.replace("<p>", "");
+    excerpt = excerpt.replace("</p>", "");
 
-          <Button
-            title="dislike"
-            //     // onPress={() => {function}} //change "function" with your function for the button pressing
-          />
+    return (
+      <>
+        <View key={index} style={styles.contentContainer}>
+          <Text style={styles.textContainer}>{excerpt}</Text>
+
+          <View style={styles.buttons}>
+
+          <TouchableOpacity style={styles.button} onPress={""}>
+              <Text>Like</Text>
+            </TouchableOpacity>          
+
+            <TouchableOpacity style={styles.button} onPress={""}>
+              <Text>Dislike</Text>
+            </TouchableOpacity>
+
+            <Text> posted in {posted.date}</Text>
+            <Text> by {posted.author}</Text>
+          </View>
         </View>
-      </View>
-    </>
-      
+      </>
     );
   });
-  console.log(featureMedia);
   return (
     <ThemeLoggedIn navigation={navigation}>
       <View>
@@ -78,5 +68,36 @@ function NewsFeed({ navigation }) {
     </ThemeLoggedIn>
   );
 }
+const styles = StyleSheet.create({
+  textContainer: {
+    //flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    width: "50%",
+    backgroundColor: "gray",
+    margin: 10,
+    border: "black solid 2px",
+    textAlign: "center",
+    borderRadius: "5px"
+  },
+  contentContainer: {
+    alignItems: "center",
+    // height:20
+  },
+  buttons:{
+flexDirection:'row',
+width:'50%',
+alignText:'center'
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "blue",
+    padding: 2,
+    margin:2,
+    width:'15%',
+    height:20
+
+  },
+});
 
 export default NewsFeed;

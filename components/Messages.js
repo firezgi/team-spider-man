@@ -1,42 +1,3 @@
-// import React from "react";
-// import { View, TextInput, Button} from "react-native";
-// import { SearchBar } from 'react-native-elements';
-// import ThemeLoggedIn from './ThemeLoggedIn';
-
-// function Messages({ navigation }) {
-
-//   return (
-//     <ThemeLoggedIn navigation={navigation}>
-//     <View>
-//       <SearchBar
-//         placeholder="Search a friend"
-//         // onChangeText={}
-//         // value={}
-//       />
-
-//       <View style={{ flexDirection:"row",justifyContent:"space-evenly",margin:'20px'}}>
-//       <TextInput
-//         style={{ height: 40, borderColor: "gray", borderWidth: 1 ,margin:'20px'}}
-//         onChangeText={(text) => onChangeText(text)}
-//         placeholder="What is in your mind"
-//         //   value={value}
-//       />
-//       <Button style={{ height: 20}}
-//         title="Send"
-//         // onPress={() => {function}} //change "function" with your function for the button pressing
-//       />
-//       </View>
-//       <Button
-//         title="Delete"
-//         // onPress={() => {function}} //change "function" with your function for the button pressing
-//       />
-//     </View>
-//     </ThemeLoggedIn>
-//   );
-// }
-
-// export default Messages;
-
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -51,12 +12,12 @@ import {
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 export default function Messages({ navigation }) {
-  const [messageArr, setMessageArr] = useState([{ message: "heeey :)" }]);
+  const [messageArr, setMessageArr] = useState([{ message: "Hi" }]);
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   useEffect(() => {
-    WP_GET("users").then((data) => {
+    WP_GET("members").then((data) => {
       setUserData(data);
     });
   }, [selectedUser]);

@@ -4,11 +4,8 @@ import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from './ThemeLoggedIn';
 
 function PhotoGallery({ navigation }) {
-// console.log(media())
  const [imageArray, setImageArray] = useState([]);
-//  useEffect(() =>{
-//    media()
-//    .then((data) => setImageArray(data))}, []);
+
    useEffect(() => {
     WP_GET("media").then((data) => {
       setImageArray(data);
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   uploadPhoto: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
