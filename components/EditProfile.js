@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
+import ProfilePage from "./ProfilePage";
 
 export default function EditProfile({ navigation, userId = 1 }) {
 
@@ -20,6 +21,10 @@ export default function EditProfile({ navigation, userId = 1 }) {
                         setUserData(data);
                         console.log('Wordpress user data: ',data);
                     }), []);
+
+    
+    const [name, setName] = useState(userData.name);
+    const [description, setDescription] = useState(userData.description);
     
 
     return (
@@ -39,18 +44,31 @@ export default function EditProfile({ navigation, userId = 1 }) {
                     <Text>Name</Text>
                     <View style={profileStyles.nameWrap}>
                             <TextInput
-                                style={profileStyles.input}
+                                style={profileStyles.nameInput}
                                 value={userData.name}
+                                onChangeText={setName}
                             />
                     </View>
                     <Text>About Me</Text>
                     <View style={profileStyles.descriptionWrap}>  
                         <TextInput
-                            style={profileStyles.input}
+                            style={profileStyles.descriptionInput}
                             value={userData.description}
+                            onChangeText={setDescription}
                             multiline={true}
                         />
                         {/* <Text>{userData.description}</Text> */}
+                    </View>
+                    <View style={profileStyles.buttonRow}>
+                        <Button
+                            style={profileStyles.btn}
+                            title="Save Changes"
+                        />
+                        <Button
+                            style={profileStyles.btn}
+                            title="Cancel"
+                            onPress={() =>navigation.navigate('ProfilePage')}
+                        />
                     </View>
                 </View>
             </View>
@@ -91,10 +109,20 @@ const profileStyles = StyleSheet.create({
         borderRadius: '10px',
         margin: '5px',
     },
-    input: {
+    descriptionInput: {
         borderWidth: 2,
         minHeight: 100,
         padding: 10,
         margin: 10,
-    }
+    },
+    nameInput: {
+        borderWidth: 2,
+        padding: 10,
+        margin: 10,
+    },
+    buttonRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
 });
