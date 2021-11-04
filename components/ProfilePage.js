@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
+import EditProfile from "./EditProfile";
 
 export default function ProfilePage({ navigation, userId = 1 }) {
 
@@ -36,6 +37,7 @@ export default function ProfilePage({ navigation, userId = 1 }) {
                     {/* MAKE Linkable */}
                     <Button
                         title="Edit Profile"
+                        onPress={() =>navigation.navigate('EditProfile')}
                     />
                 </View>
                 <View style={profileStyles.profileRight}>
