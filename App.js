@@ -15,7 +15,6 @@ import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Members from "./components/Members";
-import FlatLists from "./components/FlatLIsts";
 
 const Stack = createNativeStackNavigator();
 
