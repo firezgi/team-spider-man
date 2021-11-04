@@ -8,7 +8,8 @@ const endpoint = {
     search: '/wp/v2/search',
     blockTypes: '/wp/v2/blockTypes',
     blocks: '/wp/v2/blocks',
-    pages: '/wp/v2/pages'
+    pages: '/wp/v2/pages',
+    members: '/buddypress/v1/members'
 };
 
 export const WP_GET = (type, queryStringVars = '') => {
