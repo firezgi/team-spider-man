@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* <NavigationContainer>
+      <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
@@ -43,8 +43,8 @@ export default function App() {
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
         </Stack.Navigator>
-      </NavigationContainer> */}
-      <EditProfile></EditProfile>
+      </NavigationContainer>
+      {/* <EditProfile></EditProfile> */} {/* Using this for building layout and testing*/}
       <StatusBar style="auto" />
     </View>
   );
