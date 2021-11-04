@@ -15,6 +15,10 @@ import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Members from "./components/Members";
+import AboutPage from './components/AboutPage'
+import Rules from './components/RulesPage'
+import Contact from './components/ContactPage'
+import Terms from './components/TermsPage'
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +42,10 @@ export default function App() {
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
           <Stack.Screen name="Members" component={Members} />
+          <Stack.Screen name="About" component={AboutPage} />
+          <Stack.Screen name="Rules" component={Rules} />
+          <Stack.Screen name="Contact" component={Contact} />
+          <Stack.Screen name="Terms" component={Terms} />
         </Stack.Navigator>
       </NavigationContainer>
       {/* <EditProfile></EditProfile> */} {/* Using this for building layout and testing*/}
