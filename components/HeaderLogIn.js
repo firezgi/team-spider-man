@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-function Header({ navigation }) {
+function HeaderLogIn({ navigation }) {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.header}>
@@ -19,12 +19,15 @@ function Header({ navigation }) {
           onPress={() => navigation.navigate("NewsFeed")}
         >
           <Image
-            source={{
-              uri: "https://reactnative.dev/docs/assets/p_cat2.png",
-            }}
-            style={{ width: 50, height: 50 }}
-          ></Image>
-          <Text>MarvelSpace</Text>
+            onPress={() => navigation.navigate("NewsFeed")}
+            source={require('./img/marvelSpace.png')}
+            style={{ 
+              flex: 1, 
+              width: 200, 
+              height: 100, 
+              resizeMode: 'contain',
+            }}>
+            </Image>
         </View>
         <View style={styles.searchBar}>
           <TextInput
@@ -33,6 +36,7 @@ function Header({ navigation }) {
               borderColor: "black",
               borderWidth: 1,
               marginRight: 10,
+              backgroundColor: '#fff'
             }}
             defaultValue=""
           />
@@ -53,7 +57,7 @@ function Header({ navigation }) {
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
         <Text onPress={() => navigation.navigate("Friends")}>Friends</Text>
         <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
-        <Text onPress={() => navigation.navigate("PhotoGallery")}>Photo Gallery</Text>
+        <Text onPress={() => navigation.navigate("PhotoGallery")}>Photos</Text>
         <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>
         <Text onPress={() => navigation.navigate("Members")}>Members</Text>
       </View>
@@ -67,6 +71,8 @@ const styles = StyleSheet.create({
     position: "top",
     width: "100%",
     borderWidth: 1,
+		backgroundColor: "#ED1D24",
+    
   },
   header: {
     flex: 1,
@@ -76,7 +82,9 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
   },
-  logoContainer: {},
+  logoContainer: {
+
+  },
   navBar: {
     flex: 1,
     flexDirection: "row",
@@ -90,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default HeaderLogIn;

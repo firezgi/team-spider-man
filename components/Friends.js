@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StatusBar, View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity, FlatList } from 'react-native'
+import { SearchBar } from "react-native-elements";
 import ThemeLoggedIn from './ThemeLoggedIn'
 import { WP_GET } from './WPAPI'
 
@@ -7,8 +8,8 @@ import { WP_GET } from './WPAPI'
 function Friends({ navigation }) {
 
     const [friends,setFriends] = useState([]);
-    const [searchInput, setSearchInput] = useState('');
-    const [filteredFriends, setFilteredFriends] = ([]);
+    const [search, setSearch] = useState("");
+    const [filteredFriends, setFilteredFriends] = useState([]);
     
 
     //fetching all members from Buddypress members endpoint
@@ -16,9 +17,35 @@ function Friends({ navigation }) {
         WP_GET('members')
         .then((data) => {
             setFriends(data);
+            setFilteredFriends(data);
             console.log(data);
         });
       }, []);
+      //console.log(filteredFriends);
+
+      const searchFriends = (text) => {
+        // Check if searched text is not blank
+        if (text) {
+          // Inserted text is not blank
+          // Filter friends
+          // Update friends
+          const newData = filteredFriends.filter((friend) =>{
+            const itemData = friend.name ? friend.name.toLowerCase() : "".toLowerCase();
+            const textData = text.toLowerCase();
+            return friends.indexOf(friends) > -1;
+          });
+          setFilteredFriends(newData);
+          setSearch(text);
+        } else {
+          // Inserted text is blank
+          // Update filteredFriends with friends
+          setFilteredFriends(friends);
+          setSearch(text);
+        }
+      };
+
+
+
 
 
     const generateFriendList = friends.map((friends, index) => {
@@ -51,6 +78,19 @@ function Friends({ navigation }) {
          )
      }) 
     
+
+     const friendView = ({ friend }) => {
+        return (
+          // Flat List Item
+          <Text
+           onPress={() => generateFriendList(friend)}>
+             {/* {item.id}
+            {"."}  */}
+            {friend.name.toLowerCase()}
+          </Text>
+        );
+      };
+
     const deleteFriend = (index) => {
         setFriends(
             friends.filter((friends, selected) => selected != index)
@@ -63,17 +103,29 @@ function Friends({ navigation }) {
 
             <View styles={styles.friendsMainContainer}>
                 <View style={styles.friendSearchBar}>
-                    <TextInput style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
+                <SearchBar
+                    round
+                    searchIcon={{ size: 24}}
+                    onChangeText={(text) => searchFriends(text)}
+                    onClear={(text) => searchFriends("")}
+                    placeholder="Search friends here..."
+                    value={search}
                     />
-                    <Button
+                    {/* <TextInput style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
+                    /> */}
+                    {/* <Button
                         onPress={''}
                         title="Find Friends"
                         color="#841584"
                         style={{height: 20}}
-                    />   
+                    />    */}
                 </View>
 
-                <View style={styles.friendListContainer}> {generateFriendList}      
+                <View style={styles.friendListContainer}
+                data={filteredFriends}
+                keyExtractor={(friend, index) => index.toString()}
+                renderFriend={friendView}
+                > {generateFriendList}      
             
             
                     <StatusBar style="auto" />
@@ -89,9 +141,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     friendSearchBar: {
-        flexDirection: 'row',
-        height: 40,
-        justifyContent: 'center',
+        //flexDirection: 'row',
+        //
+        //justifyContent: 'center',
     },
     friendCard: {
         flex:1,
