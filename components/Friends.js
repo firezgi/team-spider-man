@@ -29,13 +29,16 @@ function Friends({ navigation }) {
           // Inserted text is not blank
           // Filter friends
           // Update friends
-          const newData = filteredFriends.filter((friend) =>{
+          const newData = friends.filter((friend) =>{
             const itemData = friend.name ? friend.name.toLowerCase() : "".toLowerCase();
             const textData = text.toLowerCase();
-            return friends.indexOf(friends) > -1;
+            return itemData.indexOf(textData) > -1;
           });
           setFilteredFriends(newData);
           setSearch(text);
+          console.log(newData);
+          console.log(text);
+          console.log(filteredFriends);
         } else {
           // Inserted text is blank
           // Update filteredFriends with friends
@@ -44,6 +47,15 @@ function Friends({ navigation }) {
         }
       };
 
+    //    const friendView = ({ friend }) => {
+    //      return (
+    //        // Flat List Item
+    //        <Text>
+    //          {/* {friend.name.toLowerCase()} */}
+    //          {console.log(friend.name)};
+    //        </Text>
+    //      );
+    //    };
 
 
 
@@ -62,6 +74,7 @@ function Friends({ navigation }) {
                     </View>
                 <View style={styles.friendButtons}>
 
+
                 {/* <TouchableOpacity 
                         style={styles.addFriendButton}
                         onPress={''}
@@ -77,19 +90,6 @@ function Friends({ navigation }) {
              </View>
          )
      }) 
-    
-
-     const friendView = ({ friend }) => {
-        return (
-          // Flat List Item
-          <Text
-           onPress={() => generateFriendList(friend)}>
-             {/* {item.id}
-            {"."}  */}
-            {friend.name.toLowerCase()}
-          </Text>
-        );
-      };
 
     const deleteFriend = (index) => {
         setFriends(
@@ -122,11 +122,14 @@ function Friends({ navigation }) {
                 </View>
 
                 <View style={styles.friendListContainer}
+                > 
+                {generateFriendList}
+            
+            <FlatList
                 data={filteredFriends}
                 keyExtractor={(friend, index) => index.toString()}
-                renderFriend={friendView}
-                > {generateFriendList}      
-            
+                // renderItem={friendView}
+            />
             
                     <StatusBar style="auto" />
                 </View> 
