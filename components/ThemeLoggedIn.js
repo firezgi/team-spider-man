@@ -1,30 +1,26 @@
-import React from 'react'
+import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import HeaderLogIn from "./HeaderLogIn";
 import Footer from "./Footer";
 
 function ThemeLoggedIn({ children, navigation }) {
-    return (
-        <View style={styles.container}>
-			<ScrollView>
-				<View>
-					<HeaderLogIn navigation={navigation} />
-				</View>
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <HeaderLogIn navigation={navigation} />
 
-				{children}
+        {children}
 
-				<View>
-					<Footer navigation={navigation} />
-				</View>
-			</ScrollView>
-		</View>
-    )
-};
+        <Footer navigation={navigation} />
+      </ScrollView>
+    </View>
+  );
+}
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-	},
+  container: {
+    // flex: 1,
+    // backgroundColor: "#fff",
+  },
 });
 
 export default ThemeLoggedIn;

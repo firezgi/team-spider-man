@@ -48,28 +48,26 @@ export default function Messages({ navigation }) {
   ));
 
   const MessageWindow = () => {
-    return (
-      selectedUser && (
-        <View>
-          <Image
-            style={styles.image}
-            source={{ uri: selectedUser.avatar_urls?.["24"] }}
+    return selectedUser ? (
+      <View>
+        <Image
+          style={styles.image}
+          source={{ uri: selectedUser.avatar_urls?.["24"] }}
+        />
+        <Text>{selectedUser.name}</Text>
+        <ScrollView>{generateConversation}</ScrollView>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(messageInput) => setMessageInput(messageInput)}
+            onSubmitEditing={sendMessage}
+            value={messageInput}
+            placeholder="Write a message..."
           />
-          <Text>{selectedUser.name}</Text>
-          <ScrollView>{generateConversation}</ScrollView>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              onChangeText={(messageInput) => setMessageInput(messageInput)}
-              onSubmitEditing={sendMessage}
-              value={messageInput}
-              placeholder="Write a message..."
-            />
-          </View>
-          <Button onPress={sendMessage} title="Send" />
         </View>
-      )
-    );
+        <Button onPress={sendMessage} title="Send" />
+      </View>
+    ) : null;
   };
 
   return (
@@ -84,16 +82,16 @@ export default function Messages({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // flex: 1,
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   sidebar: {
-    float: "left",
+    // float: "left",
   },
   image: {
-    height: 24,
-    width: 24,
+    // height: 24,
+    // width: 24,
   },
 });

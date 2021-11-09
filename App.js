@@ -19,7 +19,6 @@ import Members from "./components/Members";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   return (
     <View style={styles.container}>
       <NavigationContainer>
@@ -40,7 +39,8 @@ export default function App() {
           <Stack.Screen name="Members" component={Members} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <EditProfile></EditProfile> */} {/* Using this for building layout and testing*/}
+      {/* <EditProfile></EditProfile> */}{" "}
+      {/* Using this for building layout and testing*/}
       <StatusBar style="auto" />
     </View>
   );

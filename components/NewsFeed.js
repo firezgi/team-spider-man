@@ -32,10 +32,9 @@ function NewsFeed({ navigation }) {
           <Text style={styles.textContainer}>{excerpt}</Text>
 
           <View style={styles.buttons}>
-
-          <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Like</Text>
-            </TouchableOpacity>          
+            </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Dislike</Text>
@@ -54,12 +53,12 @@ function NewsFeed({ navigation }) {
         {generatePosts}
 
         <TextInput
-          style={{
-            height: 40,
-            borderColor: "gray",
-            borderWidth: 1,
-            margin: "20px",
-          }}
+          // style={{
+          //   height: 40,
+          //   borderColor: "gray",
+          //   borderWidth: 1,
+          //   margin: "20px",
+          // }}
           onChangeText={(text) => onChangeText(text)}
           placeholder="What is on your mind?"
           //   value={value}
@@ -70,33 +69,32 @@ function NewsFeed({ navigation }) {
 }
 const styles = StyleSheet.create({
   textContainer: {
-    //flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    width: "50%",
-    backgroundColor: "gray",
-    margin: 10,
-    border: "black solid 2px",
-    textAlign: "center",
-    borderRadius: "5px"
+    // flex: 1,
+    // backgroundColor: "#fff",
+    // justifyContent: "center",
+    // width: "50%",
+    // backgroundColor: "gray",
+    // margin: 10,
+    // border: "black solid 2px",
+    // textAlign: "center",
+    // borderRadius: "5px"
   },
   contentContainer: {
-    alignItems: "center",
+    // alignItems: "center",
     // height:20
   },
-  buttons:{
-flexDirection:'row',
-width:'50%',
-alignText:'center'
+  buttons: {
+    // flexDirection:'row',
+    // width:'50%',
+    // alignText:'center'
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "blue",
-    padding: 2,
-    margin:2,
-    width:'15%',
-    height:20
-
+    // alignItems: "center",
+    // backgroundColor: "blue",
+    // padding: 2,
+    // margin:2,
+    // width:'15%',
+    // height:20
   },
 });
 

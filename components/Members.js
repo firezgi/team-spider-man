@@ -3,7 +3,7 @@ import { SafeAreaView, Text, StyleSheet, View, FlatList } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
-const Members = ({navigation}) => {
+const Members = ({ navigation }) => {
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
@@ -21,7 +21,7 @@ const Members = ({navigation}) => {
       // Inserted text is not blank
       // Filter the masterDataSource
       // Update FilteredDataSource
-      const newData = masterDataSource.filter((item) =>{
+      const newData = masterDataSource.filter((item) => {
         const itemData = item.name ? item.name.toLowerCase() : "".toLowerCase();
         const textData = text.toLowerCase();
         return itemData.indexOf(textData) > -1;
@@ -40,7 +40,7 @@ const Members = ({navigation}) => {
     return (
       // Flat List Item
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-         {/* {item.id}
+        {/* {item.id}
         {"."}  */}
         {item.name.toLowerCase()}
       </Text>
@@ -51,11 +51,11 @@ const Members = ({navigation}) => {
     return (
       // Flat List Item Separator
       <View
-        style={{
-          height: 0.5,
-          width: "100%",
-          backgroundColor: "#C8C8C8",
-        }}
+      // style={{
+      //   height: 0.5,
+      //   width: "100%",
+      //   backgroundColor: "#C8C8C8",
+      // }}
       />
     );
   };
@@ -67,36 +67,38 @@ const Members = ({navigation}) => {
 
   return (
     <ThemeLoggedIn navigation={navigation}>
-      <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <SearchBar
-          round
-          searchIcon={{ size: 24}}
-          onChangeText={(text) => searchFilterFunction(text)}
-          onClear={(text) => searchFilterFunction("")}
-          placeholder="Search members here..."
-          value={search}
-        />
-        <FlatList
-          data={filteredDataSource}
-          keyExtractor={(item, index) => index.toString()}
-          ItemSeparatorComponent={ItemSeparatorView}
-          renderItem={ItemView}
-        />
-      </View>
-    </SafeAreaView>
-
+      <SafeAreaView
+      // style={
+      //   { flex: 1 }
+      //   }
+      >
+        <View style={styles.container}>
+          <SearchBar
+            round
+            // searchIcon={{ size: 24}}
+            onChangeText={(text) => searchFilterFunction(text)}
+            onClear={(text) => searchFilterFunction("")}
+            placeholder="Search members here..."
+            value={search}
+          />
+          <FlatList
+            data={filteredDataSource}
+            keyExtractor={(item, index) => index.toString()}
+            ItemSeparatorComponent={ItemSeparatorView}
+            renderItem={ItemView}
+          />
+        </View>
+      </SafeAreaView>
     </ThemeLoggedIn>
-    
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    // backgroundColor: "white",
   },
   itemStyle: {
-    padding: 10,
+    // padding: 10,
   },
 });
 
