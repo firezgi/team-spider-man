@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
 export default function EditProfile({ navigation, userId = 1 }) {
-  const [buddypressData, setBuddypressData] = useState([]);
-  useEffect(
-    () =>
-      WP_GET("members", `/${userId}`).then((data) => {
-        setBuddypressData(data);
-        console.log("Buddypress data: ", data);
-      }),
-    []
-  );
 
     const [usersName, setUsersName] = useState(userName);
     const [description, setDescription] = useState('');

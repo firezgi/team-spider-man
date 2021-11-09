@@ -14,15 +14,6 @@ export default function ProfilePage({ navigation, userId = 1 }) {
     []
   );
 
-  const [userData, setUserData] = useState([]);
-  useEffect(
-    () =>
-      WP_GET("users", `/${userId}`).then((data) => {
-        setUserData(data);
-        console.log("Wordpress user data: ", data);
-      }),
-    []
-  );
 
     const [userData, setUserData] = useState([]);
     useEffect(() => WP_GET("users", `/${userId}`)
