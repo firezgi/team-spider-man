@@ -30,9 +30,8 @@ export default function EditProfile({ navigation, userId = 1 }) {
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
-                        source={buddypressData.avatar_urls?.full}
+                        source={{uri: buddypressData.avatar_urls?.full}}
                     />
-                    {/* MAKE Useable */}
                     <Button
                         title="Change Profile Image"
                     />
@@ -47,7 +46,7 @@ export default function EditProfile({ navigation, userId = 1 }) {
                             />
                     </View>
                     <Text>About Me</Text>
-                    <View style={profileStyles.descriptionWrap}>  
+                    <View style={profileStyles.descriptionWrap}>
                         <TextInput
                             style={profileStyles.descriptionInput}
                             value={description}

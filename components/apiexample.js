@@ -18,7 +18,7 @@ export default function ImageGallery() {
         () => {
             media() // calling function from WPAPI.js
             .then(
-                (data) => setImageArr(data) 
+                (data) => setImageArr(data)
             )
         },
         []
@@ -82,16 +82,16 @@ return (
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        // flex: 1,
+        // backgroundColor: '#fff',
+        // alignItems: 'center',
+        // justifyContent: 'center',
     },
     image: {
-        height: 600,
-        width: 400,
-        minHeight: '100%',
-        minWidth: '100%',
-        padding: 10,
+        // height: 600,
+        // width: 400,
+        // minHeight: '100%',
+        // minWidth: '100%',
+        // padding: 10,
     },
 });

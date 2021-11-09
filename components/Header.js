@@ -28,12 +28,7 @@ function Header({ navigation }) {
         </View>
         <View style={styles.searchBar}>
           <TextInput
-            style={{
-              height: 40,
-              borderColor: "black",
-              borderWidth: 1,
-              marginRight: 10,
-            }}
+            style={styles.searchInput}
             defaultValue=""
           />
           <Button
@@ -43,12 +38,10 @@ function Header({ navigation }) {
             // style={{ height: 20 }}
           />
         </View>
-
         <View style={styles.loginLink}>
           <Text onPress={() => navigation.navigate("SignupPage")}>Logout</Text>
         </View>
       </View>
-
       <View style={styles.navBar}>
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
         <Text onPress={() => navigation.navigate("Friends")}>Friends</Text>
@@ -88,6 +81,12 @@ const styles = StyleSheet.create({
   searchBar: {
     // flexDirection: "row",
     // height: 40,
+  },
+  searchInput: {
+    // height: 40,
+    // borderColor: "black",
+    // borderWidth: 1,
+    // marginRight: 10,
   },
 });
 

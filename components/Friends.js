@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { StatusBar, View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity, FlatList } from 'react-native'
-import ThemeLoggedIn from './ThemeLoggedIn'
-import { WP_GET } from './WPAPI'
-
+import React, { useState, useEffect } from 'react';
+import { StatusBar, View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity, FlatList } from 'react-native';
+import ThemeLoggedIn from './ThemeLoggedIn';
+import { WP_GET } from './WPAPI';
 
 function Friends({ navigation }) {
 
-    const [friends,setFriends] = useState([]);
-    
+    const [friends,setFriends] = useState([]);    
 
     //fetching all members from Buddypress members endpoint
     useEffect(() => {
@@ -18,18 +16,17 @@ function Friends({ navigation }) {
         });
     }, []);
 
-
     const generateFriendList = friends.map((friends, index) => {
         return (
-            <View 
+            <View
                 style={styles.friendCard}
                 key={index}
             >
                 <View style={styles.namePhotoContainer}>
-                    <Image 
+                    <Image
                     style={styles.friendImage}
-                    source={friends.avatar_urls.thumb} 
-                    /> 
+                    source={{uri: friends.avatar_urls.thumb}}
+                    />
                     <Text style={styles.friendName}>{friends.name}</Text>
                 </View>
                 <View style={styles.friendButtons}>
@@ -37,10 +34,11 @@ function Friends({ navigation }) {
                 {/* <TouchableOpacity 
                         style={styles.addFriendButton}
                         onPress={''}
-                    ><Text style={styles.friendText}>Add Friend</Text>
+                    >
+                        <Text style={styles.friendText}>Add Friend</Text>
                     </TouchableOpacity> */}
 
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.deleteFriendButton}
                         onPress={() => deleteFriend(index)}
                     >
@@ -54,34 +52,31 @@ function Friends({ navigation }) {
     const deleteFriend = (index) => {
         setFriends(
             friends.filter((friends, selected) => selected != index)
-            );
+        );
     }
-
 
     return (
         <ThemeLoggedIn navigation={navigation}>
-
             <View styles={styles.friendsMainContainer}>
                 <View style={styles.friendSearchBar}>
-                    <TextInput style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
+                    <TextInput
+                        style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
                     />
                     <Button
                         onPress={''}
                         title="Find Friends"
                         color="#841584"
                         // style={{height: 20}}
-                    />   
+                    />
                 </View>
-
-                <View style={styles.friendListContainer}> {generateFriendList}      
-            
-            
-                    <StatusBar style="auto" />
-                </View> 
+                <View style={styles.friendListContainer}>
+                    {generateFriendList}
+                </View>
             </View>
         </ThemeLoggedIn>
     )
 }
+
 const styles = StyleSheet.create({
     friendsMainContainer: {
         // flex: 1,
@@ -117,7 +112,7 @@ const styles = StyleSheet.create({
     friendName: {
         // flexDirection: 'row',
         // padding: 10,
-        // alignContent:'flex-start', 
+        // alignContent:'flex-start',
     },
     // addFriendButton: {
     //     flexDirection: 'row',
@@ -136,20 +131,18 @@ const styles = StyleSheet.create({
         // color:"green",
         // borderRadius: 5,
         // margin: 5,
-
     },
     namePhotoContainer: {
-        // flexDirection: 'row', 
+        // flexDirection: 'row',
     },
     friendButtons: {
-        // flexDirection: 'row', 
+        // flexDirection: 'row',
         // margin: 4,
     },
     friendText: {
         // color: 'white',
         // padding: 5,
-
     },
 });
 
-export default Friends
+export default Friends;

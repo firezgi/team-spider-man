@@ -28,7 +28,7 @@ export default function ProfilePage({ navigation, userId = 1 }) {
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
-                        source={buddypressData.avatar_urls?.full}
+                        source={{uri: buddypressData.avatar_urls?.full}}
                     />
                     <View style={profileStyles.nameWrap}>
                         <Text>{userData.name}</Text>
@@ -54,7 +54,7 @@ const profileStyles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        width: 960,
+        // width: 960,
         margin: 'auto',
     },
     profileLeft: {
