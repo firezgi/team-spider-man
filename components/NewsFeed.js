@@ -77,13 +77,13 @@ function NewsFeed({ navigation }) {
         {newPosts}
         <View style={styles.contentContainer}>
         <TextInput
-          style={{
-            width:"50%",
-            borderColor: "gray",
-            borderWidth: 2,
-            borderRadius:5,
-            margin: "20px",
-          }}
+          // style={{
+          //   width:"50%",
+          //   borderColor: "gray",
+          //   borderWidth: 2,
+          //   borderRadius:5,
+          //   margin: "20px",
+          // }}
           onChangeText={(inputToPost) => setInputToPost(inputToPost)}
           placeholder="What is on your mind?"
           onSubmitEditing={sendPost}
@@ -107,9 +107,9 @@ const styles = StyleSheet.create({
     width: "50%",
     backgroundColor: "gray",
     margin: 10,
-    border: "black solid 2px",
+    // border: "black solid 2px",
     textAlign: "center",
-    borderRadius: "5px",
+    // borderRadius: "5px",
   },
   contentContainer: {
     alignItems: "center",
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: "row",
     width: "50%",
-    alignText: "center",
+    textAlign: "center",
   },
   button: {
     alignItems: "center",

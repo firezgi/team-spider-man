@@ -1,10 +1,13 @@
 import React from 'react'
+import { View } from 'react-native'
 
 const aboutPage = () => {
     return (
-        <div>
+        <View>
+            <Text>
             About hi hi
-        </div>
+            </Text>            
+        </View>
     )
 }
 

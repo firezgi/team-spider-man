@@ -39,11 +39,12 @@ function Friends({ navigation }) {
                     ><Text style={styles.friendText}>Add Friend</Text>
                     </TouchableOpacity> */}
 
-                      <TouchableOpacity 
-                         style={styles.deleteFriendButton}
-                         onPress={() => deleteFriend(index)}
-                     ><Text style={styles.friendText}>Delete</Text>
-                     </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.deleteFriendButton}
+                        onPress={() => deleteFriend(index)}
+                    >
+                        <Text style={styles.friendText}>Delete</Text>
+                    </TouchableOpacity>
                  </View>
              </View>
          )

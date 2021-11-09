@@ -89,9 +89,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  sidebar: {
-    float: "left",
-  },
+  // sidebar: {
+  //   float: "left",
+  // },
   image: {
     height: 24,
     width: 24,
