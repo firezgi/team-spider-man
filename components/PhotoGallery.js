@@ -21,15 +21,15 @@ const deleteImage = (index) => {
 }
 
 const generateGallery = imageArray.map((img, index) => {
-    const imageWidth = 300;
-    const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
+    // const imageWidth = 300;
+    // const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
       
       return(
 
           <View key={index}>
             <Image 
-              style={{width: imageWidth, height: imageHeight}}
-              source={img.source_url} 
+              style={{minWidth: "100%", minHeight: "100%"}}
+              source={{uri: img.source_url}} 
             />
 
             <Button

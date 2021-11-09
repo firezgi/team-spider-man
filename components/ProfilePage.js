@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
-import EditProfile from "./EditProfile";
 
 export default function ProfilePage({ navigation, userId = 1 }) {
 
@@ -29,12 +28,11 @@ export default function ProfilePage({ navigation, userId = 1 }) {
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
-                        source={buddypressData.avatar_urls?.full}
+                        source={{uri: buddypressData.avatar_urls?.full}}
                     />
                     <View style={profileStyles.nameWrap}>
                         <Text>{userData.name}</Text>
                     </View>
-                    {/* MAKE Linkable */}
                     <Button
                         title="Edit Profile"
                         onPress={() =>navigation.navigate('EditProfile')}
@@ -56,13 +54,13 @@ const profileStyles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        width: '960',
+        width: 960,
         margin: 'auto',
     },
     profileLeft: {
         width: '100%',
-        padding: '10',
-        margin: '5',
+        padding: 10,
+        margin: 5,
         alignItems: 'center',
     },
     profileRight: {
@@ -73,7 +71,7 @@ const profileStyles = StyleSheet.create({
         margin: 5,
     },
     profileImage: {
-        width:150,
+        width: 150,
         height: 150,
         margin: 5,
     }

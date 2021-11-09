@@ -7,15 +7,11 @@ function ThemeLoggedIn({ children, navigation }) {
     return (
         <View style={styles.container}>
 			<ScrollView>
-				<View>
-					<Header navigation={navigation} />
-				</View>
+				<Header navigation={navigation} />
 
 				{children}
 
-				<View>
-					<Footer navigation={navigation} />
-				</View>
+				<Footer navigation={navigation} />
 			</ScrollView>
 		</View>
     )

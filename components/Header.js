@@ -28,27 +28,20 @@ function Header({ navigation }) {
         </View>
         <View style={styles.searchBar}>
           <TextInput
-            style={{
-              height: 40,
-              borderColor: "black",
-              borderWidth: 1,
-              marginRight: 10,
-            }}
+            style={styles.searchInput}
             defaultValue=""
           />
           <Button
             onPress={""}
             title="Search"
             color="#841584"
-            style={{ height: 20 }}
+            // style={{ height: 20 }}
           />
         </View>
-
         <View style={styles.loginLink}>
           <Text onPress={() => navigation.navigate("SignupPage")}>Logout</Text>
         </View>
       </View>
-
       <View style={styles.navBar}>
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
         {/* <Text onPress={() => navigation.navigate("Friends")}>Friends</Text> */}
@@ -64,31 +57,37 @@ function Header({ navigation }) {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    display: "flex",
-    position: "absolute",
-    top:0,
-    width: "100%",
-    borderWidth: 1,
+    // display: "flex",
+    // position: "absolute",
+    // top: 0,
+    // width: "100%",
+    // borderWidth: 1,
   },
   header: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    textAlign: "center",
-    margin: 10,
-    padding: 5,
+    // flex: 1,
+    // flexDirection: "row",
+    // justifyContent: "space-between",
+    // textAlign: "center",
+    // margin: 10,
+    // padding: 5,
   },
   logoContainer: {},
   navBar: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    marginTop: 10,
+    // flex: 1,
+    // flexDirection: "row",
+    // justifyContent: "space-evenly",
+    // textAlign: "center",
+    // marginTop: 10,
   },
   searchBar: {
-    flexDirection: "row",
-    height: 40,
+    // flexDirection: "row",
+    // height: 40,
+  },
+  searchInput: {
+    // height: 40,
+    // borderColor: "black",
+    // borderWidth: 1,
+    // marginRight: 10,
   },
 });
 

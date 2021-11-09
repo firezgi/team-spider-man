@@ -35,23 +35,22 @@ export const ResetPassword = ({ navigation }) => {
                 secureTextEntry={true}
             />
             <Button
-            title="Reset password"
-            onPress={() => console.log("username: ", signupUsername, "Current Password: ", currentPassword, "New Password: ", newPassword, "Verified Password: ", verifyNewPassword)}
-            onPress={() => navigation.navigate({SignupPage})}
+                title="Reset password"
+                onPress={() => console.log("username: ", signupUsername, "Current Password: ", currentPassword, "New Password: ", newPassword, "Verified Password: ", verifyNewPassword)}
+                onPress={() => navigation.navigate({SignupPage})}
             />
         </View>
         </ThemeLoggedOut>
         
     )
-
 }
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
     }
-  });
+});
 
 export default ResetPassword;

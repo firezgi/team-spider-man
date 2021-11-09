@@ -10,55 +10,52 @@ const LoginPage = ({ navigation }) => {
     const verifier = () => {
         if (username == checker && password == checker)
         return (
-            console.log('right credentials'), navigation.navigate('NewsFeed')
+            console.log('right credentials'),
+            navigation.navigate('NewsFeed')
         )
-            console.log('wrong credentials')
-    }
-    
-    
+            console.log('wrong credentials');
+    }    
+
     return (
         <ThemeLoggedOut navigation={navigation}>
-        <View style={styles.loginPage}>
-            <Text style={styles.header}>MarvelSpace</Text>
-                <View style={styles.login}>
-                    <Text style={styles.usernameTitle}>Username</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setUsername}
-                    />
-                    <Text style={styles.passwordTitle}>Password</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setPassword}
-                        secureTextEntry={true}
-                    />
-                    <Button
-                        title="Login"
-                        // onPress={() => console.log("password: ", password, "username:", username)}
-                        onPress={() => verifier()}
-                    />
-                    <Text onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
-                </View>
-                <View style={styles.signupKey}>
-                    
-                    <Button
-                    style={styles.signupbutton}
-                    title="Sign Up"
-                    onPress={() =>navigation.navigate('SignupPage')}
-
-                    />
-                    
-                </View>
-        </View>
+            <View style={styles.loginPage}>
+                <Text style={styles.header}>MarvelSpace</Text>
+                    <View style={styles.login}>
+                        <Text style={styles.usernameTitle}>Username</Text>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setUsername}
+                        />
+                        <Text style={styles.passwordTitle}>Password</Text>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setPassword}
+                            secureTextEntry={true}
+                        />
+                        <Button
+                            title="Login"
+                            // onPress={() => console.log("password: ", password, "username:", username)}
+                            onPress={() => verifier()}
+                        />
+                        <Text onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
+                    </View>
+                    <View style={styles.signupKey}>                    
+                        <Button
+                        style={styles.signupbutton}
+                        title="Sign Up"
+                        onPress={() =>navigation.navigate('SignupPage')}
+                        />                    
+                    </View>
+            </View>
         </ThemeLoggedOut>
     )
 }
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
+        // height: 40,
+        // margin: 12,
+        // borderWidth: 1,
+        // padding: 10,
     },
     login:{
     },
@@ -78,6 +75,6 @@ const styles = StyleSheet.create({
     },
     signupButton:{
     }
-  });
+});
 
 export default LoginPage;
