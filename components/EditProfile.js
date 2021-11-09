@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
-import ProfilePage from "./ProfilePage";
 
 export default function EditProfile({ navigation, userId = 1 }) {
+
+    const [usersName, setUsersName] = useState(userName);
+    const [description, setDescription] = useState('');
 
     const [buddypressData, setBuddypressData] = useState([]);
     useEffect(() => WP_GET("members", `/${userId}`)
                     .then(
                         (data) => {
                             setBuddypressData(data);
-                            console.log('Buddypress data: ',data);
                         }
                     ), []);
 
@@ -19,13 +20,9 @@ export default function EditProfile({ navigation, userId = 1 }) {
     useEffect(() => WP_GET("users", `/${userId}`)
                     .then((data) => {
                         setUserData(data);
-                        console.log('Wordpress user data: ',data);
+                        console.log(userData.name)
                     }), []);
-
-    
-    const [name, setName] = useState(userData.name);
-    const [description, setDescription] = useState(userData.description);
-    
+                    const userName = userData.name;
 
     return (
         <ThemeLoggedIn navigation={navigation}>
@@ -35,7 +32,7 @@ export default function EditProfile({ navigation, userId = 1 }) {
                         style={profileStyles.profileImage}
                         source={buddypressData.avatar_urls?.full}
                     />
-                    {/* MAKE Linkable */}
+                    {/* MAKE Useable */}
                     <Button
                         title="Change Profile Image"
                     />
@@ -45,19 +42,18 @@ export default function EditProfile({ navigation, userId = 1 }) {
                     <View style={profileStyles.nameWrap}>
                             <TextInput
                                 style={profileStyles.nameInput}
-                                value={userData.name}
-                                onChangeText={setName}
+                                value={usersName}
+                                onChangeText={text => setUsersName(text)}
                             />
                     </View>
                     <Text>About Me</Text>
                     <View style={profileStyles.descriptionWrap}>  
                         <TextInput
                             style={profileStyles.descriptionInput}
-                            value={userData.description}
-                            onChangeText={setDescription}
+                            value={description}
+                            onChangeText={text => (setDescription(text))}
                             multiline={true}
                         />
-                        {/* <Text>{userData.description}</Text> */}
                     </View>
                     <View style={profileStyles.buttonRow}>
                         <Button
@@ -78,51 +74,39 @@ export default function EditProfile({ navigation, userId = 1 }) {
 
 const profileStyles = StyleSheet.create({
     profileWrap: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        width: '960px',
-        margin: 'auto',
+        // display: 'flex',
+        // justifyContent: 'center',
+        // alignItems: 'flex-start',
+        // width: 960,
+        // margin: 'auto',
     },
     profileLeft: {
-        width: '100%',
-        borderWidth: '1px',
-        borderColor: '#000',
-        borderStyle: 'solid',
-        padding: '10px',
-        margin: '5px',
-        alignItems: 'center',
+        // width: '100%',
+        // padding: 10,
+        // margin: 5,
+        // alignItems: 'center',
     },
     profileRight: {
         // flex: 1,
-        width: '100%',
-        height: 400,
-        borderWidth: '1px',
-        borderColor: '#000',
-        borderStyle: 'solid',
-        padding: '10px',
-        margin: '5px',
+        // width: '100%',
+        // height: 400,
+        // padding: 10,
+        // margin: 5,
     },
     profileImage: {
-        width: '150px',
-        height: '150px',
-        borderRadius: '10px',
-        margin: '5px',
+        // width: 150,
+        // height: 150,
+        // margin: 5,
     },
     descriptionInput: {
-        borderWidth: 2,
-        minHeight: 100,
-        padding: 10,
-        margin: 10,
+        // borderWidth: 2,
+        // minHeight: 100,
+        // padding: 10,
+        // margin: 10,
     },
     nameInput: {
-        borderWidth: 2,
-        padding: 10,
-        margin: 10,
-    },
-    buttonRow: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around'
+        // borderWidth: 2,
+        // padding: 10,
+        // margin: 10,
     },
 });

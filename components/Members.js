@@ -56,7 +56,7 @@ const Members = ({navigation}) => {
           width: "100%",
           backgroundColor: "#C8C8C8",
         }}
-      />
+      ></View>
     );
   };
 

@@ -45,7 +45,6 @@ const LoginPage = ({ navigation }) => {
                     style={styles.signupbutton}
                     title="Sign Up"
                     onPress={() =>navigation.navigate('SignupPage')}
-
                     />
                     
                 </View>
