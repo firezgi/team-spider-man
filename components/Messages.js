@@ -48,27 +48,19 @@ export default function Messages({ navigation }) {
   ));
 
   const MessageWindow = () => {
-    return selectedUser ? (
-      <View>
-        <Image
-          style={styles.image}
-          source={{ uri: selectedUser.avatar_urls?.["24"] }}
-        />
-        <Text>{selectedUser.name}</Text>
-        <ScrollView>{generateConversation}</ScrollView>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            onChangeText={(messageInput) => setMessageInput(messageInput)}
-            onSubmitEditing={sendMessage}
-            value={messageInput}
-            placeholder="Write a message..."
+    return (
+      selectedUser ? (
+        <View>
+          <Image
+            style={styles.image}
+            source={{ uri: selectedUser.avatar_urls?.["24"] }}
           />
         </View>
-        <Button onPress={sendMessage} title="Send" />
-      </View>
-    ) : null;
-  };
+      
+    )
+    : null
+
+    )};
 
   return (
     <ThemeLoggedIn navigation={navigation}>

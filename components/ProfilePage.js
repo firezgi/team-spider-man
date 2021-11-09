@@ -24,64 +24,65 @@ export default function ProfilePage({ navigation, userId = 1 }) {
     []
   );
 
-  return (
-    <ThemeLoggedIn navigation={navigation}>
-      <View style={profileStyles.profileWrap}>
-        <View style={profileStyles.profileLeft}>
-          <Image
-            style={profileStyles.profileImage}
-            source={buddypressData.avatar_urls?.full}
-          />
-          <View style={profileStyles.nameWrap}>
-            <Text>{userData.name}</Text>
-          </View>
-          <Button
-            title="Edit Profile"
-            onPress={() => navigation.navigate("EditProfile")}
-          />
-        </View>
-        <View style={profileStyles.profileRight}>
-          <Text>About Me</Text>
-          <View style={profileStyles.descriptionWrap}>
-            <Text>{userData.description}</Text>
-          </View>
-        </View>
-      </View>
-    </ThemeLoggedIn>
-  );
+    const [userData, setUserData] = useState([]);
+    useEffect(() => WP_GET("users", `/${userId}`)
+                    .then((data) => {
+                        setUserData(data);
+                        console.log('Wordpress user data: ',data);
+                    }), []);
+    
+
+    return (
+        <ThemeLoggedIn navigation={navigation}>
+            <View style={profileStyles.profileWrap}>
+                <View style={profileStyles.profileLeft}>
+                    <Image
+                        style={profileStyles.profileImage}
+                        source={{uri: buddypressData.avatar_urls?.full}}
+                    />
+                    <View style={profileStyles.nameWrap}>
+                        <Text>{userData.name}</Text>
+                    </View>
+                    <Button
+                        title="Edit Profile"
+                        onPress={() =>navigation.navigate('EditProfile')}
+                    />
+                </View>
+                <View style={profileStyles.profileRight}>
+                    <Text>About Me</Text>
+                    <View style={profileStyles.descriptionWrap}>
+                        <Text>{userData.description}</Text>
+                    </View>
+                </View>
+            </View>
+        </ThemeLoggedIn>
+    )
 }
 
 const profileStyles = StyleSheet.create({
-  profileWrap: {
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'flex-start',
-    // width: '960px',
-    // margin: 'auto',
-  },
-  profileLeft: {
-    // width: '100%',
-    // borderWidth: '1px',
-    // borderColor: '#000',
-    // borderStyle: 'solid',
-    // padding: '10px',
-    // margin: '5px',
-    // alignItems: 'center',
-  },
-  profileRight: {
-    // flex: 1,
-    // width: '100%',
-    // height: 400,
-    // borderWidth: '1px',
-    // borderColor: '#000',
-    // borderStyle: 'solid',
-    // padding: '10px',
-    // margin: '5px',
-  },
-  profileImage: {
-    // width: '150px',
-    // height: '150px',
-    // borderRadius: '10px',
-    // margin: '5px',
-  },
+    profileWrap: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        // width: 960,
+        margin: 'auto',
+    },
+    profileLeft: {
+        width: '100%',
+        padding: 10,
+        margin: 5,
+        alignItems: 'center',
+    },
+    profileRight: {
+        // flex: 1,
+        width: '100%',
+        height: 400,
+        padding: 10,
+        margin: 5,
+    },
+    profileImage: {
+        width: 150,
+        height: 150,
+        margin: 5,
+    }
 });

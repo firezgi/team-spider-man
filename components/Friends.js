@@ -79,7 +79,8 @@ function Friends({ navigation }) {
           {/* <TouchableOpacity 
                         style={styles.addFriendButton}
                         onPress={''}
-                    ><Text style={styles.friendText}>Add Friend</Text>
+                    >
+                        <Text style={styles.friendText}>Add Friend</Text>
                     </TouchableOpacity> */}
 
           <TouchableOpacity
@@ -136,72 +137,73 @@ function Friends({ navigation }) {
     </ThemeLoggedIn>
   );
 }
+
 const styles = StyleSheet.create({
-  friendsMainContainer: {
-    // flex: 1,
-    // backgroundColor: 'black',
-  },
-  friendSearchBar: {
-    //flexDirection: 'row',
-    //
-    //justifyContent: 'center',
-  },
-  friendCard: {
-    // flex:1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // minWidth: 250,
-    // maxWidth: 250,
-    // minHeight: 100,
-    // margin: 10,
-    // borderColor: 'black',
-    // borderWidth: 3,
-  },
-  friendListContainer: {
-    // flex: 1,
-    // display: 'flex',
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-  },
-  friendImage: {
-    // height: 50,
-    // width: 50,
-    // margin: 5,
-  },
-  friendName: {
-    // flexDirection: 'row',
-    // padding: 10,
-    // alignContent:'flex-start',
-  },
-  // addFriendButton: {
-  //     flexDirection: 'row',
-  //     backgroundColor: 'blue',
-  //     width: 80,
-  //     height: 35,
-  //     color:"white",
-  //     borderRadius: 5,
-  //     margin: 5,
-  // },
-  deleteFriendButton: {
-    // flexDirection: 'row',
-    // backgroundColor: 'gray',
-    // width: 80,
-    // height: 35,
-    // color:"green",
-    // borderRadius: 5,
-    // margin: 5,
-  },
-  namePhotoContainer: {
-    // flexDirection: 'row',
-  },
-  friendButtons: {
-    // flexDirection: 'row',
-    // margin: 4,
-  },
-  friendText: {
-    // color: 'white',
-    // padding: 5,
-  },
+    friendsMainContainer: {
+        // flex: 1,
+        // backgroundColor: 'black',
+    },
+    friendSearchBar: {
+        // flexDirection: 'row',
+        // height: 40,
+        // justifyContent: 'center',
+    },
+    friendCard: {
+        // flex:1,
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        // minWidth: 250,
+        // maxWidth: 250,
+        // minHeight: 100,
+        // margin: 10,
+        // borderColor: 'black',
+        // borderWidth: 3,
+    },
+    friendListContainer: {
+        // flex: 1,
+        // display: 'flex',
+        // flexDirection: 'row',
+        // flexWrap: 'wrap',
+    },
+    friendImage: {
+        // height: 50,
+        // width: 50,
+        // margin: 5,
+    },
+    friendName: {
+        // flexDirection: 'row',
+        // padding: 10,
+        // alignContent:'flex-start',
+    },
+    // addFriendButton: {
+    //     flexDirection: 'row',
+    //     backgroundColor: 'blue',
+    //     width: 80,
+    //     height: 35,
+    //     color:"white",
+    //     borderRadius: 5,
+    //     margin: 5,
+    // },
+    deleteFriendButton: {
+        // flexDirection: 'row',
+        // backgroundColor: 'gray',
+        // width: 80,
+        // height: 35,
+        // color:"green",
+        // borderRadius: 5,
+        // margin: 5,
+    },
+    namePhotoContainer: {
+        // flexDirection: 'row',
+    },
+    friendButtons: {
+        // flexDirection: 'row',
+        // margin: 4,
+    },
+    friendText: {
+        // color: 'white',
+        // padding: 5,
+    },
 });
 
 export default Friends;

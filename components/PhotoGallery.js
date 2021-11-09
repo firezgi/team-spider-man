@@ -27,9 +27,9 @@ function PhotoGallery({ navigation }) {
   };
 
   const generateGallery = imageArray.map((img, index) => {
-    const imageWidth = 300;
-    const imageHeight =
-      (img.media_details.height / img.media_details.width) * imageWidth;
+    // const imageWidth = 300;
+    // const imageHeight =
+    //   (img.media_details.height / img.media_details.width) * imageWidth;
 
     return (
       <View key={index}>

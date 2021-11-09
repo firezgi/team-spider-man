@@ -11,11 +11,11 @@ function ThemeLoggedIn({ children, navigation }) {
 
         {children}
 
-        <Footer navigation={navigation} />
-      </ScrollView>
-    </View>
-  );
-}
+				<Footer navigation={navigation} />
+			</ScrollView>
+		</View>
+    )
+};
 const styles = StyleSheet.create({
   container: {
     // flex: 1,

@@ -25,30 +25,20 @@ function HeaderLogIn({ navigation }) {
         </View>
         <View style={styles.searchBar}>
           <TextInput
-            //   style={
-            //     {
-            //     height: 40,
-            //     borderColor: "black",
-            //     borderWidth: 1,
-            //     marginRight: 10,
-            //     backgroundColor: '#fff'
-            //   }
-            // }
+            style={styles.searchInput}
             defaultValue=""
           />
           <Button
             onPress={""}
             title="Search"
-            // color="#841584"
+            color="#841584"
             // style={{ height: 20 }}
           />
         </View>
-
         <View style={styles.loginLink}>
           <Text onPress={() => navigation.navigate("SignupPage")}>Logout</Text>
         </View>
       </View>
-
       <View style={styles.navBar}>
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
         <Text onPress={() => navigation.navigate("Friends")}>Friends</Text>
@@ -64,10 +54,10 @@ function HeaderLogIn({ navigation }) {
 const styles = StyleSheet.create({
   headerContainer: {
     // display: "flex",
-    // position: "top",
+    // position: "absolute",
+    // top: 0,
     // width: "100%",
     // borderWidth: 1,
-    // backgroundColor: "#ED1D24",
   },
   header: {
     // flex: 1,
@@ -89,6 +79,12 @@ const styles = StyleSheet.create({
     // flexDirection: "row",
     // height: 40,
   },
+  searchInput: {
+    // height: 40,
+    // borderColor: "black",
+    // borderWidth: 1,
+    // marginRight: 10,
+  },
 });
 
-export default HeaderLogIn;
+export default Header;
