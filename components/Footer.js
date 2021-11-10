@@ -11,13 +11,13 @@ export default function Footer({ navigation }) {
         <Text style={styles.white} onPress={() => navigation.navigate("About")}>
           About
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Rules")}>
           Rules
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Contact")}>
           Contact
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Terms")}>
           Terms
         </Text>
       </View>
