@@ -3,17 +3,77 @@ import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "reac
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation }) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const checker = "root";
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
+    // const checker = "root";
 
-    const verifier = () => {
-        if (username == checker && password == checker)
-        return (
-            console.log('right credentials'),
-            navigation.navigate('NewsFeed')
+    // const verifier = () => {
+    //     if (username == checker && password == checker)
+    //     return (
+    //         console.log('right credentials'),
+    //         navigation.navigate('NewsFeed')
+    //     )
+    //         console.log('wrong credentials');
+    // }
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [loggedIn, setLoggedin] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [token, setToken] = useState('');
+
+    useEffect(
+        () => {
+        if(loading) {
+            const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'username': `${username}`,
+                'password': `${password}`
+            })
+            };
+            
+            fetch(`https://jualuc1.dreamhosters.com/wp-json/jwt-auth/v1/token`, options)
+            .then(response => response.json())
+            .then(data => {
+                data.token 
+                ? formSuccess(data)
+                : formError(data)
+            })
+            }
+        },
+        [loading]
+    );
+
+    const onFormSubmit = () => {
+    setError('');
+    setLoading(true);
+    };
+
+    const formSuccess = (data) => {
+        setToken(data.token);
+        setLoggedin(true);
+        setLoading(false);
+        setUsername('');
+        setPassword('');
+        navigation.navigate('Newsfeed');
+    }
+
+    const formError = (data) => {
+        const regex = /<[^>]*>/g;
+        setLoading(false);
+        setPassword('');
+        data?.message 
+            ? setError(
+            data.message
+            .replaceAll(regex, "")
         )
-            console.log('wrong credentials');
+        :'';
+        console.log(data);
     }
 
     return (
