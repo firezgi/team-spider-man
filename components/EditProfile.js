@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
+
 export default function EditProfile({ navigation, userId = 1 }) {
 
     const [usersName, setUsersName] = useState(userName);
