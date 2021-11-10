@@ -29,7 +29,7 @@ const generateGallery = imageArray.map((img, index) => {
           <View key={index}>
             <Image 
               style={{minWidth: "100%", minHeight: "100%"}}
-              source={{uri: img.source_url}} 
+              source={{uri: img.source_url}}
             />
 
             <Button
