@@ -11,6 +11,9 @@ import { WP_GET } from "./WPAPI";
 
 function NewsFeed({ navigation }) {
   const [allPosts, setAllPosts] = useState([]);
+  const [displayPicture, setDisplayPicture] = useState(false);
+  const [postArr, setPostArr] = useState([{ post: "New to this app" }]);
+  const [inputToPost, setInputToPost] = useState("");
 
   useEffect(() => {
     WP_GET("posts").then((data) => {
@@ -23,33 +26,63 @@ function NewsFeed({ navigation }) {
     excerpt = excerpt.replace("<p>", "");
     excerpt = excerpt.replace("</p>", "");
 
+    
+
     return (
         <View key={index} style={styles.contentContainer}>
           <Text style={styles.textContainer}>{excerpt}</Text>
           <View style={styles.buttons}>
-          <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Like</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Dislike</Text>
             </TouchableOpacity>
             <Text> posted in {posted.date}</Text>
             <Text> by {posted.author}</Text>
+            
           </View>
         </View>
     );
   });
+  const deletePost = (index) => {
+    setPostArr(postArr.filter((text, selected) => selected != index));
+  };
 
+  const sendPost = () => {
+    setPostArr([...postArr, { post: inputToPost }]);
+    setInputToPost("");
+  };
+  const newPosts= postArr.map((text, index) => (
+    <View style={styles.contentContainer}key={index}>
+      <Text style={styles.textContainer}>{text.post}</Text>
+      <TouchableOpacity key={index} style={styles.button} onPress={() => deletePost(index)}>
+              <Text>Delete</Text>
+            </TouchableOpacity>
+    
+    </View>
+  ));
+  
   return (
     <ThemeLoggedIn navigation={navigation}>
       <View>
         {generatePosts}
+        {newPosts}
+        <View style={styles.contentContainer}>     
         <TextInput
           style={styles.postsButtons}
-          onChangeText={(text) => onChangeText(text)}
+          onChangeText={(inputToPost) => setInputToPost(inputToPost)}
           placeholder="What is on your mind?"
-          //   value={value}
+          onSubmitEditing={sendPost}
+          value={inputToPost}
         />
+        <TouchableOpacity style={styles.button} onPress={sendPost}>
+              <Text>Post</Text>
+            </TouchableOpacity>
+        
+        </View>
+        
       </View>
     </ThemeLoggedIn>
   );
