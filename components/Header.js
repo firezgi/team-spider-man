@@ -44,11 +44,12 @@ function Header({ navigation }) {
       </View>
       <View style={styles.navBar}>
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
-        <Text onPress={() => navigation.navigate("Friends")}>Friends</Text>
+        {/* <Text onPress={() => navigation.navigate("Friends")}>Friends</Text> */}
+        <Text onPress={() => navigation.navigate("Members")}>Friends</Text>
         <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
         <Text onPress={() => navigation.navigate("PhotoGallery")}>Photo Gallery</Text>
         <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>
-        <Text onPress={() => navigation.navigate("Members")}>Members</Text>
+        
       </View>
     </View>
   );

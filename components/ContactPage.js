@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { View,Text } from 'react-native';
 
 const contactPage = () => {
     return (
-        <div>
+        <View>
+            <Text>
             Contact
-        </div>
+            </Text>            
+        </View>
     )
 }
 
