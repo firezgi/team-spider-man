@@ -32,9 +32,10 @@ function NewsFeed({ navigation }) {
         <View key={index} style={styles.contentContainer}>
           <Text style={styles.textContainer}>{excerpt}</Text>
           <View style={styles.buttons}>
-          <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Like</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.button} onPress={""}>
               <Text>Dislike</Text>
             </TouchableOpacity>
@@ -68,7 +69,7 @@ function NewsFeed({ navigation }) {
       <View>
         {generatePosts}
         {newPosts}
-        <View style={styles.contentContainer}>
+        <View style={styles.contentContainer}>     
         <TextInput
           style={styles.postsButtons}
           onChangeText={(inputToPost) => setInputToPost(inputToPost)}
