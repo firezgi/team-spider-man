@@ -1,21 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation }) => {
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-    // const checker = "root";
-
-    // const verifier = () => {
-    //     if (username == checker && password == checker)
-    //     return (
-    //         console.log('right credentials'),
-    //         navigation.navigate('NewsFeed')
-    //     )
-    //         console.log('wrong credentials');
-    // }
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedin] = useState(false);
@@ -60,7 +47,7 @@ const LoginPage = ({ navigation }) => {
         setLoading(false);
         setUsername('');
         setPassword('');
-        navigation.navigate('Newsfeed');
+        navigation.navigate('NewsFeed');
     }
 
     const formError = (data) => {
@@ -88,25 +75,24 @@ const LoginPage = ({ navigation }) => {
                     <Text style={styles.usernameTitle}>Username</Text>
                     <TextInput
                         style={styles.input}
+                        value={username}
                         onChangeText={setUsername}
+                        onSubmitEditing={onFormSubmit}
                     />
                     <Text style={styles.passwordTitle}>Password</Text>
                     <TextInput
                         style={styles.input}
+                        value={password}
                         onChangeText={setPassword}
+                        onSubmitEditing={onFormSubmit}
                         secureTextEntry={true}
                     />
                     <TouchableOpacity
                         style={styles.signupButton}
-                        onPress={() => verifier()}
+                        onPress={onFormSubmit}
                     >
                         <Text style={styles.white}>Login</Text>
                     </TouchableOpacity>
-                    {/* <Button
-                        title="Login"
-                        // onPress={() => console.log("password: ", password, "username:", username)}
-                        onPress={() => verifier()}
-                    /> */}
                     <Text 
                         style={styles.resetText}
                         onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
@@ -118,6 +104,8 @@ const LoginPage = ({ navigation }) => {
                     >
                         <Text style={styles.white}>Sign Up</Text>
                     </TouchableOpacity>
+                    <Text>{loading && 'Loading'}</Text>
+                    <Text>{error}</Text>
                 </View>
             </View>
         </ThemeLoggedOut>
