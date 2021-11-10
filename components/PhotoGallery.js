@@ -28,16 +28,15 @@ function PhotoGallery({ navigation }) {
 
   const generateGallery = imageArray.map((img, index) => {
     // const imageWidth = 300;
-    // const imageHeight =
-    //   (img.media_details.height / img.media_details.width) * imageWidth;
+    // const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
+      
+      return(
 
-    return (
-      <View key={index}>
-        <Image
-          // style={{width: imageWidth, height: imageHeight}}
-          source={{uri: img.source_url}}
-        />
-
+          <View key={index}>
+            <Image 
+              style={{minWidth: "100%", minHeight: "100%"}}
+              source={{uri: img.source_url}}
+            />
         <Button key={index} onPress={() => deleteImage(index)} title="Delete" />
       </View>
     );

@@ -7,7 +7,6 @@ function ThemeLoggedOut({ children, navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <HeaderLogOut navigation={navigation} />
 
         {children}
 
@@ -17,10 +16,12 @@ function ThemeLoggedOut({ children, navigation }) {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // backgroundColor: "#fff",
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#ed1d24",
+		paddingTop: 60,
+        height: "100%",
+	},
 });
 
 export default ThemeLoggedOut;

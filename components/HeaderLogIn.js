@@ -12,7 +12,7 @@ function HeaderLogIn({ navigation }) {
         >
           <Image
             onPress={() => navigation.navigate("NewsFeed")}
-            source={require("./img/marvelSpace.png")}
+            // source={require("./img/marvelSpace.png")}
             // style={
             //   {
             //   flex: 1,
