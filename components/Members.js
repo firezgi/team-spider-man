@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text, StyleSheet, View, FlatList } from "react-native";
+import { SafeAreaView, Text, StyleSheet, View, FlatList, Image } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
@@ -41,25 +41,29 @@ const Members = ({navigation}) => {
     return (
       // Flat List Item
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-          {/* {item.id}
-        {"."}   */}
+      <View style={styles.namePhotoContainer}>
+        <Image 
+          style={styles.friendImage}
+          source={item.avatar_urls.thumb} 
+        />
         {item.name.toLowerCase()}
+        </View>  
       </Text>
     );
   };
 
-  // const ItemSeparatorView = () => {
-  //   return (
-  //     // Flat List Item Separator
-  //     <View
-  //       style={{
-  //         height: 0.5,
-  //         width: "100%",
-  //         backgroundColor: "#C8C8C8",
-  //       }}
-  //     />
-  //   );
-  // };
+  const ItemSeparatorView = () => {
+    return (
+      // Flat List Item Separator
+      <View
+        style={{
+          height: 0.5,
+          width: "100%",
+          backgroundColor: "#C8C8C8",
+        }}
+      />
+    );
+  };
 
   const getItem = (item) => {
     // Function for click on an item
@@ -81,7 +85,7 @@ const Members = ({navigation}) => {
         <FlatList
           data={filteredDataSource}
           keyExtractor={(item, index) => index.toString()}
-          // ItemSeparatorComponent={ItemSeparatorView}
+          ItemSeparatorComponent={ItemSeparatorView}
           renderItem={ItemView}
         />
       </View>
@@ -99,6 +103,14 @@ const styles = StyleSheet.create({
   itemStyle: {
     padding: 10,
   },
+  friendImage: {
+    height: 50,
+    width: 50,
+    margin: 5,
+},
+namePhotoContainer: {
+  flexDirection: 'row', 
+},
 });
 
 export default Members;
