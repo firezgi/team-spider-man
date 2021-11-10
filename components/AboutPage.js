@@ -1,11 +1,11 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View,Text } from 'react-native'
 
 const aboutPage = () => {
     return (
         <View>
             <Text>
-            About hi hi
+            About 
             </Text>            
         </View>
     )

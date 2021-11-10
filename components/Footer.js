@@ -8,7 +8,7 @@ export default function Footer({ navigation }) {
       <Text style={{ textAlign: "center", color: "#fff" }}>Brought to you by your friendly neighborhood team-spider-man</Text>
 
       <View style={{ flexDirection: "row", justifyContent: "space-around" ,}}>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("About")}>
           About
         </Text>
         <Text style={styles.white} onPress={() => navigation.navigate("")}>
