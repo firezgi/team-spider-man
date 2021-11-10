@@ -35,7 +35,7 @@ function PhotoGallery({ navigation }) {
       <View key={index}>
         <Image
           // style={{width: imageWidth, height: imageHeight}}
-          source={img.source_url}
+          source={{uri: img.source_url}}
         />
 
         <Button key={index} onPress={() => deleteImage(index)} title="Delete" />

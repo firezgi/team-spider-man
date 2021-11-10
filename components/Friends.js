@@ -1,141 +1,80 @@
-import React, { useState, useEffect } from "react";
-import {
-  StatusBar,
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  Button,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
-import { SearchBar } from "react-native-elements";
-import ThemeLoggedIn from "./ThemeLoggedIn";
-import { WP_GET } from "./WPAPI";
+import React, { useState, useEffect } from 'react';
+import { StatusBar, View, Text, TextInput, StyleSheet, Button, Image, TouchableOpacity, FlatList } from 'react-native';
+import ThemeLoggedIn from './ThemeLoggedIn';
+import { WP_GET } from './WPAPI';
 
 function Friends({ navigation }) {
-  const [friends, setFriends] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filteredFriends, setFilteredFriends] = useState([]);
 
-  //fetching all members from Buddypress members endpoint
-  useEffect(() => {
-    WP_GET("members").then((data) => {
-      setFriends(data);
-      setFilteredFriends(data);
-      console.log(data);
-    });
-  }, []);
-  //console.log(filteredFriends);
+    const [friends,setFriends] = useState([]);    
 
-  const searchFriends = (text) => {
-    // Check if searched text is not blank
-    if (text) {
-      // Inserted text is not blank
-      // Filter friends
-      // Update friends
-      const newData = friends.filter((friend) => {
-        const itemData = friend.name
-          ? friend.name.toLowerCase()
-          : "".toLowerCase();
-        const textData = text.toLowerCase();
-        return itemData.indexOf(textData) > -1;
-      });
-      setFilteredFriends(newData);
-      setSearch(text);
-      console.log(newData);
-      console.log(text);
-      console.log(filteredFriends);
-    } else {
-      // Inserted text is blank
-      // Update filteredFriends with friends
-      setFilteredFriends(friends);
-      setSearch(text);
-    }
-  };
+    //fetching all members from Buddypress members endpoint
+    useEffect(() => {
+        WP_GET('members')
+        .then((data) => {
+            setFriends(data);
+            console.log(data);
+        });
+    }, []);
 
-  //    const friendView = ({ friend }) => {
-  //      return (
-  //        // Flat List Item
-  //        <Text>
-  //          {/* {friend.name.toLowerCase()} */}
-  //          {console.log(friend.name)};
-  //        </Text>
-  //      );
-  //    };
+    const generateFriendList = friends.map((friends, index) => {
+        return (
+            <View
+                style={styles.friendCard}
+                key={index}
+            >
+                <View style={styles.namePhotoContainer}>
+                    <Image
+                    style={styles.friendImage}
+                    source={{uri: friends.avatar_urls.thumb}}
+                    />
+                    <Text style={styles.friendName}>{friends.name}</Text>
+                </View>
+                <View style={styles.friendButtons}>
 
-  const generateFriendList = friends.map((friends, index) => {
-    return (
-      <View style={styles.friendCard} key={index}>
-        <View style={styles.namePhotoContainer}>
-          <Image
-            style={styles.friendImage}
-            source={friends.avatar_urls.thumb}
-          />
-          <Text style={styles.friendName}>{friends.name}</Text>
-        </View>
-        <View style={styles.friendButtons}>
-          {/* <TouchableOpacity 
+                {/* <TouchableOpacity 
                         style={styles.addFriendButton}
                         onPress={''}
                     >
                         <Text style={styles.friendText}>Add Friend</Text>
                     </TouchableOpacity> */}
 
-          <TouchableOpacity
-            style={styles.deleteFriendButton}
-            onPress={() => deleteFriend(index)}
-          >
-            <Text style={styles.friendText}>Delete</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  });
+                    <TouchableOpacity
+                        style={styles.deleteFriendButton}
+                        onPress={() => deleteFriend(index)}
+                    >
+                        <Text style={styles.friendText}>Delete</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    })
+    
+    const deleteFriend = (index) => {
+        setFriends(
+            friends.filter((friends, selected) => selected != index)
+        );
+    }
 
-  const deleteFriend = (index) => {
-    setFriends(friends.filter((friends, selected) => selected != index));
-  };
-
-  return (
-    <ThemeLoggedIn navigation={navigation}>
-      <View styles={styles.friendsMainContainer}>
-        <View style={styles.friendSearchBar}>
-          <SearchBar
-            round
-            // searchIcon={
-            //     // { size: 24}
-            // }
-            onChangeText={(text) => searchFriends(text)}
-            onClear={(text) => searchFriends("")}
-            placeholder="Search friends here..."
-            value={search}
-          />
-          {/* <TextInput style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
-                    /> */}
-          {/* <Button
+    return (
+        <ThemeLoggedIn navigation={navigation}>
+            <View styles={styles.friendsMainContainer}>
+                <View style={styles.friendSearchBar}>
+                    <TextInput
+                        style={{ height: 40, borderColor: 'black', borderWidth: 1, marginRight:10 }}
+                    />
+                    <Button
                         onPress={''}
                         title="Find Friends"
                         color="#841584"
-                        style={{height: 20}}
-                    />    */}
-        </View>
-
-        <View style={styles.friendListContainer}>
-          {generateFriendList}
-
-          <FlatList
-            data={filteredFriends}
-            keyExtractor={(friend, index) => index.toString()}
-            // renderItem={friendView}
-          />
-
-          <StatusBar style="auto" />
-        </View>
-      </View>
-    </ThemeLoggedIn>
-  );
+                        // style={{height: 20}}
+                    />
+                </View>
+                <View style={styles.friendListContainer}>
+                    {generateFriendList}
+                </View>
+            </View>
+        </ThemeLoggedIn>
+    )
 }
 
 const styles = StyleSheet.create({
