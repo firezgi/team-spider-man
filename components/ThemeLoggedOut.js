@@ -15,7 +15,9 @@ function ThemeLoggedOut({ children, navigation }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: "#ed1d24",
+		paddingTop: 60,
+        height: "100%",
 	},
 });
 

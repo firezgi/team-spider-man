@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation }) => {
@@ -14,66 +14,105 @@ const LoginPage = ({ navigation }) => {
             navigation.navigate('NewsFeed')
         )
             console.log('wrong credentials');
-    }    
+    }
 
     return (
-        <ThemeLoggedOut navigation={navigation}>
+        <ThemeLoggedOut  navigation={navigation}>
             <View style={styles.loginPage}>
-                <Text style={styles.header}>MarvelSpace</Text>
-                    <View style={styles.login}>
-                        <Text style={styles.usernameTitle}>Username</Text>
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={setUsername}
-                        />
-                        <Text style={styles.passwordTitle}>Password</Text>
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={setPassword}
-                            secureTextEntry={true}
-                        />
-                        <Button
-                            title="Login"
-                            // onPress={() => console.log("password: ", password, "username:", username)}
-                            onPress={() => verifier()}
-                        />
-                        <Text onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
-                    </View>
-                    <View style={styles.signupKey}>                    
-                        <Button
-                        style={styles.signupbutton}
-                        title="Sign Up"
+                <Image
+                    style={{width: "100%", height: 64 }}
+                    onPress={() => navigation.navigate("NewsFeed")}
+                    source={require("./img/marvelSpace.png")}
+                ></Image> 
+                <View style={styles.login}>
+                    <Text style={styles.usernameTitle}>Username</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setUsername}
+                    />
+                    <Text style={styles.passwordTitle}>Password</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setPassword}
+                        secureTextEntry={true}
+                    />
+                    <TouchableOpacity
+                        style={styles.signupButton}
+                        onPress={() => verifier()}
+                    >
+                        <Text style={styles.white}>Login</Text>
+                    </TouchableOpacity>
+                    {/* <Button
+                        title="Login"
+                        // onPress={() => console.log("password: ", password, "username:", username)}
+                        onPress={() => verifier()}
+                    /> */}
+                    <Text 
+                        style={styles.resetText}
+                        onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
+                </View>
+                <View style={styles.signupKey}> 
+                    <TouchableOpacity
+                        style={styles.signupButton}
                         onPress={() =>navigation.navigate('SignupPage')}
-                        />                    
-                    </View>
+                    >
+                        <Text style={styles.white}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ThemeLoggedOut>
     )
 }
 const styles = StyleSheet.create({
     input: {
-        // height: 40,
-        // margin: 12,
-        // borderWidth: 1,
-        // padding: 10,
+        margin: 12,
+        borderWidth: 3,
+        padding: 10,
+        borderRadius: 10,
+        backgroundColor: "#fff",
+        fontWeight: "bold",
     },
     login:{
+        marginTop: 15
     },
     header:{
         // display: 'flex',
         // justifyContent: 'center',
     },
     usernameTitle:{
-        // display: 'flex',
-        // justifyContent: 'center',
+        fontWeight: "bold",
+        color: "#fff",
+        textAlign: "center",
+        fontSize: 20,
     },
     passwordTitle:{
-        // display: 'flex',
-        // justifyContent: 'center',
+        fontWeight: "bold",
+        color: "#fff",
+        textAlign: "center",
+        fontSize: 20,
+    },
+    resetText: {
+        fontWeight: "bold",
+        color: "#fff",
+        textAlign: "center",
+        fontSize: 20,
     },
     loginPage:{
+        // flex: 1,
+        height: 745,
+        // backgroundColor: "#fff",
     },
     signupButton:{
+        backgroundColor: "#16769E",
+        padding: 10,
+        alignItems: "center",
+        margin: 12,
+        borderRadius: 10,
+        borderWidth: 3,
+        borderColor: "#000"
+    },
+    white: {
+        color: "#fff",
     }
 });
 
