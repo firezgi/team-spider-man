@@ -6,15 +6,8 @@ function ThemeLoggedOut({ children, navigation }) {
     return (
         <View style={styles.container}>
 			<ScrollView>
-				{/* <View>
-					<HeaderLogPage navigation={navigation} />
-				</View> */}
-
-				{children}
-
-				<View>
-					<Footer navigation={navigation} />
-				</View>
+				{children}				
+				<Footer navigation={navigation} />
 			</ScrollView>
 		</View>
     )
@@ -22,7 +15,9 @@ function ThemeLoggedOut({ children, navigation }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: "#ed1d24",
+		paddingTop: 60,
+        height: "100%",
 	},
 });
 

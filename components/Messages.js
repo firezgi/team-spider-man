@@ -49,7 +49,7 @@ export default function Messages({ navigation }) {
 
   const MessageWindow = () => {
     return (
-      selectedUser && (
+      selectedUser ? (
         <View>
           <Image
             style={styles.image}
@@ -68,9 +68,11 @@ export default function Messages({ navigation }) {
           </View>
           <Button onPress={sendMessage} title="Send" />
         </View>
-      )
-    );
-  };
+      
+    )
+    : null
+
+    )};
 
   return (
     <ThemeLoggedIn navigation={navigation}>
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   sidebar: {
-    float: "left",
+    // float: "left",
   },
   image: {
     height: 24,

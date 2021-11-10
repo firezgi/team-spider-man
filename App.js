@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -49,7 +49,6 @@ export default function App() {
           <Stack.Screen name="Terms" component={Terms} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <EditProfile></EditProfile> */} {/* Using this for building layout and testing*/}
       <StatusBar style="auto" />
     </View>
   );
