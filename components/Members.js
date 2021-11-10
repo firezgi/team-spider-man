@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text, StyleSheet, View, FlatList } from "react-native";
+import { SafeAreaView, Text, StyleSheet, View,Image, FlatList} from "react-native";
 import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
@@ -43,6 +43,10 @@ const Members = ({navigation}) => {
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
           {/* {item.id}
         {"."}   */}
+        <Image
+                        style={styles.profileImage}
+                        source={{uri: item.avatar_urls?.full}}
+                    />
         {item.name.toLowerCase()}
       </Text>
     );
@@ -61,10 +65,10 @@ const Members = ({navigation}) => {
   //   );
   // };
 
-  // const getItem = (item) => {
-  //   // Function for click on an item
-  //   alert("Id : " + item.id + "   Name: " + item.name);
-  // };
+  const getItem = (item) => {
+    // Function for click on an item
+    alert("Id : " + item.id + "   Name: " + item.name);
+  };
 
   return (
     <ThemeLoggedIn navigation={navigation}>
