@@ -61,10 +61,10 @@ const Members = ({navigation}) => {
   //   );
   // };
 
-  // const getItem = (item) => {
-  //   // Function for click on an item
-  //   alert("Id : " + item.id + "   Name: " + item.name);
-  // };
+  const getItem = (item) => {
+    // Function for click on an item
+    alert("Id : " + item.id + "   Name: " + item.name);
+  };
 
   return (
     <ThemeLoggedIn navigation={navigation}>
