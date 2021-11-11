@@ -4,7 +4,7 @@ import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 
-const Members = ({navigation}) => {
+const Search = ({navigation}) => {
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
@@ -113,4 +113,4 @@ namePhotoContainer: {
 },
 });
 
-export default Members;
+export default Search;

@@ -12,7 +12,7 @@ function HeaderLogIn({ navigation }) {
         >
           <Image
             onPress={() => navigation.navigate("NewsFeed")}
-            // source={require("./img/marvelSpace.png")}
+            source={require("./img/marvelSpace.png")}
             // style={
             //   {
             //   flex: 1,
@@ -22,18 +22,6 @@ function HeaderLogIn({ navigation }) {
             // }
             // }
           ></Image>
-        </View>
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.searchInput}
-            defaultValue=""
-          />
-          <Button
-            onPress={""}
-            title="Search"
-            color="#841584"
-            // style={{ height: 20 }}
-          />
         </View>
         <View style={styles.loginLink}>
           <Text onPress={() => navigation.navigate("SignupPage")}>Logout</Text>
@@ -45,7 +33,7 @@ function HeaderLogIn({ navigation }) {
         <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
         <Text onPress={() => navigation.navigate("PhotoGallery")}>Photos</Text>
         <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>
-        <Text onPress={() => navigation.navigate("Members")}>Members</Text>
+        <Text onPress={() => navigation.navigate("Search")}>Search</Text>
       </View>
     </View>
   );
