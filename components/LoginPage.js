@@ -49,7 +49,7 @@ const LoginPage = ({ navigation }) => {
       setPassword('');
       navigation.navigate('NewsFeed');
     }
-  
+  console.log(token)
     const formError = (data) => {
       const regex = /<[^>]*>/g;
       setLoading(false);

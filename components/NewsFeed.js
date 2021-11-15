@@ -14,6 +14,8 @@ function NewsFeed({ navigation }) {
   const [displayPicture, setDisplayPicture] = useState(false);
   const [postArr, setPostArr] = useState([{ post: "New to this app" }]);
   const [inputToPost, setInputToPost] = useState("");
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
 
   useEffect(() => {
     WP_GET("posts").then((data) => {
@@ -25,6 +27,14 @@ function NewsFeed({ navigation }) {
     let excerpt = posted.excerpt.rendered;
     excerpt = excerpt.replace("<p>", "");
     excerpt = excerpt.replace("</p>", "");
+  const likeHandler=(index)=>{
+    setAllPosts(allPosts.filter((count, i) => i === index))
+    setLikeCount(()=>likeCount+1)
+  }
+  const dislikeHandler=(index)=>{
+    setAllPosts(allPosts.filter((count, i) => i === index))
+    setDislikeCount((index)=>dislikeCount+1)
+  }
 
     
 
@@ -32,12 +42,14 @@ function NewsFeed({ navigation }) {
         <View key={index} style={styles.contentContainer}>
           <Text style={styles.textContainer}>{excerpt}</Text>
           <View style={styles.buttons}>
-            <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={()=>likeHandler(index)}>
               <Text>Like</Text>
+              <Text>{likeCount}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={()=>dislikeHandler(index)}>
               <Text>Dislike</Text>
+              <Text>{dislikeCount}</Text>
             </TouchableOpacity>
             <Text> posted in {posted.date}</Text>
             <Text> by {posted.author}</Text>

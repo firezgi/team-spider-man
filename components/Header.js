@@ -49,6 +49,7 @@ function Header({ navigation }) {
         <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
         <Text onPress={() => navigation.navigate("PhotoGallery")}>Photo Gallery</Text>
         <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>
+        <Text onPress={() => navigation.navigate("Members")}>Members</Text>
         
       </View>
     </View>

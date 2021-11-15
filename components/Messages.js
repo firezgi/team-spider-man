@@ -55,8 +55,9 @@ export default function Messages({ navigation }) {
             style={styles.image}
             source={{ uri: selectedUser.avatar_urls?.["24"] }}
           />
-          <Text>{selectedUser.name}</Text>
+          
           <ScrollView>{generateConversation}</ScrollView>
+          <Text>{selectedUser.name}</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
