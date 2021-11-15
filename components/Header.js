@@ -1,20 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import ProfilePage from "./components/ProfilePage";
-import PhotoGallery from "./components/PhotoGallery";
-import Messages from "./components/Messages";
-import NewsFeed from "./components/NewsFeed";
-import LoginPage from "./components/LoginPage";
-import ResetPassword from "./components/ResetPassword";
-import SignupPage from "./components/SignupPage";
-import Friends from "./components/Friends";
-import EditProfile from "./components/EditProfile";
-import Members from "./components/Members";
-import AboutPage from './components/AboutPage'
-import Rules from './components/RulesPage'
-import Contact from './components/ContactPage'
-import Terms from './components/TermsPage'
+// import ProfilePage from "./components/ProfilePage";
+// import PhotoGallery from "./components/PhotoGallery";
+// import Messages from "./components/Messages";
+// import NewsFeed from "./components/NewsFeed";
+// import LoginPage from "./components/LoginPage";
+// import Friends from "./components/Friends";
+// import Members from "./components/Members";
+
 
 function Header({ navigation }) {
   return (
@@ -43,8 +37,7 @@ function Header({ navigation }) {
       </View>
       <View style={styles.navBar}>
         <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
-        {/* <Text onPress={() => navigation.navigate("Friends")}>Friends</Text> */}
-        <Text onPress={() => navigation.navigate("Members")}>Friends</Text>
+        <Text onPress={() => navigation.navigate("Friends")}>Friends</Text> 
         <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
         <Text onPress={() => navigation.navigate("PhotoGallery")}>Photos</Text>
         <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>

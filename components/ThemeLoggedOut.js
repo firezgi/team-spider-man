@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import Header from "./Header";
 import Footer from "./Footer";
 
 
@@ -8,7 +7,6 @@ function ThemeLoggedOut({ children, navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Header navigation={navigation} />
 
         {children}
 
@@ -22,7 +20,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#ed1d24",
 		paddingTop: 60,
-        height: "100%",
+    height: "100%",
 	},
 });
 
