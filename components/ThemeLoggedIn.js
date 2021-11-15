@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import HeaderLogIn from "./HeaderLogIn";
+import Header from "./Header";
 import Footer from "./Footer";
 
 function ThemeLoggedIn({ children, navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <HeaderLogIn navigation={navigation} />
+        <Header navigation={navigation} />
 
         {children}
 
