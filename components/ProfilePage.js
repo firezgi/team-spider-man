@@ -54,7 +54,7 @@ const profileStyles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        width: 960,
+        width: '98%',
         margin: 'auto',
     },
     profileLeft: {

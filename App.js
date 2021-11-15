@@ -14,7 +14,7 @@ import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 // import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
-import Members from "./components/Members";
+import Search from "./components/Members";
 import AboutPage from './components/AboutPage'
 import Rules from './components/RulesPage'
 import Contact from './components/ContactPage'
@@ -42,7 +42,7 @@ export default function App() {
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
-          <Stack.Screen name="Members" component={Members} />
+          <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />

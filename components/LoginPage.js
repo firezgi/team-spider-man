@@ -47,7 +47,8 @@ const LoginPage = ({ navigation }) => {
         setLoading(false);
         setUsername('');
         setPassword('');
-        navigation.navigate('NewsFeed');
+        console.log(data.token);
+        // navigation.navigate('NewsFeed');
     }
 
     const formError = (data) => {
