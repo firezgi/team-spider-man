@@ -53,8 +53,8 @@ const profileStyles = StyleSheet.create({
     profileWrap: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        width: '98%',
+        alignItems: 'center',
+        width: '90%',
         margin: 'auto',
     },
     profileLeft: {
@@ -62,6 +62,9 @@ const profileStyles = StyleSheet.create({
         padding: 10,
         margin: 5,
         alignItems: 'center',
+        backgroundColor: '#fff',
+        borderWidth: 3,
+        borderRadius: 10
     },
     profileRight: {
         // flex: 1,
@@ -69,6 +72,9 @@ const profileStyles = StyleSheet.create({
         height: 400,
         padding: 10,
         margin: 5,
+        backgroundColor: '#fff',
+        borderWidth: 3,
+        borderRadius: 10
     },
     profileImage: {
         width: 150,

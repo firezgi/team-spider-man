@@ -39,14 +39,8 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   footerMain: {
-    // display: "flex",
-    // alignSelf: "flex-end",
-    // flex: 1,
-    position: "absolute",
-    right: 0,
-    bottom: 0,
-    left: 0,
     backgroundColor: "#16769E",
     padding: 5,
+    // marginTop: 'auto',
   }
 });

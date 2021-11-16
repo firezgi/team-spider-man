@@ -14,11 +14,11 @@ import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 // import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
-import Search from "./components/Members";
-import AboutPage from './components/AboutPage'
-import Rules from './components/RulesPage'
-import Contact from './components/ContactPage'
-import Terms from './components/TermsPage'
+import Search from "./components/Search";
+import AboutPage from './components/AboutPage';
+import Rules from './components/RulesPage';
+import Contact from './components/ContactPage';
+import Terms from './components/TermsPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,8 +33,8 @@ export default function App() {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Login" component={LoginPage} />
-          <Stack.Screen name="SignupPage" component={SignupPage} />
+          {/* <Stack.Screen name="Login" component={LoginPage} /> */}
+          {/* <Stack.Screen name="SignupPage" component={SignupPage} /> */}
           <Stack.Screen name="NewsFeed" component={NewsFeed} />
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
           {/* <Stack.Screen name="Friends" component={Friends} /> */}

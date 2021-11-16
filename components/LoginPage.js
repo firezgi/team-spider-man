@@ -47,8 +47,9 @@ const LoginPage = ({ navigation }) => {
         setLoading(false);
         setUsername('');
         setPassword('');
+        console.log(data);
         console.log(data.token);
-        // navigation.navigate('NewsFeed');
+        navigation.navigate('NewsFeed');
     }
 
     const formError = (data) => {
@@ -147,8 +148,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     loginPage:{
-        // flex: 1,
-        height: 745,
+        // flex: 2,
+        // borderWidth: 10,
+        maxHeight: "100%",
+        // height: 745,
         // backgroundColor: "#fff",
     },
     signupButton:{

@@ -57,6 +57,7 @@ function Header({ navigation }) {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    backgroundColor: "#16769E",
     // display: "flex",
     // position: "absolute",
     // top: 0,

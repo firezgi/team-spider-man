@@ -66,7 +66,7 @@ function NewsFeed({ navigation }) {
   
   return (
     <ThemeLoggedIn navigation={navigation}>
-      <View>
+      <View style={styles.newsfeed}>
         {generatePosts}
         {newPosts}
         <View style={styles.contentContainer}>     
@@ -79,8 +79,7 @@ function NewsFeed({ navigation }) {
         />
         <TouchableOpacity style={styles.button} onPress={sendPost}>
               <Text>Post</Text>
-            </TouchableOpacity>
-        
+            </TouchableOpacity>        
         </View>
         
       </View>
@@ -90,15 +89,20 @@ function NewsFeed({ navigation }) {
 
 const styles = StyleSheet.create({
   textContainer: {
-    backgroundColor: "#fff",
     justifyContent: "center",
-    width: "50%",
-    backgroundColor: "gray",
+    width: "80%",
     margin: 10,
     textAlign: "center",
   },
   contentContainer: {
+    backgroundColor: "#fff",
     alignItems: "center",
+    borderWidth: 2,
+    width: "50%",
+    margin: "auto",
+    padding: 8,
+    marginBottom: 10,
+    borderRadius: 10
   },
   buttons:{
     flexDirection:'row',
@@ -117,6 +121,16 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     margin: 20,
+  },
+  newsfeed: {
+    // backgroundColor: "#fff",
+    // borderWidth: 3,
+    width: "90%",
+    margin: "auto",
+    marginBottom: 30,
+    marginTop: 30,
+    padding: 10,
+    borderRadius: 10
   }
 });
 

@@ -67,7 +67,7 @@ const generateGallery = imageArray.map((img, index) => {
 const styles = StyleSheet.create({
   galleryMainContainer: {
     //flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
