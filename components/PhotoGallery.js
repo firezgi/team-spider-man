@@ -27,8 +27,8 @@ function PhotoGallery({ navigation }) {
   };
 
   const generateGallery = imageArray.map((img, index) => {
-    // const imageWidth = 300;
-    // const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
+    const imageWidth = 300;
+    const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
       
       return(
 
@@ -45,15 +45,12 @@ function PhotoGallery({ navigation }) {
   return (
     <ThemeLoggedIn navigation={navigation}>
       <View style={styles.galleryMainContainer}>
-        <View style={styles.uploadPhoto}>
           <Text style={styles.photoTitle}>Your Photos</Text>
-
-          <Button
+          {/* <Button
             onPress={""}
             title="Add a New Photo"
-            // style={{height: 20}}
-          />
-        </View>
+            style={{height: 20}}
+          /> */}
 
         <ScrollView style={styles.scrollViewContainer}>
           {generateGallery}
@@ -66,36 +63,30 @@ function PhotoGallery({ navigation }) {
 
 const styles = StyleSheet.create({
   galleryMainContainer: {
-    // flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textInputField: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  uploadPhoto: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   photoTitle: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   photoGalleryContainer: {
-    // flex: 1,
-    // flexDirection: 'row',
-    // alignItems: 'center',
-    // justifyContent: 'left',
+    //flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'left',
   },
   scrollViewContainer: {
-    // flex: 1,
-    // flexDirection: 'row',
-    // backgroundColor: 'red',
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'red',
   },
 });
 export default PhotoGallery;
