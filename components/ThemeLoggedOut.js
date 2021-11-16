@@ -7,7 +7,7 @@ function ThemeLoggedOut({ children, navigation }) {
         <View style={styles.container}>
 			<ScrollView>
 				{children}				
-				<Footer navigation={navigation} />
+				{/* <Footer navigation={navigation} /> */}
 			</ScrollView>
 		</View>
     )

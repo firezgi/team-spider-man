@@ -11,8 +11,8 @@ import {
 } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
-export default function Messages({ navigation }) {
-  const [messageArr, setMessageArr] = useState([{ message: "Hi" }]);
+export default function Messages({ navigation, storedToken }) {
+  const [messageArr, setMessageArr] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
@@ -20,8 +20,11 @@ export default function Messages({ navigation }) {
     WP_GET("members").then((data) => {
       setUserData(data);
     });
+    WP_GET("messages", "", storedToken).then((data) => {
+      setMessageArr([data]);
+    });
   }, [selectedUser]);
-  console.log(userData);
+
   const sendMessage = () => {
     setMessageArr([...messageArr, { message: messageInput }]);
     setMessageInput("");
@@ -40,40 +43,37 @@ export default function Messages({ navigation }) {
     </View>
   ));
 
-  const generateConversation = messageArr.map((text, index) => (
+  const generateConversation = messageArr.map((message, index) => (
     <View key={index}>
-      <Text>{text.message}</Text>
+      {console.log(message[0])}
+      <Text>{message[0]?.excerpt.rendered}</Text>
       <Button key={index} onPress={() => deleteMessage(index)} title="Delete" />
     </View>
   ));
 
   const MessageWindow = () => {
-    return (
-      selectedUser ? (
-        <View>
-          <Image
-            style={styles.image}
-            source={{ uri: selectedUser.avatar_urls?.["24"] }}
-          />
-          
-          <ScrollView>{generateConversation}</ScrollView>
-          <Text>{selectedUser.name}</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              onChangeText={(messageInput) => setMessageInput(messageInput)}
-              onSubmitEditing={sendMessage}
-              value={messageInput}
-              placeholder="Write a message..."
-            />
-          </View>
-          <Button onPress={sendMessage} title="Send" />
-        </View>
-      
-    )
-    : null
+    return selectedUser ? (
+      <View>
+        <Image
+          style={styles.image}
+          source={{ uri: selectedUser.avatar_urls?.["24"] }}
+        />
 
-    )};
+        <ScrollView>{messageArr ? generateConversation : null}</ScrollView>
+        <Text>{selectedUser.name}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(messageInput) => setMessageInput(messageInput)}
+            onSubmitEditing={sendMessage}
+            value={messageInput}
+            placeholder="Write a message..."
+          />
+        </View>
+        <Button onPress={sendMessage} title="Send" />
+      </View>
+    ) : null;
+  };
 
   return (
     <ThemeLoggedIn navigation={navigation}>
