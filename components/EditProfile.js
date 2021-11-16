@@ -6,7 +6,7 @@ import { WP_GET } from "./WPAPI";
 
 export default function EditProfile({ navigation, userId = 1 }) {
 
-    const [usersName, setUsersName] = useState(userName);
+    const [usersName, setUsersName] = useState('');
     const [description, setDescription] = useState('');
 
     const [buddypressData, setBuddypressData] = useState([]);
@@ -21,9 +21,9 @@ export default function EditProfile({ navigation, userId = 1 }) {
     useEffect(() => WP_GET("users", `/${userId}`)
                     .then((data) => {
                         setUserData(data);
-                        console.log(userData.name)
+                        setUsersName(data.name);
+                        setDescription(data.description);
                     }), []);
-                    const userName = userData.name;
 
     return (
         <ThemeLoggedIn navigation={navigation}>
@@ -33,9 +33,9 @@ export default function EditProfile({ navigation, userId = 1 }) {
                         style={profileStyles.profileImage}
                         source={{uri: buddypressData.avatar_urls?.full}}
                     />
-                    <Button
+                    {/* <Button
                         title="Change Profile Image"
-                    />
+                    /> */}
                 </View>
                 <View style={profileStyles.profileRight}>
                     <Text>Name</Text>
@@ -74,39 +74,45 @@ export default function EditProfile({ navigation, userId = 1 }) {
 
 const profileStyles = StyleSheet.create({
     profileWrap: {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'flex-start',
-        width: '98%',
-        // margin: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '90%',
+        margin: 'auto',
     },
     profileLeft: {
-        // width: '100%',
-        // padding: 10,
-        // margin: 5,
-        // alignItems: 'center',
+        width: '100%',
+        padding: 10,
+        margin: 5,
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderWidth: 3,
+        borderRadius: 10
     },
     profileRight: {
         // flex: 1,
-        // width: '100%',
-        // height: 400,
-        // padding: 10,
-        // margin: 5,
+        width: '100%',
+        height: 400,
+        padding: 10,
+        margin: 5,
+        backgroundColor: '#fff',
+        borderWidth: 3,
+        borderRadius: 10
     },
     profileImage: {
-        // width: 150,
-        // height: 150,
-        // margin: 5,
+        width: 150,
+        height: 150,
+        margin: 5,
     },
     descriptionInput: {
-        // borderWidth: 2,
-        // minHeight: 100,
-        // padding: 10,
-        // margin: 10,
+        borderWidth: 2,
+        minHeight: 100,
+        padding: 10,
+        margin: 10,
     },
     nameInput: {
-        // borderWidth: 2,
-        // padding: 10,
-        // margin: 10,
+        borderWidth: 2,
+        padding: 10,
+        margin: 10,
     },
 });

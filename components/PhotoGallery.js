@@ -21,14 +21,14 @@ const deleteImage = (index) => {
 }
 
 const generateGallery = imageArray.map((img, index) => {
-    // const imageWidth = 300;
-    // const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
+    const imageWidth = 300;
+    const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
       
       return(
 
           <View key={index}>
             <Image 
-              style={{minWidth: "100%", minHeight: "100%"}}
+              style={{minWidth: imageWidth, minHeight: imageHeight}}
               source={{uri: img.source_url}}
             />
 
@@ -57,7 +57,7 @@ const generateGallery = imageArray.map((img, index) => {
 
             <ScrollView style={styles.scrollViewContainer}>
               {generateGallery}
-            </ScrollView>                                     
+            </ScrollView>   
           <StatusBar style="auto" />
         </View>
       </ThemeLoggedIn>
@@ -88,13 +88,16 @@ const styles = StyleSheet.create({
   },
   photoGalleryContainer: {
     //flex: 1,
+    borderWidth: 3,
+    // width: "80%",
     flexDirection: 'row',
     alignItems: 'center',
     // justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,
-    //width: '100%',
+    // width: '80%',
+    margin: 20,
     flexDirection: 'row',
     backgroundColor: 'red',
     
