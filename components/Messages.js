@@ -31,7 +31,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
           subject: "Message from Spider man",
           message: `${messageInput}`,
           slug: `${new Date()}`,
-          recipients: [4, 3],
+          recipients: [4, 13],
         },
         storedToken
       ).then((data) => {
