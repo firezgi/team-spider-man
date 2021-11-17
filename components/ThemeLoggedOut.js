@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import Footer from "./Footer";
 
-
 function ThemeLoggedOut({ children, navigation }) {
     return (
         <View style={styles.container}>

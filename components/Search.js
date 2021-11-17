@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text, StyleSheet, View,Image, FlatList} from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  FlatList,
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 
-const Search = ({navigation}) => {
+const Search = ({ navigation }) => {
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
@@ -22,7 +29,7 @@ const Search = ({navigation}) => {
       // Inserted text is not blank
       // Filter the masterDataSource
       // Update FilteredDataSource
-      const newData = masterDataSource.filter((item) =>{
+      const newData = masterDataSource.filter((item) => {
         const itemData = item.name ? item.name.toLowerCase() : "".toLowerCase();
         const textData = text.toLowerCase();
         return itemData.indexOf(textData) > -1;
@@ -41,12 +48,12 @@ const Search = ({navigation}) => {
     return (
       // Flat List Item
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-          {/* {item.id}
+        {/* {item.id}
         {"."}   */}
         <Image
-                        style={styles.profileImage}
-                        source={{uri: item.avatar_urls?.full}}
-                    />
+          style={styles.profileImage}
+          source={{ uri: item.avatar_urls?.full }}
+        />
         {item.name.toLowerCase()}
       </Text>
     );
@@ -73,26 +80,24 @@ const Search = ({navigation}) => {
   return (
     <ThemeLoggedIn navigation={navigation}>
       <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <SearchBar
-          round
-          searchIcon={{ size: 24}}
-          onChangeText={(text) => searchFilterFunction(text)}
-          onClear={(text) => searchFilterFunction("")}
-          placeholder="Search members here..."
-          value={search}
-        />
-        <FlatList
-          data={filteredDataSource}
-          keyExtractor={(item, index) => index.toString()}
-          // ItemSeparatorComponent={ItemSeparatorView}
-          renderItem={ItemView}
-        />
-      </View>
-    </SafeAreaView>
-
+        <View style={styles.container}>
+          <SearchBar
+            round
+            searchIcon={{ size: 24 }}
+            onChangeText={(text) => searchFilterFunction(text)}
+            onClear={(text) => searchFilterFunction("")}
+            placeholder="Search members here..."
+            value={search}
+          />
+          <FlatList
+            data={filteredDataSource}
+            keyExtractor={(item, index) => index.toString()}
+            // ItemSeparatorComponent={ItemSeparatorView}
+            renderItem={ItemView}
+          />
+        </View>
+      </SafeAreaView>
     </ThemeLoggedIn>
-    
   );
 };
 
