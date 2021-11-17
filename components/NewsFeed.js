@@ -32,13 +32,10 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
         },
         storedToken
       ).then((data) => {
-        data.data?.status !== 200
-          ? formError(data)
-          : setNewPostText("");
+        data.data?.status !== 200 ? formError(data) : setNewPostText("");
         setLoading(false);
       });
     }
-
 
     WP_GET("posts").then((data) => {
       setAllPosts(data);
@@ -50,7 +47,6 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
   }, [loading]);
   const onSubmit = () => {
     setLoading(true);
-    // setNewPostText("");
   };
 
   const formError = (data) => {
@@ -77,7 +73,13 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
         <View style={styles.contentContainer}>
           <Image
             style={{ width: 90, height: 90 }}
-            source={{ uri: memberById(posted.author)?.avatar_urls.full }}
+            source={{
+              uri: memberById(posted.author)?.avatar_urls.full.startsWith(
+                "https:"
+              )
+                ? memberById(posted.author)?.avatar_urls.full
+                : "https://www.gravatar.com/avatar/?d=identicon",
+            }}
           />
           <Text>{memberById(posted.author)?.name}</Text>
           <Text>{posted.date}</Text>
