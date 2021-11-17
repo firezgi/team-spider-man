@@ -10,7 +10,7 @@ import {
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET, WP_POST } from "./WPAPI";
 
-function NewsFeed({ navigation, storedToken }) {
+function NewsFeed({ navigation, storedToken, setLoggedin }) {
   const [allPosts, setAllPosts] = useState([]);
   const [newPostText, setNewPostText] = useState("");
   const [loading, setLoading] = useState(false);
@@ -101,8 +101,8 @@ function NewsFeed({ navigation, storedToken }) {
   });
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
-      <View style={styles.newsfeed}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
+      <View>
         {generatePosts}
 
         {storedToken ? (

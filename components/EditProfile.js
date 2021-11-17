@@ -64,24 +64,18 @@ export default function EditProfile({ navigation, storedToken }) {
                         />
                     </View>
                     <View style={profileStyles.buttonRow}>
-                        <TouchableOpacity style={profileStyles.saveBtn}>
+                        <TouchableOpacity
+                            style={profileStyles.saveBtn}
+                            onPress={}
+                        >
                             <Text style={profileStyles.saveText}>Save Changes</Text>
                         </TouchableOpacity>
-                        {/* <Button
-                            style={profileStyles.btn}
-                            title="Save Changes"
-                        /> */}
                         <TouchableOpacity
                             style={profileStyles.cancelBtn}
                             onPress={() =>navigation.navigate('Profile')}
                         >
                             <Text style={profileStyles.cancelText}>Cancel</Text>
                         </TouchableOpacity>
-                        {/* <Button
-                            style={profileStyles.btn}
-                            title="Cancel"
-                            onPress={() =>navigation.navigate('Profile')}
-                        /> */}
                     </View>
                 </View>
             </View>

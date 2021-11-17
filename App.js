@@ -24,7 +24,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [storedToken, setStoredToken] = useState("");
-
+  const [loggedIn, setLoggedin] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       {/* <FlatLists/> */}
@@ -40,6 +40,8 @@ export default function App() {
                 {...props}
                 component={LoginPage}
                 setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
               />
             )}
           </Stack.Screen>
@@ -50,6 +52,29 @@ export default function App() {
                 {...props}
                 component={NewsFeed}
                 storedToken={storedToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Friends">
+            {(props) => (
+              <Friends
+                {...props}
+                component={Friends}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Profile">
+            {(props) => (
+              <ProfilePage
+                {...props}
+                component={ProfilePage}
+                setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
               />
             )}
           </Stack.Screen>
@@ -71,6 +96,38 @@ export default function App() {
                 {...props}
                 component={Messages}
                 storedToken={storedToken}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="PhotoGallery">
+            {(props) => (
+              <PhotoGallery
+                {...props}
+                component={PhotoGallery}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="EditProfile">
+            {(props) => (
+              <EditProfile
+                {...props}
+                component={EditProfile}
+                setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Search">
+            {(props) => (
+              <Search
+                {...props}
+                component={Search}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
               />
             )}
           </Stack.Screen>

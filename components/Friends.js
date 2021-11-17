@@ -3,7 +3,7 @@ import { StatusBar, View, Text, StyleSheet, Image,} from 'react-native';
 import ThemeLoggedIn from './ThemeLoggedIn';
 import { WP_GET } from './WPAPI';
 
-function Friends({ navigation }) {
+function Friends({ navigation, setLoggedin }) {
 
     const [friends,setFriends] = useState([]);    
 
@@ -34,8 +34,11 @@ function Friends({ navigation }) {
     })
 
     return (
-        <ThemeLoggedIn navigation={navigation}>
+        <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View styles={styles.friendsMainContainer}>
+                <View style={styles.friendsTitle}>
+                    <Text>My Friends</Text>
+                </View>
                 <View style={styles.friendListContainer}>
                     {generateFriendList}
                 </View>
@@ -59,6 +62,13 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         backgroundColor: '#fff',
         borderRadius: 10,
+    },
+    friendsTitle:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 10,
+        fontWeight: 'bold',
+        fontSize: 20,
     },
     friendListContainer: {
         flex: 1,

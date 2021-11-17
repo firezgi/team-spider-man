@@ -29,7 +29,7 @@ export default function ProfilePage({ navigation, storedToken }) {
     
 
     return (
-        <ThemeLoggedIn navigation={navigation}>
+        <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View style={profileStyles.profileWrap}>
                 <View style={profileStyles.profileLeft}>
                     <Image
