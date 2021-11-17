@@ -11,7 +11,7 @@ function ThemeLoggedIn({ children, navigation }) {
 
         {children}
 
-				{/* <Footer navigation={navigation} /> */}
+				<Footer navigation={navigation} />
 			</ScrollView>
 		</View>
     )
