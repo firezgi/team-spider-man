@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
-export default function ProfilePage({ navigation, storedToken }) {
+export default function ProfilePage({ navigation, storedToken, setLoggedin}) {
 
     const tokenParse = function (token) {
         let base64Url = token.split('.')[1];
@@ -34,7 +34,8 @@ export default function ProfilePage({ navigation, storedToken }) {
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
-                        source={{uri: buddypressData.avatar_urls?.full}}
+                        // source={{uri: buddypressData.avatar_urls?.full}}
+                        source={{uri: buddypressData.avatar_urls?.full.startsWith('https:') ? buddypressData.avatar_urls?.full : 'https://www.gravatar.com/avatar/?d=identicon'}}
                     />
                 </View>
                 <View style={profileStyles.profileRight}>

@@ -4,7 +4,7 @@ import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET, WP_POST } from "./WPAPI";
 
 
-export default function EditProfile({ navigation, storedToken }) {
+export default function EditProfile({ navigation, storedToken, setLoggedin }) {
     const tokenParse = function (token) {
         let base64Url = token.split('.')[1];
         let decoded = JSON.parse(atob(base64Url));
@@ -34,16 +34,13 @@ export default function EditProfile({ navigation, storedToken }) {
                 }), []);
 
     return (
-        <ThemeLoggedIn navigation={navigation}>
+        <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View style={profileStyles.profileWrap}>
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
                         source={{uri: buddypressData.avatar_urls?.full}}
                     />
-                    {/* <Button
-                        title="Change Profile Image"
-                    /> */}
                 </View>
                 <View style={profileStyles.profileRight}>
                     <Text>Name</Text>
@@ -66,7 +63,7 @@ export default function EditProfile({ navigation, storedToken }) {
                     <View style={profileStyles.buttonRow}>
                         <TouchableOpacity
                             style={profileStyles.saveBtn}
-                            onPress={}
+                            // onPress={}
                         >
                             <Text style={profileStyles.saveText}>Save Changes</Text>
                         </TouchableOpacity>

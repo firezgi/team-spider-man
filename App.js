@@ -12,7 +12,7 @@ import NewsFeed from "./components/NewsFeed";
 import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
-import Friends from "./components/Friends";
+// import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Search from "./components/Search";
 import AboutPage from "./components/AboutPage";
@@ -67,20 +67,8 @@ export default function App() {
               />
             )}
           </Stack.Screen>
-          <Stack.Screen name="Profile">
-            {(props) => (
-              <ProfilePage
-                {...props}
-                component={ProfilePage}
-                setStoredToken={setStoredToken}
-                loggedIn={loggedIn}
-                setLoggedin={setLoggedin}
-              />
-            )}
-          </Stack.Screen>
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          <Stack.Screen name="Friends" component={Friends} />
-          {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
+          {/* <Stack.Screen name="Friends" component={Friends} /> */}
           <Stack.Screen name="Profile">
             {(props) => (
               <ProfilePage
@@ -131,18 +119,8 @@ export default function App() {
               />
             )}
           </Stack.Screen>
-          <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
-          {/* <Stack.Screen name="EditProfile" component={EditProfile} /> */}
-          <Stack.Screen name="EditProfile">
-            {(props) => (
-              <EditProfile
-                {...props}
-                component={EditProfile}
-                storedToken={storedToken}
-              />
-            )}
-          </Stack.Screen>
-          <Stack.Screen name="Search" component={Search} />
+          {/* <Stack.Screen name="PhotoGallery" component={PhotoGallery} /> */}
+          {/* <Stack.Screen name="Search" component={Search} /> */}
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />
