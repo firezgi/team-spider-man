@@ -36,6 +36,9 @@ function Friends({ navigation }) {
     return (
         <ThemeLoggedIn navigation={navigation}>
             <View styles={styles.friendsMainContainer}>
+                <View style={styles.friendsTitle}>
+                    <Text>My Friends</Text>
+                </View>
                 <View style={styles.friendListContainer}>
                     {generateFriendList}
                 </View>
@@ -59,6 +62,13 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         backgroundColor: '#fff',
         borderRadius: 10,
+    },
+    friendsTitle:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 10,
+        fontWeight: 'bold',
+        fontSize: 20,
     },
     friendListContainer: {
         flex: 1,
