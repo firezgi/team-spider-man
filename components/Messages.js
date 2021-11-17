@@ -55,18 +55,6 @@ export default function Messages({ navigation }) {
             style={styles.image}
             source={{ uri: selectedUser.avatar_urls?.["24"] }}
           />
-          <Text>{selectedUser.name}</Text>
-          <ScrollView>{generateConversation}</ScrollView>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              onChangeText={(messageInput) => setMessageInput(messageInput)}
-              onSubmitEditing={sendMessage}
-              value={messageInput}
-              placeholder="Write a message..."
-            />
-          </View>
-          <Button onPress={sendMessage} title="Send" />
         </View>
       
     )
@@ -86,16 +74,16 @@ export default function Messages({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // flex: 1,
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   sidebar: {
     // float: "left",
   },
   image: {
-    height: 24,
-    width: 24,
+    // height: 24,
+    // width: 24,
   },
 });

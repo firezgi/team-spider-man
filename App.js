@@ -12,18 +12,17 @@ import NewsFeed from "./components/NewsFeed";
 import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
-// import Friends from "./components/Friends";
+import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Search from "./components/Search";
-import AboutPage from './components/AboutPage';
-import Rules from './components/RulesPage';
-import Contact from './components/ContactPage';
-import Terms from './components/TermsPage';
+import AboutPage from './components/AboutPage'
+import Rules from './components/RulesPage'
+import Contact from './components/ContactPage'
+import Terms from './components/TermsPage'
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   return (
     <SafeAreaView style={styles.container}>
       {/* <FlatLists/> */}
@@ -33,16 +32,16 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* <Stack.Screen name="Login" component={LoginPage} /> */}
-          {/* <Stack.Screen name="SignupPage" component={SignupPage} /> */}
-          {/* <Stack.Screen name="NewsFeed" component={NewsFeed} /> */}
-          {/* <Stack.Screen name="ResetPassword" component={ResetPassword} /> */}
-          {/* <Stack.Screen name="Friends" component={Friends} /> */}
+          {/* <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="SignupPage" component={SignupPage} /> */}
+          <Stack.Screen name="NewsFeed" component={NewsFeed} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
+          <Stack.Screen name="Friends" component={Friends} /> 
           <Stack.Screen name="Profile" component={ProfilePage} />
           {/* <Stack.Screen name="Messages" component={Messages} /> */}
           {/* <Stack.Screen name="PhotoGallery" component={PhotoGallery} /> */}
           <Stack.Screen name="EditProfile" component={EditProfile} />
-          {/* <Stack.Screen name="Search" component={Search} /> */}
+          <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />
