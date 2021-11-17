@@ -4,15 +4,6 @@ import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
 export default function ProfilePage({ navigation, userId = 1 }) {
-  const [buddypressData, setBuddypressData] = useState([]);
-  useEffect(
-    () =>
-      WP_GET("members", `/${userId}`).then((data) => {
-        setBuddypressData(data);
-        console.log("Buddypress data: ", data);
-      }),
-    []
-  );
 
     const [buddypressData, setBuddypressData] = useState([]);
     useEffect(() => WP_GET("members", `/${userId}`)
