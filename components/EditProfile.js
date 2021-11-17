@@ -33,6 +33,27 @@ export default function EditProfile({ navigation, storedToken, setLoggedin }) {
                     setDescription(data.description);
                 }), []);
 
+    // const [loading, setLoading] = useState(false);
+    // useEffect(() => {
+    //     if (loading) {
+    //         WP_POST(
+    //         "posts",
+    //         "",
+    //         {
+    //             content: `${newPostText}`,
+    //             status: "publish",
+    //             title: `${new Date()}`,
+    //             slug: `${new Date()}`,
+    //         },
+    //         storedToken
+    //         ).then((data) => {
+    //         data.data?.status !== 200
+    //             ? formError(data)
+    //             : setNewPostText("");
+    //         setLoading(false);
+    //         });
+        }
+
     return (
         <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View style={profileStyles.profileWrap}>
