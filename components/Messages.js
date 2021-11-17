@@ -87,16 +87,16 @@ export default function Messages({ navigation, storedToken }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // flex: 1,
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   sidebar: {
     // float: "left",
   },
   image: {
-    height: 24,
-    width: 24,
+    // height: 24,
+    // width: 24,
   },
 });

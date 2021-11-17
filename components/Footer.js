@@ -40,13 +40,12 @@ const styles = StyleSheet.create({
   },
   footerMain: {
     // display: "flex",
-    // alignSelf: "flex-end",
     // flex: 1,
-    position: "absolute",
-    right: 0,
+    position: "relative",
+    // right: 0,
     bottom: 0,
-    left: 0,
+    // left: 0,
     backgroundColor: "#16769E",
-    padding: 5,
+    // padding: 5,
   }
 });

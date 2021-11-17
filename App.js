@@ -12,13 +12,13 @@ import NewsFeed from "./components/NewsFeed";
 import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
-// import Friends from "./components/Friends";
+import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Search from "./components/Search";
-import AboutPage from './components/AboutPage'
-import Rules from './components/RulesPage'
-import Contact from './components/ContactPage'
-import Terms from './components/TermsPage'
+import AboutPage from "./components/AboutPage";
+import Rules from "./components/RulesPage";
+import Contact from "./components/ContactPage";
+import Terms from "./components/TermsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,36 +35,36 @@ export default function App() {
         >
           {/* <Stack.Screen name="Login" component={LoginPage} /> */}
           <Stack.Screen name="Login">
-          {props => 
-            <LoginPage
-              {...props}
-              component={LoginPage}
-              setStoredToken={setStoredToken}
-            />
-          }
+            {(props) => (
+              <LoginPage
+                {...props}
+                component={LoginPage}
+                setStoredToken={setStoredToken}
+              />
+            )}
           </Stack.Screen>
           <Stack.Screen name="SignupPage" component={SignupPage} />
           {/* <Stack.Screen name="NewsFeed" component={NewsFeed} /> */}
           <Stack.Screen name="NewsFeed">
-          {props => 
-            <NewsFeed
-              {...props}
-              component={NewsFeed}
-              storedToken={storedToken}
-            />
-          }
+            {(props) => (
+              <NewsFeed
+                {...props}
+                component={NewsFeed}
+                storedToken={storedToken}
+              />
+            )}
           </Stack.Screen>
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          {/* <Stack.Screen name="Friends" component={Friends} /> */}
+          <Stack.Screen name="Friends" component={Friends} />
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Messages">
-          {props => 
-            <Messages
-              {...props}
-              component={Messages}
-              storedToken={storedToken}
-            />
-          }
+            {(props) => (
+              <Messages
+                {...props}
+                component={Messages}
+                storedToken={storedToken}
+              />
+            )}
           </Stack.Screen>
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
           <Stack.Screen name="EditProfile" component={EditProfile} />
