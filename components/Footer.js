@@ -8,16 +8,16 @@ export default function Footer({ navigation }) {
       <Text style={{ textAlign: "center", color: "#fff" }}>Brought to you by your friendly neighborhood team-spider-man</Text>
 
       <View style={{ flexDirection: "row", justifyContent: "space-around" ,}}>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("About")}>
           About
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Rules")}>
           Rules
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Contact")}>
           Contact
         </Text>
-        <Text style={styles.white} onPress={() => navigation.navigate("")}>
+        <Text style={styles.white} onPress={() => navigation.navigate("Terms")}>
           Terms
         </Text>
       </View>
@@ -40,13 +40,12 @@ const styles = StyleSheet.create({
   },
   footerMain: {
     // display: "flex",
-    // alignSelf: "flex-end",
     // flex: 1,
-    position: "absolute",
-    right: 0,
+    position: "relative",
+    // right: 0,
     bottom: 0,
-    left: 0,
+    // left: 0,
     backgroundColor: "#16769E",
-    padding: 5,
+    // padding: 5,
   }
 });

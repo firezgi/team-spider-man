@@ -5,51 +5,126 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
-import { WP_GET } from "./WPAPI";
+import { WP_GET, WP_POST } from "./WPAPI";
 
-function NewsFeed({ navigation }) {
+function NewsFeed({ navigation, storedToken, setLoggedin }) {
   const [allPosts, setAllPosts] = useState([]);
+  const [newPostText, setNewPostText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [members, setMembers] = useState([]);
+  const [error, setError] = useState("");
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
 
   useEffect(() => {
+    if (loading) {
+      WP_POST(
+        "posts",
+        "",
+        {
+          content: `${newPostText}`,
+          status: "publish",
+          title: `${new Date()}`,
+          slug: `${new Date()}`,
+        },
+        storedToken
+      ).then((data) => {
+        data.data?.status !== 200 ? formError(data) : setNewPostText("");
+        setLoading(false);
+      });
+    }
+
     WP_GET("posts").then((data) => {
       setAllPosts(data);
     });
-  }, []);
+
+    WP_GET("members").then((data) => {
+      setMembers(data);
+    });
+  }, [loading]);
+  const onSubmit = () => {
+    setLoading(true);
+  };
+
+  const formError = (data) => {
+    const regex = /<[^>]*>/g;
+    data?.message ? setError(data.message.replaceAll(regex, "")) : "";
+  };
+  const memberById = (id) => {
+    return members.find((member) => member.id === id);
+  };
+  const regex = /<[^>]*>/g;
+  const likeHandler = (index) => {
+    // setAllPosts(allPosts.find(post => post[i] === index));
+    setLikeCount(() => likeCount + 1);
+  };
+
+  const dislikeHandler = (index) => {
+    // setAllPosts(allPosts.filter((count, i) => i === index));
+    setDislikeCount((index) => dislikeCount + 1);
+  };
 
   const generatePosts = allPosts.map((posted, index) => {
-    let excerpt = posted.excerpt.rendered;
-    excerpt = excerpt.replace("<p>", "");
-    excerpt = excerpt.replace("</p>", "");
-
     return (
-        <View key={index} style={styles.contentContainer}>
-          <Text style={styles.textContainer}>{excerpt}</Text>
+      <View key={index} style={{ marginTop: 15 }}>
+        <View style={styles.contentContainer}>
+          <Image
+            style={{ width: 90, height: 90 }}
+            source={{
+              uri: memberById(posted.author)?.avatar_urls.full.startsWith(
+                "https:"
+              )
+                ? memberById(posted.author)?.avatar_urls.full
+                : "https://www.gravatar.com/avatar/?d=identicon",
+            }}
+          />
+          <Text>{memberById(posted.author)?.name}</Text>
+          <Text>{posted.date}</Text>
+          <Text style={styles.textContainer}>
+            {posted.excerpt.rendered?.replace(regex, "")}
+          </Text>
           <View style={styles.buttons}>
-          <TouchableOpacity style={styles.button} onPress={""}>
+            <TouchableOpacity style={styles.button} onPress={likeHandler}>
               <Text>Like</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={""}>
+            <Text>{likeCount}</Text>
+
+            <TouchableOpacity style={styles.button} onPress={dislikeHandler}>
               <Text>Dislike</Text>
             </TouchableOpacity>
-            <Text> posted in {posted.date}</Text>
-            <Text> by {posted.author}</Text>
+            <Text>{dislikeCount}</Text>
           </View>
         </View>
+      </View>
     );
   });
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
       <View>
         {generatePosts}
-        <TextInput
-          style={styles.postsButtons}
-          onChangeText={(text) => onChangeText(text)}
-          placeholder="What is on your mind?"
-          //   value={value}
-        />
+
+        {storedToken ? (
+          <View style={styles.contentContainer}>
+            <TextInput
+              style={styles.postsButtons}
+              onChangeText={setNewPostText}
+              placeholder="What is on your mind?"
+              onSubmitEditing={onSubmit}
+              multiline={true}
+              numberOfLines={4}
+              value={newPostText}
+            />
+            <TouchableOpacity style={styles.button} onPress={onSubmit}>
+              <Text>Post</Text>
+            </TouchableOpacity>
+            <Text>{loading && "Loading"}</Text>
+            <Text>{error}</Text>
+          </View>
+        ) : null}
       </View>
     </ThemeLoggedIn>
   );
@@ -67,24 +142,25 @@ const styles = StyleSheet.create({
   contentContainer: {
     alignItems: "center",
   },
-  buttons:{
-    flexDirection:'row',
-    width:'50%',
+  buttons: {
+    flexDirection: "row",
+    width: "50%",
+    alignItems: "center",
   },
   button: {
     alignItems: "center",
     backgroundColor: "blue",
     padding: 2,
-    margin:2,
-    width:'15%',
-    height:20
+    margin: 2,
+    width: "15%",
+    height: 20,
   },
   postsButtons: {
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
     margin: 20,
-  }
+  },
 });
 
 export default NewsFeed;

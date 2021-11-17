@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
-export default function ProfilePage({ navigation, userId = 1 }) {
+export default function ProfilePage({ navigation,setLoggedin, userId = 1 }) {
+  const [buddypressData, setBuddypressData] = useState([]);
+  useEffect(
+    () =>
+      WP_GET("members", `/${userId}`).then((data) => {
+        setBuddypressData(data);
+        console.log("Buddypress data: ", data);
+      }),
+    []
+  );
 
-    const [buddypressData, setBuddypressData] = useState([]);
-    useEffect(() => WP_GET("members", `/${userId}`)
-                    .then(
-                        (data) => {
-                            setBuddypressData(data);
-                            console.log('Buddypress data: ',data);
-                        }
-                    ), []);
 
     const [userData, setUserData] = useState([]);
     useEffect(() => WP_GET("users", `/${userId}`)
@@ -23,7 +24,7 @@ export default function ProfilePage({ navigation, userId = 1 }) {
     
 
     return (
-        <ThemeLoggedIn navigation={navigation}>
+        <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View style={profileStyles.profileWrap}>
                 <View style={profileStyles.profileLeft}>
                     <Image
@@ -54,7 +55,7 @@ const profileStyles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        // width: 960,
+        width: 960,
         margin: 'auto',
     },
     profileLeft: {

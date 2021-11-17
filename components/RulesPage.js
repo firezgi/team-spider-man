@@ -1,10 +1,10 @@
-import React from 'react'
-
+import React from 'react';
+import { View,Text } from 'react-native';
 const rulesPage = () => {
     return (
-        <div>
-            Rules
-        </div>
+        <View>
+            <Text>Rules </Text>
+        </View>
     )
 }
 

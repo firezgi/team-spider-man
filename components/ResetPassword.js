@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import { View, Button, Text, StyleSheet, TextInput } from "react-native";
 import SignupPage from './SignupPage';
 import ThemeLoggedOut from './ThemeLoggedOut';

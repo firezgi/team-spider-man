@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React from 'react';
+import { View,Text } from 'react-native';
 const TermsPage = () => {
     return (
-        <div>
-            Terms
-        </div>
+        <View>
+            <Text>Terms</Text>
+        </View>
     )
 }
 
-export default TermsPage
+export default TermsPage;

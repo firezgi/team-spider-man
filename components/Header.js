@@ -1,54 +1,45 @@
-import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TextInput,
-  Button,
-  Linking,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import LoginPage from "./LoginPage";
 import { NavigationContainer } from "@react-navigation/native";
 
-function Header({ navigation }) {
+function Header({ navigation, setLoggedin }) {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.header}>
-        <View
-          style={styles.logoContainer}
-          onPress={() => navigation.navigate("NewsFeed")}
-        >
-          <Image
-            source={{
-              uri: "https://reactnative.dev/docs/assets/p_cat2.png",
-            }}
-            style={{ width: 50, height: 50 }}
-          ></Image>
-          <Text>MarvelSpace</Text>
-        </View>
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.searchInput}
-            defaultValue=""
-          />
-          <Button
-            onPress={""}
-            title="Search"
-            color="#841584"
-            // style={{ height: 20 }}
-          />
-        </View>
-        <View style={styles.loginLink}>
-          <Text onPress={() => navigation.navigate("SignupPage")}>Logout</Text>
+      <View style={styles.logoutLink}>
+            <Text 
+            onPress={() => {
+              setLoggedin(false);
+              navigation.navigate("Login");
+              }
+            }
+            >Logout</Text>
+          </View>
+      <View
+          style={styles.logoContainer}>
+            <TouchableOpacity
+            onPress={() => navigation.navigate("NewsFeed")}>
+              <Image
+                source={require("./img/marvelSpace.png")}
+                style={
+                  {
+                  width: 200,
+                  height: 100,
+                  resizeMode: 'contain',
+                }
+                }
+              ></Image>
+            </TouchableOpacity>
         </View>
       </View>
       <View style={styles.navBar}>
-        <Text onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
-        <Text onPress={() => navigation.navigate("Friends")}>Friends</Text>
-        <Text onPress={() => navigation.navigate("Profile")}>Profile</Text>
-        <Text onPress={() => navigation.navigate("PhotoGallery")}>Photo Gallery</Text>
-        <Text onPress={() => navigation.navigate("Messages")}>Messages</Text>
-        <Text onPress={() => navigation.navigate("Members")}>Members</Text>
+        <Text style={styles.navText} onPress={() => navigation.navigate("NewsFeed")}>NewsFeed</Text>
+        <Text style={styles.navText} onPress={() => navigation.navigate("Friends")}>Friends</Text> 
+        <Text style={styles.navText} onPress={() => navigation.navigate("Profile")}>Profile</Text>
+        <Text style={styles.navText} onPress={() => navigation.navigate("PhotoGallery")}>Photos</Text>
+        <Text style={styles.navText} onPress={() => navigation.navigate("Messages")}>Messages</Text>
+        <Text style={styles.navText} onPress={() => navigation.navigate("Search")}>Search</Text>
       </View>
     </View>
   );
@@ -56,37 +47,32 @@ function Header({ navigation }) {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    // display: "flex",
-    // position: "absolute",
-    // top: 0,
-    // width: "100%",
-    // borderWidth: 1,
+    display: "flex",
+    top: 0,
+    width: "100%",
   },
   header: {
-    // flex: 1,
-    // flexDirection: "row",
-    // justifyContent: "space-between",
-    // textAlign: "center",
-    // margin: 10,
-    // padding: 5,
+    flex: 1,
+    padding: 5,
   },
-  logoContainer: {},
-  navBar: {
-    // flex: 1,
-    // flexDirection: "row",
-    // justifyContent: "space-evenly",
-    // textAlign: "center",
-    // marginTop: 10,
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  searchBar: {
-    // flexDirection: "row",
-    // height: 40,
+  logoutLink: {
+    display: 'flex',
+    alignItems: 'flex-end',
   },
-  searchInput: {
-    // height: 40,
-    // borderColor: "black",
-    // borderWidth: 1,
-    // marginRight: 10,
+  navBar: { 
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    textAlign: "center",
+    fontWeight: 'bold',
+  },
+  navText: {
+    paddingTop: 25,
   },
 });
 

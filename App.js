@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -14,35 +14,110 @@ import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
 import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
-import Members from "./components/Members";
-import AboutPage from './components/AboutPage'
-import Rules from './components/RulesPage'
-import Contact from './components/ContactPage'
-import Terms from './components/TermsPage'
+import Search from "./components/Search";
+import AboutPage from "./components/AboutPage";
+import Rules from "./components/RulesPage";
+import Contact from "./components/ContactPage";
+import Terms from "./components/TermsPage";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
+  const [storedToken, setStoredToken] = useState("");
+  const [loggedIn, setLoggedin] = useState(false);
   return (
     <View style={styles.container}>
-      {/* <FlatLists/> */}
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="Login">
+            {(props) => (
+              <LoginPage
+                {...props}
+                component={LoginPage}
+                setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen name="SignupPage" component={SignupPage} />
-          <Stack.Screen name="NewsFeed" component={NewsFeed} />
-          <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          <Stack.Screen name="Friends" component={Friends} />
-          <Stack.Screen name="Profile" component={ProfilePage} />
-          <Stack.Screen name="Messages" component={Messages} />
-          <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
-          <Stack.Screen name="EditProfile" component={EditProfile} />
-          <Stack.Screen name="Members" component={Members} />
+          <Stack.Screen name="NewsFeed">
+            {(props) => (
+              <NewsFeed
+                {...props}
+                component={NewsFeed}
+                storedToken={storedToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Friends">
+            {(props) => (
+              <Friends
+                {...props}
+                component={Friends}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Profile">
+            {(props) => (
+              <ProfilePage
+                {...props}
+                component={ProfilePage}
+                setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Messages">
+            {(props) => (
+              <Messages
+                {...props}
+                component={Messages}
+                storedToken={storedToken}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="PhotoGallery">
+            {(props) => (
+              <PhotoGallery
+                {...props}
+                component={PhotoGallery}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="EditProfile">
+            {(props) => (
+              <EditProfile
+                {...props}
+                component={EditProfile}
+                setStoredToken={setStoredToken}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Search">
+            {(props) => (
+              <Search
+                {...props}
+                component={Search}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />
