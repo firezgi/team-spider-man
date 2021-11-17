@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TextInput, TouchableOpacity } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
@@ -18,12 +18,13 @@ export default function EditProfile({ navigation, userId = 1 }) {
                     ), []);
 
     const [userData, setUserData] = useState([]);
-    useEffect(() => WP_GET("users", `/${userId}`)
-                    .then((data) => {
-                        setUserData(data);
-                        setUsersName(data.name);
-                        setDescription(data.description);
-                    }), []);
+    useEffect(
+        () => WP_GET("users", `/${userId}`)
+                .then((data) => {
+                    setUserData(data);
+                    setUsersName(data.name);
+                    setDescription(data.description);
+                }), []);
 
     return (
         <ThemeLoggedIn navigation={navigation}>
@@ -56,15 +57,24 @@ export default function EditProfile({ navigation, userId = 1 }) {
                         />
                     </View>
                     <View style={profileStyles.buttonRow}>
-                        <Button
+                        <TouchableOpacity style={profileStyles.saveBtn}>
+                            <Text style={profileStyles.saveText}>Save Changes</Text>
+                        </TouchableOpacity>
+                        {/* <Button
                             style={profileStyles.btn}
                             title="Save Changes"
-                        />
-                        <Button
+                        /> */}
+                        <TouchableOpacity
+                            style={profileStyles.cancelBtn}
+                            onPress={() =>navigation.navigate('Profile')}
+                        >
+                            <Text style={profileStyles.cancelText}>Cancel</Text>
+                        </TouchableOpacity>
+                        {/* <Button
                             style={profileStyles.btn}
                             title="Cancel"
                             onPress={() =>navigation.navigate('Profile')}
-                        />
+                        /> */}
                     </View>
                 </View>
             </View>
@@ -106,7 +116,7 @@ const profileStyles = StyleSheet.create({
     },
     descriptionInput: {
         borderWidth: 2,
-        minHeight: 100,
+        minHeight: 150,
         padding: 10,
         margin: 10,
     },
@@ -114,5 +124,24 @@ const profileStyles = StyleSheet.create({
         borderWidth: 2,
         padding: 10,
         margin: 10,
+    },
+    buttonRow: {
+        display: "flex",
+        flexDirection: "row-reverse",
+        justifyContent: "space-around",
+    },
+    saveBtn: {
+        backgroundColor: "#841584",
+        padding: 10
+    },
+    saveText: {
+        color: "#fff",
+    },
+    cancelBtn: {
+        backgroundColor: "#16769E",
+        padding: 10      
+    },
+    cancelText: {
+        color: "#fff",
     },
 });

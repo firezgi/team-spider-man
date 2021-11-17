@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
@@ -28,20 +28,23 @@ export default function ProfilePage({ navigation, userId = 1 }) {
                         style={profileStyles.profileImage}
                         source={{uri: buddypressData.avatar_urls?.full}}
                     />
-                    <View style={profileStyles.nameWrap}>
-                        <Text>{userData.name}</Text>
-                    </View>
-                    <Button
-                        title="Edit Profile"
-                        onPress={() =>navigation.navigate('EditProfile')}
-                    />
                 </View>
                 <View style={profileStyles.profileRight}>
+
+                    <View style={profileStyles.nameWrap}>
+                            <Text>{userData.name}</Text>
+                    </View>
                     <Text>About Me</Text>
                     <View style={profileStyles.descriptionWrap}>
                         <Text>{userData.description}</Text>
                     </View>
                 </View>
+                <TouchableOpacity
+                    style={profileStyles.editBtn}
+                    onPress={() =>navigation.navigate('EditProfile')}
+                >
+                    <Text style={profileStyles.editText}>Edit Profile</Text>
+                </TouchableOpacity>
             </View>
         </ThemeLoggedIn>
     )
@@ -54,6 +57,9 @@ const profileStyles = StyleSheet.create({
         alignItems: 'center',
         width: '90%',
         margin: 'auto',
+    },
+    nameWrap: {
+        margin: 10,
     },
     profileLeft: {
         width: '100%',
@@ -78,5 +84,15 @@ const profileStyles = StyleSheet.create({
         width: 150,
         height: 150,
         margin: 5,
+    },
+    editBtn: {
+        margin: 10,
+        padding: 10,
+        backgroundColor: "#16769E",
+        borderWidth: 3,
+        borderRadius: 10,
+    },
+    editText: {
+        color: "#fff",
     }
 });
