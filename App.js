@@ -33,7 +33,6 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* <Stack.Screen name="Login" component={LoginPage} /> */}
           <Stack.Screen name="Login">
             {(props) => (
               <LoginPage
@@ -44,7 +43,6 @@ export default function App() {
             )}
           </Stack.Screen>
           <Stack.Screen name="SignupPage" component={SignupPage} />
-          {/* <Stack.Screen name="NewsFeed" component={NewsFeed} /> */}
           <Stack.Screen name="NewsFeed">
             {(props) => (
               <NewsFeed

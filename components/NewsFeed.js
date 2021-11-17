@@ -50,7 +50,6 @@ function NewsFeed({ navigation, storedToken }) {
   }, [loading]);
   const onSubmit = () => {
     setLoading(true);
-    // setNewPostText("");
   };
 
   const formError = (data) => {
