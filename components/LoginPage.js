@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
 
-const LoginPage = ({ navigation }) => {
+const LoginPage = ({ navigation,
+  setStoredToken
+ }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedin] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [token, setToken] = useState('');
   
     useEffect(
       () => {
@@ -42,14 +43,13 @@ const LoginPage = ({ navigation }) => {
       };
   
     const formSuccess = (data) => {
-      setToken(data.token);
+      setStoredToken(data.token);
       setLoggedin(true);
       setLoading(false);
       setUsername('');
       setPassword('');
       navigation.navigate('NewsFeed');
     }
-  
     const formError = (data) => {
       const regex = /<[^>]*>/g;
       setLoading(false);
@@ -57,7 +57,7 @@ const LoginPage = ({ navigation }) => {
       data?.message 
         ? setError(
           data.message
-            .replaceAll(regex, "")
+            .replace(regex, "")
         )
         :'';
       console.log(data);
@@ -66,49 +66,58 @@ const LoginPage = ({ navigation }) => {
 
     return (
         <ThemeLoggedOut  navigation={navigation}>
-            <View style={styles.loginPage}>
-                <Image
-                    style={{width: "100%", height: 64 }}
-                    onPress={() => navigation.navigate("NewsFeed")}
-                    source={require("./img/marvelSpace.png")}
-                ></Image> 
-                <View style={styles.login}>
-                    <Text style={styles.usernameTitle}>Username</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={username}
-                        onChangeText={setUsername}
-                        onSubmitEditing={onFormSubmit}
-                    />
-                    <Text style={styles.passwordTitle}>Password</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={password}
-                        onChangeText={setPassword}
-                        onSubmitEditing={onFormSubmit}
-                        secureTextEntry={true}
-                    />
-                    <TouchableOpacity
-                        style={styles.signupButton}
-                        onPress={onFormSubmit}
-                    >
-                        <Text style={styles.white}>Login</Text>
-                    </TouchableOpacity>
-                    <Text 
-                        style={styles.resetText}
-                        onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
-                </View>
-                <View style={styles.signupKey}> 
-                    <TouchableOpacity
-                        style={styles.signupButton}
-                        onPress={() =>navigation.navigate('SignupPage')}
-                    >
-                        <Text style={styles.white}>Sign Up</Text>
-                    </TouchableOpacity>
-                    <Text>{loading && 'Loading'}</Text>
-                    <Text>{error}</Text>
-                </View>
+          {loggedIn 
+            ? <View>
+              <Text>Logged In</Text>
             </View>
+            : (
+              <View style={styles.loginPage}>
+                    {/* <Image
+                        style={{width: "100%", height: 64 }}
+                        onPress={() => navigation.navigate("NewsFeed")}
+                        source={require("./img/marvelSpace.png")}
+                    ></Image>  */}
+                    <View style={styles.login}>
+                        <Text style={styles.usernameTitle}>Username</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={username}
+                            onChangeText={setUsername}
+                            onSubmitEditing={onFormSubmit}
+                        />
+                        <Text style={styles.passwordTitle}>Password</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={password}
+                            onChangeText={setPassword}
+                            onSubmitEditing={onFormSubmit}
+                            secureTextEntry={true}
+                        />
+                        <TouchableOpacity
+                            style={styles.signupButton}
+                            onPress={onFormSubmit}
+                        >
+                            <Text style={styles.white}>Login</Text>
+                        </TouchableOpacity>
+                        <Text 
+                            style={styles.resetText}
+                            onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
+                    </View>
+                    <View style={styles.signupKey}> 
+                        <TouchableOpacity
+                            style={styles.signupButton}
+                            onPress={() =>navigation.navigate('SignupPage')}
+                        >
+                            <Text style={styles.white}>Sign Up</Text>
+                        </TouchableOpacity>
+                        <Text>{loading && 'Loading'}</Text>
+                        <Text>{error}</Text>
+                    </View>
+                </View>
+            )
+            } 
+
+            
         </ThemeLoggedOut>
     )
 }

@@ -21,19 +21,19 @@ function PhotoGallery({ navigation }) {
 
   const generateGallery = imageArray.map((img, index) => {
     const imageWidth = 300;
-    const imageHeight = (img.media_details.height / img.media_details.width) * imageWidth;
-      
-      return(
+    const imageHeight =
+      (img.media_details.height / img.media_details.width) * imageWidth;
 
-          <View key={index}>
-            <Image 
-              style={{
-                minWidth: imageWidth, 
-                minHeight: imageHeight,
-                margin: 10}}
-              source={{uri: img.source_url}}
-            />
-
+    return (
+      <View key={index}>
+        <Image
+          style={{
+            minWidth: imageWidth,
+            minHeight: imageHeight,
+            margin: 10,
+          }}
+          source={{ uri: img.source_url }}
+        />
       </View>
     );
   });
@@ -41,7 +41,7 @@ function PhotoGallery({ navigation }) {
   return (
     <ThemeLoggedIn navigation={navigation}>
       <View style={styles.galleryMainContainer}>
-          <Text style={styles.photoTitle}>Your Photos</Text>
+        <Text style={styles.photoTitle}>Your Photos</Text>
 
         <ScrollView style={styles.scrollViewContainer}>
           {generateGallery}
@@ -55,25 +55,25 @@ function PhotoGallery({ navigation }) {
 const styles = StyleSheet.create({
   galleryMainContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   photoTitle: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20,
   },
   photoGalleryContainer: {
     //flex: 1,
     //flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'left',
+    alignItems: "center",
+    justifyContent: "left",
   },
   scrollViewContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
 });
 export default PhotoGallery;
