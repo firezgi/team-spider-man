@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import LoginPage from "./LoginPage";
 import { NavigationContainer } from "@react-navigation/native";
 
 function Header({ navigation, setLoggedin }) {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.header}>
-      <View style={styles.loginLink}>
+      <View style={styles.logoutLink}>
             <Text 
-            onPress={() => navigation.navigate("SignupPage")}
+            onPress={() => {
+              setLoggedin(false);
+              navigation.navigate("Login");
+              }
+            }
             >Logout</Text>
           </View>
       <View
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  loginLink: {
+  logoutLink: {
     display: 'flex',
     alignItems: 'flex-end',
   },

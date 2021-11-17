@@ -11,11 +11,15 @@ import {
 } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
-export default function Messages({ navigation, storedToken }) {
+
+
+export default function Messages({ navigation, storedToken, setLoggedin }) {
   const [messageArr, setMessageArr] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
+
+
   useEffect(() => {
     WP_GET("members").then((data) => {
       setUserData(data);
@@ -76,7 +80,7 @@ export default function Messages({ navigation, storedToken }) {
   };
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
       <View>
         <View style={styles.sidebar}>{userList}</View>
         <View style={styles.container}>{MessageWindow()}</View>

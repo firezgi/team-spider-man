@@ -11,7 +11,7 @@ import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 
-const Search = ({ navigation }) => {
+const Search = ({ navigation, setLoggedin }) => {
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
@@ -78,7 +78,7 @@ const Search = ({ navigation }) => {
   };
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <SearchBar

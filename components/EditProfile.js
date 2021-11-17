@@ -4,7 +4,7 @@ import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
 
-export default function EditProfile({ navigation, userId = 1 }) {
+export default function EditProfile({ navigation, setLoggedin, userId = 1 }) {
 
     const [usersName, setUsersName] = useState(userName);
     const [description, setDescription] = useState('');
@@ -26,7 +26,7 @@ export default function EditProfile({ navigation, userId = 1 }) {
                     const userName = userData.name;
 
     return (
-        <ThemeLoggedIn navigation={navigation}>
+        <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
             <View style={profileStyles.profileWrap}>
                 <View style={profileStyles.profileLeft}>
                     <Image

@@ -3,11 +3,10 @@ import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "reac
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation,
-  setStoredToken
+  setStoredToken, loggedIn, setLoggedin
  }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [loggedIn, setLoggedin] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
   
@@ -72,11 +71,11 @@ const LoginPage = ({ navigation,
             </View>
             : (
               <View style={styles.loginPage}>
-                    {/* <Image
+                    <Image
                         style={{width: "100%", height: 64 }}
                         onPress={() => navigation.navigate("NewsFeed")}
                         source={require("./img/marvelSpace.png")}
-                    ></Image>  */}
+                    ></Image>
                     <View style={styles.login}>
                         <Text style={styles.usernameTitle}>Username</Text>
                         <TextInput
