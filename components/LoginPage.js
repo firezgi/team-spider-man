@@ -45,6 +45,7 @@ const LoginPage = ({ navigation,
 
     const formSuccess = (data) => {
         setToken(data.token);
+        setStoredToken(data.token);
         setLoggedin(true);
         setLoading(false);
         setUsername('');
@@ -62,7 +63,7 @@ const LoginPage = ({ navigation,
             .replaceAll(regex, "")
         )
         :'';
-        console.log(data);
+        // console.log(data);
     }
 
     return (

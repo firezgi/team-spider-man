@@ -55,7 +55,16 @@ export default function App() {
           </Stack.Screen>
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
           <Stack.Screen name="Friends" component={Friends} />
-          <Stack.Screen name="Profile" component={ProfilePage} />
+          {/* <Stack.Screen name="Profile" component={ProfilePage} /> */}
+          <Stack.Screen name="Profile">
+            {(props) => (
+              <ProfilePage
+                {...props}
+                component={ProfilePage}
+                storedToken={storedToken}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen name="Messages">
             {(props) => (
               <Messages
@@ -66,7 +75,16 @@ export default function App() {
             )}
           </Stack.Screen>
           <Stack.Screen name="PhotoGallery" component={PhotoGallery} />
-          <Stack.Screen name="EditProfile" component={EditProfile} />
+          {/* <Stack.Screen name="EditProfile" component={EditProfile} /> */}
+          <Stack.Screen name="EditProfile">
+            {(props) => (
+              <EditProfile
+                {...props}
+                component={EditProfile}
+                storedToken={storedToken}
+              />
+            )}
+          </Stack.Screen>
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />

@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button, TextInput, TouchableOpacity } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
-import { WP_GET } from "./WPAPI";
+import { WP_GET, WP_POST } from "./WPAPI";
 
 
-export default function EditProfile({ navigation, userId = 1 }) {
+export default function EditProfile({ navigation, storedToken }) {
+    const tokenParse = function (token) {
+        let base64Url = token.split('.')[1];
+        let decoded = JSON.parse(atob(base64Url));
+    
+        return decoded["data"].user.id;
+    };
+    const userId = tokenParse(storedToken);
 
     const [usersName, setUsersName] = useState('');
     const [description, setDescription] = useState('');
@@ -14,6 +21,7 @@ export default function EditProfile({ navigation, userId = 1 }) {
                     .then(
                         (data) => {
                             setBuddypressData(data);
+                            setUsersName(data.name);
                         }
                     ), []);
 
@@ -22,7 +30,6 @@ export default function EditProfile({ navigation, userId = 1 }) {
         () => WP_GET("users", `/${userId}`)
                 .then((data) => {
                     setUserData(data);
-                    setUsersName(data.name);
                     setDescription(data.description);
                 }), []);
 

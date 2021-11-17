@@ -3,7 +3,15 @@ import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
 
-export default function ProfilePage({ navigation, userId = 1 }) {
+export default function ProfilePage({ navigation, storedToken }) {
+
+    const tokenParse = function (token) {
+        let base64Url = token.split('.')[1];
+        let decoded = JSON.parse(atob(base64Url));
+    
+        return decoded["data"].user.id;
+    };
+    const userId = tokenParse(storedToken);
 
     const [buddypressData, setBuddypressData] = useState([]);
     useEffect(() => WP_GET("members", `/${userId}`)
@@ -32,7 +40,7 @@ export default function ProfilePage({ navigation, userId = 1 }) {
                 <View style={profileStyles.profileRight}>
 
                     <View style={profileStyles.nameWrap}>
-                            <Text>{userData.name}</Text>
+                            <Text>{buddypressData.name}</Text>
                     </View>
                     <Text>About Me</Text>
                     <View style={profileStyles.descriptionWrap}>

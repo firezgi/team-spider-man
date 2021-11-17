@@ -165,8 +165,6 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   newsfeed: {
-    // backgroundColor: "#fff",
-    // borderWidth: 3,
     width: "90%",
     margin: "auto",
     marginBottom: 30,
