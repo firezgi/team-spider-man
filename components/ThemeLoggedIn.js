@@ -3,15 +3,15 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import Header from "./Header";
 import Footer from "./Footer";
 
-function ThemeLoggedIn({ children, navigation }) {
+function ThemeLoggedIn({ children, navigation, setLoggedin }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Header navigation={navigation} />
+        <Header navigation={navigation} setLoggedin={setLoggedin} />
 
         {children}
 
-				{/* <Footer navigation={navigation} /> */}
+				<Footer navigation={navigation} />
 			</ScrollView>
 		</View>
     )

@@ -11,8 +11,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
-import { WP_GET, WP_POST } from "./WPAPI";
-export default function Messages({ navigation, storedToken }) {
+import { WP_GET,WP_POST  } from "./WPAPI";
+
+
+export default function Messages({ navigation, storedToken, setLoggedin }) {
   const [messageArr, setMessageArr] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
@@ -80,7 +82,7 @@ export default function Messages({ navigation, storedToken }) {
   };
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
       <View>
         <View style={styles.sidebar}>{userList}</View>
         <View style={styles.container}>{MessageWindow()}</View>

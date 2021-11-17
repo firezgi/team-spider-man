@@ -10,7 +10,7 @@ import {
 import { WP_GET } from "./WPAPI";
 import ThemeLoggedIn from "./ThemeLoggedIn";
 
-function PhotoGallery({ navigation }) {
+function PhotoGallery({ navigation, setLoggedin }) {
   const [imageArray, setImageArray] = useState([]);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function PhotoGallery({ navigation }) {
   });
 
   return (
-    <ThemeLoggedIn navigation={navigation}>
+    <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
       <View style={styles.galleryMainContainer}>
         <Text style={styles.photoTitle}>Your Photos</Text>
 
@@ -66,10 +66,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   photoGalleryContainer: {
-    //flex: 1,
-    //flexDirection: 'row',
-    alignItems: "center",
-    justifyContent: "left",
+    alignItems: 'center',
+    justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,
