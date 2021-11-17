@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-
-
 function Header({ navigation, setLoggedin }) {
   return (
     <View style={styles.headerContainer}>
