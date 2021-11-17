@@ -66,8 +66,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   photoGalleryContainer: {
-    //flex: 1,
-    //flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'left',
   },
