@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
   photoGalleryContainer: {
     alignItems: 'center',
-    justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,

@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
   logoutLink: {
     display: 'flex',
     alignItems: 'flex-end',
+    marginTop: 30,
+    marginRight: 30,
   },
   navBar: { 
     flex: 1,
