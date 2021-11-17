@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -12,7 +12,7 @@ import NewsFeed from "./components/NewsFeed";
 import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
-// import Friends from "./components/Friends";
+import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Search from "./components/Search";
 import AboutPage from "./components/AboutPage";
@@ -27,7 +27,6 @@ export default function App() {
   const [loggedIn, setLoggedin] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      {/* <FlatLists/> */}
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -67,8 +66,6 @@ export default function App() {
               />
             )}
           </Stack.Screen>
-          <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          {/* <Stack.Screen name="Friends" component={Friends} /> */}
           <Stack.Screen name="Profile">
             {(props) => (
               <ProfilePage
@@ -119,8 +116,17 @@ export default function App() {
               />
             )}
           </Stack.Screen>
-          {/* <Stack.Screen name="PhotoGallery" component={PhotoGallery} /> */}
-          {/* <Stack.Screen name="Search" component={Search} /> */}
+          <Stack.Screen name="PhotoGallery">
+            {(props) => (
+              <PhotoGallery
+                {...props}
+                component={PhotoGallery}
+                loggedIn={loggedIn}
+                setLoggedin={setLoggedin}
+              />
+            )}
+          </Stack.Screen> 
+          <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />
