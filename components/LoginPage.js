@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation }) => {
@@ -101,7 +101,7 @@ const LoginPage = ({ navigation }) => {
                 <View style={styles.signupKey}> 
                     <TouchableOpacity
                         style={styles.signupButton}
-                        onPress={() =>navigation.navigate('SignupPage')}
+                        onPress={ ()=> Linking.openURL('https://jualuc1.dreamhosters.com/register/') }
                     >
                         <Text style={styles.white}>Sign Up</Text>
                     </TouchableOpacity>
