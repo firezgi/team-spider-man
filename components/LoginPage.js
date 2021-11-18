@@ -100,9 +100,6 @@ const LoginPage = ({ navigation,
                         >
                             <Text style={styles.white}>Login</Text>
                         </TouchableOpacity>
-                        <Text 
-                            style={styles.resetText}
-                            onPress={() =>navigation.navigate('ResetPassword')}>reset password</Text>
                     </View>
                     <View style={styles.signupKey}> 
                         <TouchableOpacity
