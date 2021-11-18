@@ -12,7 +12,7 @@ import NewsFeed from "./components/NewsFeed";
 import LoginPage from "./components/LoginPage";
 import ResetPassword from "./components/ResetPassword";
 import SignupPage from "./components/SignupPage";
-// import Friends from "./components/Friends";
+import Friends from "./components/Friends";
 import EditProfile from "./components/EditProfile";
 import Search from "./components/Search";
 import AboutPage from "./components/AboutPage";
@@ -27,7 +27,6 @@ export default function App() {
   const [loggedIn, setLoggedin] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
-      {/* <FlatLists/> */}
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -68,7 +67,6 @@ export default function App() {
             )}
           </Stack.Screen>
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
-          {/* <Stack.Screen name="Friends" component={Friends} /> */}
           <Stack.Screen name="Profile">
             {(props) => (
               <ProfilePage
@@ -103,7 +101,7 @@ export default function App() {
               <EditProfile
                 {...props}
                 component={EditProfile}
-                setStoredToken={setStoredToken}
+                storedToken={storedToken}
                 loggedIn={loggedIn}
                 setLoggedin={setLoggedin}
               />

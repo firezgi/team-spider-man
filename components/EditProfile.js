@@ -5,13 +5,13 @@ import { WP_GET, WP_POST } from "./WPAPI";
 
 
 export default function EditProfile({ navigation, storedToken, setLoggedin }) {
+    let userId;
     const tokenParse = function (token) {
         let base64Url = token.split('.')[1];
-        let decoded = JSON.parse(atob(base64Url));
-    
+        let decoded = JSON.parse(atob(base64Url));    
         return decoded["data"].user.id;
     };
-    const userId = tokenParse(storedToken);
+    userId = tokenParse(storedToken);
 
     const [usersName, setUsersName] = useState('');
     const [description, setDescription] = useState('');
@@ -26,33 +26,48 @@ export default function EditProfile({ navigation, storedToken, setLoggedin }) {
                     ), []);
 
     const [userData, setUserData] = useState([]);
-    useEffect(
-        () => WP_GET("users", `/${userId}`)
+    useEffect(() => WP_GET("users", `/${userId}`)
                 .then((data) => {
                     setUserData(data);
                     setDescription(data.description);
                 }), []);
-
-    // const [loading, setLoading] = useState(false);
-    // useEffect(() => {
-    //     if (loading) {
-    //         WP_POST(
-    //         "posts",
-    //         "",
-    //         {
-    //             content: `${newPostText}`,
-    //             status: "publish",
-    //             title: `${new Date()}`,
-    //             slug: `${new Date()}`,
-    //         },
-    //         storedToken
-    //         ).then((data) => {
-    //         data.data?.status !== 200
-    //             ? formError(data)
-    //             : setNewPostText("");
-    //         setLoading(false);
-    //         });
+    
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (loading) {
+            WP_POST(
+                "members",
+                `/${userId}`,
+                {
+                    name: `${usersName}`,
+                },
+                storedToken
+            ).then((data) => {
+                setLoading(false);
+                navigation.navigate('Profile');
+            })
         }
+    })
+
+    useEffect(() => {
+        if (loading) {
+            WP_POST(
+                "users",
+                `/${userId}`,
+                {
+                    description: `${description}`,
+                },
+                storedToken
+            ).then((data) => {
+                setLoading(false);
+                navigation.navigate('Profile');
+            })
+        }
+    })
+
+    const onSubmit = () => {
+        setLoading(true);
+      };
 
     return (
         <ThemeLoggedIn navigation={navigation} setLoggedin={setLoggedin}>
@@ -84,7 +99,7 @@ export default function EditProfile({ navigation, storedToken, setLoggedin }) {
                     <View style={profileStyles.buttonRow}>
                         <TouchableOpacity
                             style={profileStyles.saveBtn}
-                            // onPress={}
+                            onPress={onSubmit}
                         >
                             <Text style={profileStyles.saveText}>Save Changes</Text>
                         </TouchableOpacity>
@@ -119,7 +134,6 @@ const profileStyles = StyleSheet.create({
         borderRadius: 10
     },
     profileRight: {
-        // flex: 1,
         width: '100%',
         height: 400,
         padding: 10,
