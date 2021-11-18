@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Image, Text, StyleSheet, TextInput, TouchableOpacity, Linking } from "react-native";
 import ThemeLoggedOut from './ThemeLoggedOut';
 
 const LoginPage = ({ navigation,
@@ -9,59 +9,61 @@ const LoginPage = ({ navigation,
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-  
+    const [token, setToken] = useState('');
+
     useEffect(
-      () => {
+        () => {
         if(loading) {
-          const options = {
+            const options = {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              'username': `${username}`,
-              'password': `${password}`
+                'username': `${username}`,
+                'password': `${password}`
             })
-          };
-          
-          fetch(`https://jualuc1.dreamhosters.com/wp-json/jwt-auth/v1/token`, options)
-          .then(response => response.json())
-          .then(data => {
-            data.token 
-              ? formSuccess(data)
-              : formError(data)
-          })
-        }
-      },
-      [loading]
+            };
+            
+            fetch(`https://jualuc1.dreamhosters.com/wp-json/jwt-auth/v1/token`, options)
+            .then(response => response.json())
+            .then(data => {
+                data.token 
+                ? formSuccess(data)
+                : formError(data)
+            })
+            }
+        },
+        [loading]
     );
-  
-      const onFormSubmit = () => {
-      setError('');
-      setLoading(true);
-      };
-  
+
+    const onFormSubmit = () => {
+    setError('');
+    setLoading(true);
+    };
+
     const formSuccess = (data) => {
-      setStoredToken(data.token);
-      setLoggedin(true);
-      setLoading(false);
-      setUsername('');
-      setPassword('');
-      navigation.navigate('NewsFeed');
+        setToken(data.token);
+        setStoredToken(data.token);
+        setLoggedin(true);
+        setLoading(false);
+        setUsername('');
+        setPassword('');
+        navigation.navigate('NewsFeed');
     }
+
     const formError = (data) => {
-      const regex = /<[^>]*>/g;
-      setLoading(false);
-      setPassword('');
-      data?.message 
-        ? setError(
-          data.message
-            .replace(regex, "")
+        const regex = /<[^>]*>/g;
+        setLoading(false);
+        setPassword('');
+        data?.message 
+            ? setError(
+            data.message
+            .replaceAll(regex, "")
         )
         :'';
-      console.log(data);
+        // console.log(data);
     }
-  
 
     return (
         <ThemeLoggedOut  navigation={navigation}>
@@ -105,7 +107,7 @@ const LoginPage = ({ navigation,
                     <View style={styles.signupKey}> 
                         <TouchableOpacity
                             style={styles.signupButton}
-                            onPress={() =>navigation.navigate('SignupPage')}
+                            onPress={ ()=> Linking.openURL('https://jualuc1.dreamhosters.com/register/') }
                         >
                             <Text style={styles.white}>Sign Up</Text>
                         </TouchableOpacity>
@@ -155,8 +157,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     loginPage:{
-        // flex: 1,
-        height: 745,
+        // flex: 2,
+        // borderWidth: 10,
+        maxHeight: "100%",
+        // height: 745,
         // backgroundColor: "#fff",
     },
     signupButton:{

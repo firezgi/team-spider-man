@@ -132,15 +132,20 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
 
 const styles = StyleSheet.create({
   textContainer: {
-    backgroundColor: "#fff",
     justifyContent: "center",
-    width: "50%",
-    backgroundColor: "gray",
+    width: "80%",
     margin: 10,
     textAlign: "center",
   },
   contentContainer: {
+    backgroundColor: "#fff",
     alignItems: "center",
+    borderWidth: 2,
+    width: "100%",
+    margin: "auto",
+    padding: 8,
+    marginBottom: 10,
+    borderRadius: 10
   },
   buttons: {
     flexDirection: "row",
@@ -161,6 +166,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 20,
   },
+  newsfeed: {
+    width: "90%",
+    margin: "auto",
+    marginBottom: 30,
+    marginTop: 30,
+    padding: 10,
+    borderRadius: 10
+  }
 });
 
 export default NewsFeed;

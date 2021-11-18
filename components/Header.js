@@ -47,9 +47,12 @@ function Header({ navigation, setLoggedin }) {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    display: "flex",
-    top: 0,
-    width: "100%",
+    backgroundColor: "#16769E",
+     display: "flex",
+     top: 0,
+     width: "100%",
+     //borderWidth: 3,
+     
   },
   header: {
     flex: 1,

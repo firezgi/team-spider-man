@@ -61,7 +61,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
   const generateChat = messageArr.map((message, index) => (
     <View key={index}>
       <Text>{message.excerpt.rendered}</Text>
-      
+
       <Image
             style={{ width: 30, height: 30 }}
             source={{

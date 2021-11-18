@@ -54,6 +54,12 @@ function PhotoGallery({ navigation, setLoggedin }) {
 
 const styles = StyleSheet.create({
   galleryMainContainer: {
+    //flex: 1,
+    // backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textInputField: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -66,12 +72,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   photoGalleryContainer: {
+    //flex: 1,
+    borderWidth: 3,
+    // width: "80%",
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,
-    flexDirection: "row",
+    // width: '80%',
+    margin: 20,
+    flexDirection: 'row',
   },
 });
 export default PhotoGallery;
