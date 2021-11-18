@@ -19,6 +19,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
+  const [selectedUserId, setSelectedUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -33,7 +34,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
           subject: "Message from Spider man",
           message: `${messageInput}`,
           slug: `${new Date()}`,
-          recipients: [4, 13],
+          recipients: [4,selectedUserId],
         },
         storedToken
       ).then((data) => {
@@ -48,7 +49,6 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
       setMessageArr(data);
     });
   }, [loading]);
-  console.log(messageArr);
   const onSubmit = () => {
     setLoading(true);
   };
@@ -56,20 +56,41 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
     const regex = /<[^>]*>/g;
     data?.message ? setError(data.message.replaceAll(regex, "")) : "";
   };
-  // console.log(messageArr);
+  const memberById = (id) => {
+    return userData.find((member) => member.id === id);
+  };
   const generateChat = messageArr.map((message, index) => (
     <View key={index}>
       <Text>{message.excerpt.rendered}</Text>
+
+      <Image
+            style={{ width: 30, height: 30 }}
+            source={{
+              uri: memberById(message.last_sender_id)?.avatar_urls.full.startsWith(
+                "https:"
+              )
+                ? memberById(message.last_sender_id)?.avatar_urls.full
+                : "https://www.gravatar.com/avatar/?d=identicon",
+            }}
+          />
+    
+      <Text>sent by {memberById(message.last_sender_id)?.name}</Text>
+      
     </View>
   ));
   const userList = userData.map((user, index) => (
     <View key={index}>
-      <Pressable onPress={() => setSelectedUser(user)}>
+      <Pressable onPress={() => {
+      setSelectedUserId(user.id);
+      setSelectedUser(user)
+      }
+      }>
         <Text style={styles.singleListName}>{user.name}</Text>
       </Pressable>
+      {console.log(selectedUserId)}
     </View>
   ));
-// hi
+
   const MessageWindow = () => {
     return selectedUser ? (
       <View>
