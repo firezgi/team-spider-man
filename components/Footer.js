@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   footerMain: {
+    borderTopWidth: 3,
     backgroundColor: "#16769E",
     padding: 5,
     // marginTop: 'auto',

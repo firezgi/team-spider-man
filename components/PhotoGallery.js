@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     flex: 1,
     // width: '80%',
+    borderWidth: 3,
+    borderRadius: 10,
+    backgroundColor:'#fff',
     margin: 20,
     flexDirection: 'row',
   },
