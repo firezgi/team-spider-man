@@ -16,8 +16,7 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState([]);
   const [error, setError] = useState("");
-  //const [likeCount, setLikeCount] = useState(0);
-  //const [dislikeCount, setDislikeCount] = useState(0);
+  
 
   useEffect(() => {
     if (loading) {
