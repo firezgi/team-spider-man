@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   scrollViewContainer: {
     flex: 1,
