@@ -31,6 +31,8 @@ function PhotoGallery({ navigation, setLoggedin }) {
             minWidth: imageWidth,
             minHeight: imageHeight,
             margin: 10,
+            borderWidth: 3,
+            borderRadius: 10,
           }}
           source={{ uri: img.source_url }}
         />
@@ -72,19 +74,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   photoGalleryContainer: {
-    //flex: 1,
     borderWidth: 3,
-    // width: "80%",
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'left',
   },
   scrollViewContainer: {
     flex: 1,
-    // width: '80%',
-    borderWidth: 3,
-    borderRadius: 10,
-    backgroundColor:'#fff',
     margin: 20,
     flexDirection: 'row',
   },

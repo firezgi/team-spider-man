@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -66,7 +66,6 @@ export default function App() {
               />
             )}
           </Stack.Screen>
-          <Stack.Screen name="ResetPassword" component={ResetPassword} />
           <Stack.Screen name="Profile">
             {(props) => (
               <ProfilePage
@@ -116,9 +115,7 @@ export default function App() {
                 setLoggedin={setLoggedin}
               />
             )}
-          </Stack.Screen>
-          {/* <Stack.Screen name="PhotoGallery" component={PhotoGallery} /> */}
-          {/* <Stack.Screen name="Search" component={Search} /> */}
+          </Stack.Screen> 
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />

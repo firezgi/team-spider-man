@@ -6,6 +6,7 @@ import {
   View,
   Image,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { WP_GET } from "./WPAPI";
@@ -51,7 +52,12 @@ const Search = ({ navigation, setLoggedin }) => {
         {/* {item.id}
         {"."}   */}
         <Image
-          style={styles.profileImage}
+          style={{
+            width: 90, 
+            height: 90,
+            borderWidth: 3,
+            borderRadius:10,
+            margin: 10}}
           source={{ uri: item.avatar_urls?.full }}
         />
         {item.name.toLowerCase()}
@@ -82,6 +88,8 @@ const Search = ({ navigation, setLoggedin }) => {
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <SearchBar
+            containerStyle={styles.searchBar}
+            reverseColor={false}
             round
             searchIcon={{ size: 24 }}
             onChangeText={(text) => searchFilterFunction(text)}
@@ -103,15 +111,18 @@ const Search = ({ navigation, setLoggedin }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E64E21",
+    flex: 1,
+  },
+  searchBar: {
+    backgroundColor: "#fff",
   },
   itemStyle: {
-    margin: 10,
-    borderRadius: 10,
-    display: "flex",
+    flex: 1,
+    marginLeft: 10,
     borderWidth: 3,
+    borderRadius: 10,
     backgroundColor: "#fff",
-    padding: 5,
+    fontWeight: "bold",
   },
 });
 

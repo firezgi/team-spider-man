@@ -23,6 +23,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  
   useEffect(() => {
     if (loading) {
       WP_POST(
@@ -190,7 +191,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     width: "50%",
-    backgroundColor: "gray",
     margin: 10,
     textAlign: "center",
   },

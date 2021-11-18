@@ -91,8 +91,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logoutLink: {
-    display: "flex",
-    alignItems: "flex-end",
+    display: 'flex',
+    alignItems: 'flex-end',
+    marginTop: 30,
+    marginRight: 30,
   },
   navBar: {
     flex: 1,
