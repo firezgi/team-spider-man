@@ -16,8 +16,8 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState([]);
   const [error, setError] = useState("");
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
+  //const [likeCount, setLikeCount] = useState(0);
+  //const [dislikeCount, setDislikeCount] = useState(0);
 
   useEffect(() => {
     if (loading) {
@@ -57,46 +57,30 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
     return members.find((member) => member.id === id);
   };
   const regex = /<[^>]*>/g;
-  const likeHandler = (index) => {
-    // setAllPosts(allPosts.find(post => post[i] === index));
-    setLikeCount(() => likeCount + 1);
-  };
 
-  const dislikeHandler = (index) => {
-    // setAllPosts(allPosts.filter((count, i) => i === index));
-    setDislikeCount((index) => dislikeCount + 1);
-  };
 
   const generatePosts = allPosts.map((posted, index) => {
     return (
       <View key={index} style={{ marginTop: 15 }}>
         <View style={styles.contentContainer}>
           <Image
-            style={{ width: 90, height: 90 }}
+            style={{ 
+              width: 90, 
+              height: 90,
+              borderWidth: 3,
+              borderRadius: 10,
+              }}
             source={{
-              uri: memberById(posted.author)?.avatar_urls.full.startsWith(
-                "https:"
-              )
+              uri: memberById(posted.author)?.avatar_urls.full.startsWith("https:")
                 ? memberById(posted.author)?.avatar_urls.full
                 : "https://www.gravatar.com/avatar/?d=identicon",
             }}
           />
-          <Text>{memberById(posted.author)?.name}</Text>
+          <Text style={styles.memberName}>{memberById(posted.author)?.name}</Text>
           <Text>{posted.date}</Text>
           <Text style={styles.textContainer}>
             {posted.excerpt.rendered?.replace(regex, "")}
           </Text>
-          <View style={styles.buttons}>
-            <TouchableOpacity style={styles.button} onPress={likeHandler}>
-              <Text>Like</Text>
-            </TouchableOpacity>
-            <Text>{likeCount}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={dislikeHandler}>
-              <Text>Dislike</Text>
-            </TouchableOpacity>
-            <Text>{dislikeCount}</Text>
-          </View>
         </View>
       </View>
     );
@@ -108,24 +92,24 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
         {generatePosts}
 
         {storedToken ? (
-          <View style={styles.contentContainer}>
-            <TextInput
-              style={styles.postsButtons}
-              onChangeText={setNewPostText}
-              placeholder="What is on your mind?"
-              onSubmitEditing={onSubmit}
-              multiline={true}
-              numberOfLines={4}
-              value={newPostText}
-            />
-            <TouchableOpacity style={styles.button} onPress={onSubmit}>
-              <Text>Post</Text>
-            </TouchableOpacity>
-            <Text>{loading && "Loading"}</Text>
-            <Text>{error}</Text>
-          </View>
-        ) : null}
-      </View>
+          <View style={styles.contentContainer}></View>) : null}
+      </View> 
+      <View style={styles.postContainer}>
+          <TextInput
+            style={styles.postTextInput}
+            onChangeText={setNewPostText}
+            placeholder="What is on your mind?"
+            onSubmitEditing={onSubmit}
+            multiline={true}
+            numberOfLines={4}
+            value={newPostText}
+          />
+          <TouchableOpacity style={styles.postButton} onPress={onSubmit}>
+            <Text style={styles.postButtonText}>Post</Text>
+          </TouchableOpacity>
+          <Text>{loading && "Loading"}</Text>
+        <Text>{error}</Text>
+        </View>
     </ThemeLoggedIn>
   );
 }
@@ -133,51 +117,54 @@ function NewsFeed({ navigation, storedToken, setLoggedin }) {
 const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
+    flexWrap: 'wrap',
     width: "80%",
     margin: 10,
     textAlign: "center",
   },
   contentContainer: {
     backgroundColor: "#fff",
+    flexDirection: 'row',
     alignItems: "center",
-    borderWidth: 2,
-    width: "100%",
+    borderWidth: 3,
+    width: "80%",
     margin: "auto",
     padding: 8,
     marginBottom: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
-  buttons: {
-    justifyContent: "center",
-    flexDirection: "row",
-    width: "50%",
+  memberName:{
+    fontWeight: "bold",
+    margin: 10,
+  },
+  postContainer:{
     alignItems: "center",
   },
-  button: {
-    justifyContent: "center",
-    borderRadius: 5,
-    borderWidth: 2,
+  postButton: {
     alignItems: "center",
     backgroundColor: "#16769E",
-    padding: 2,
-    margin: 10,
+    borderRadius: 7,
+    borderWidth: 3,
+    margin: 5,
     width: "15%",
-    height: 20,
+    height: 25,
+  },
+  postButtonText: {
+    color: '#fff',
+  },
+  postTextInput: {
+    backgroundColor: '#fff',
+    alignItems: "center",
+    borderWidth: 3,
+    borderRadius: 10,
+    width: "50%",
   },
   postsButtons: {
     height: 40,
-    borderColor: "gray",
+    borderColor: "purple",
     borderWidth: 1,
     margin: 20,
   },
-  newsfeed: {
-    width: "90%",
-    margin: "auto",
-    marginBottom: 30,
-    marginTop: 30,
-    padding: 10,
-    borderRadius: 10
-  }
 });
 
 export default NewsFeed;

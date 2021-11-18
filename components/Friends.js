@@ -25,7 +25,7 @@ function Friends({ navigation, setLoggedin }) {
                 <View style={styles.namePhotoContainer}>
                     <Image
                     style={styles.friendImage}
-                    source={{uri: friends.avatar_urls.thumb}}
+                    source={{uri: friends.avatar_urls.full}}
                     />
                     <Text style={styles.friendName}>{friends.name}</Text>
                 </View>           
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     friendImage: {
-        height: 50,
-        width: 50,
+        height: 75,
+        width: 75,
         margin: 5,
         borderRadius: 10,
         borderColor: '#000',
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     },
     friendName: {
         flexDirection: 'row',
+        flexWrap: 'wrap',
         padding: 10,
         alignContent:'flex-start',
         fontWeight: 'bold',
