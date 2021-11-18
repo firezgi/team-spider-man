@@ -56,8 +56,6 @@ function PhotoGallery({ navigation, setLoggedin }) {
 
 const styles = StyleSheet.create({
   galleryMainContainer: {
-    //flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -77,6 +75,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   scrollViewContainer: {
     flex: 1,

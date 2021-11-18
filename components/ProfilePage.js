@@ -35,7 +35,6 @@ export default function ProfilePage({ navigation, storedToken, setLoggedin}) {
                 <View style={profileStyles.profileLeft}>
                     <Image
                         style={profileStyles.profileImage}
-                        // source={{uri: buddypressData.avatar_urls?.full}}
                         source={{uri: buddypressData.avatar_urls?.full.startsWith('https:') ? buddypressData.avatar_urls?.full : 'https://www.gravatar.com/avatar/?d=identicon'}}
                     />
                 </View>

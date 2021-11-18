@@ -62,7 +62,6 @@ const LoginPage = ({ navigation,
             .replaceAll(regex, "")
         )
         :'';
-        // console.log(data);
     }
 
     return (
@@ -113,9 +112,7 @@ const LoginPage = ({ navigation,
                     </View>
                 </View>
             )
-            } 
-
-            
+            }             
         </ThemeLoggedOut>
     )
 }
@@ -154,11 +151,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     loginPage:{
-        // flex: 2,
-        // borderWidth: 10,
         maxHeight: "100%",
-        // height: 745,
-        // backgroundColor: "#fff",
     },
     signupButton:{
         backgroundColor: "#16769E",

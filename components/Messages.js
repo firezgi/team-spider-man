@@ -11,18 +11,17 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ThemeLoggedIn from "./ThemeLoggedIn";
-import { WP_GET,WP_POST  } from "./WPAPI";
-
+import { WP_GET, WP_POST } from "./WPAPI";
 
 export default function Messages({ navigation, storedToken, setLoggedin }) {
   const [messageArr, setMessageArr] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [userData, setUserData] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
+  const [selectedUserId, setSelectedUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  
   useEffect(() => {
     if (loading) {
       WP_POST(
@@ -33,7 +32,7 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
           subject: "Message from Spider man",
           message: `${messageInput}`,
           slug: `${new Date()}`,
-          recipients: [4, 13],
+          recipients: [4, selectedUserId],
         },
         storedToken
       ).then((data) => {
@@ -48,7 +47,6 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
       setMessageArr(data);
     });
   }, [loading]);
-  console.log(messageArr);
   const onSubmit = () => {
     setLoading(true);
   };
@@ -56,20 +54,42 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
     const regex = /<[^>]*>/g;
     data?.message ? setError(data.message.replaceAll(regex, "")) : "";
   };
-  // console.log(messageArr);
+  const memberById = (id) => {
+    return userData.find((member) => member.id === id);
+  };
   const generateChat = messageArr.map((message, index) => (
     <View key={index}>
       <Text>{message.excerpt.rendered}</Text>
+      <View style={{flexDirection:"row"}}>
+        <Text>Sent by:</Text>
+        <Image
+          style={{ width: 20, height: 20,marginBottom:15 }}
+          source={{
+            uri: memberById(
+              message.last_sender_id
+            )?.avatar_urls.full.startsWith("https:")
+              ? memberById(message.last_sender_id)?.avatar_urls.full
+              : "https://www.gravatar.com/avatar/?d=identicon",
+          }}
+        />
+        <Text>{memberById(message.last_sender_id)?.name}</Text>
+      </View>
     </View>
   ));
   const userList = userData.map((user, index) => (
     <View key={index}>
-      <Pressable onPress={() => setSelectedUser(user)}>
+      <Pressable
+        onPress={() => {
+          setSelectedUserId(user.id);
+          setSelectedUser(user);
+        }}
+      >
         <Text style={styles.singleListName}>{user.name}</Text>
       </Pressable>
+      {console.log(selectedUserId)}
     </View>
   ));
-// hi
+
   const MessageWindow = () => {
     return selectedUser ? (
       <View>
@@ -78,7 +98,9 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
           source={{ uri: selectedUser.avatar_urls?.["24"] }}
         />
         <Text style={styles.singleUser}>{selectedUser.name}</Text>
-        <ScrollView style={styles.messageContent}>{messageArr ? generateChat : null}</ScrollView>
+        <ScrollView style={styles.messageContent}>
+          {messageArr ? generateChat : null}
+        </ScrollView>
       </View>
     ) : null;
   };
@@ -113,8 +135,8 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
 }
 
 const styles = StyleSheet.create({
-  messageContent:{
-    margin: 10, 
+  messageContent: {
+    margin: 10,
     borderRadius: 8,
     display: "flex",
     borderWidth: 3,
@@ -141,8 +163,6 @@ const styles = StyleSheet.create({
   userList: {
     display: "flex",
     flexDirection: "row",
-
-
   },
   container: {
     // flex: 1,
@@ -151,7 +171,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   sidebar: {
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
@@ -159,12 +179,12 @@ const styles = StyleSheet.create({
     // backgroundColor: "#fff",
   },
   image: {
-        // height: 50,
-        // width: 50,
-        // margin: 5,
-        // borderRadius: 10,
-        // borderColor: '#000',
-        // borderWidth: 3,
+    // height: 50,
+    // width: 50,
+    // margin: 5,
+    // borderRadius: 10,
+    // borderColor: '#000',
+    // borderWidth: 3,
   },
   textContainer: {
     backgroundColor: "#fff",
@@ -201,6 +221,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 3,
     borderRadius: 10,
-    borderColor: "black"
+    borderColor: "black",
   },
 });

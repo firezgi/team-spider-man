@@ -23,14 +23,11 @@ const Search = ({ navigation, setLoggedin }) => {
       setMasterDataSource(data);
     });
   }, []);
-  // console.log(MasterDataSource);
+  
   const searchFilterFunction = (text) => {
-    // Check if searched text is not blank
+    
     if (text) {
-      // Inserted text is not blank
-      // Filter the masterDataSource
-      // Update FilteredDataSource
-      const newData = masterDataSource.filter((item) => {
+        const newData = masterDataSource.filter((item) => {
         const itemData = item.name ? item.name.toLowerCase() : "".toLowerCase();
         const textData = text.toLowerCase();
         return itemData.indexOf(textData) > -1;
@@ -64,20 +61,6 @@ const Search = ({ navigation, setLoggedin }) => {
       </Text>
     );
   };
-
-  // const ItemSeparatorView = () => {
-  //   return (
-  //     // Flat List Item Separator
-  //     <View
-  //       style={{
-  //         height: 0.5,
-  //         width: "100%",
-  //         backgroundColor: "#C8C8C8",
-  //       }}
-  //     />
-  //   );
-  // };
-
   const getItem = (item) => {
     // Function for click on an item
     alert("Id : " + item.id + "   Name: " + item.name);
@@ -100,7 +83,6 @@ const Search = ({ navigation, setLoggedin }) => {
           <FlatList
             data={filteredDataSource}
             keyExtractor={(item, index) => index.toString()}
-            // ItemSeparatorComponent={ItemSeparatorView}
             renderItem={ItemView}
           />
         </View>
