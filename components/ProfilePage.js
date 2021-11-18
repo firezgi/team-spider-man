@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
-import { Base64 } from "js-base64"
+import { Base64 } from "js-base64";
 
 export default function ProfilePage({ navigation, storedToken, setLoggedin}) {
     let userId;

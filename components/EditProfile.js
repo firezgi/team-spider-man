@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, Button, TextInput, TouchableOpacity } from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET, WP_POST } from "./WPAPI";
+import { Base64 } from "js-base64";
 
 
 export default function EditProfile({ navigation, storedToken, setLoggedin }) {
