@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import ThemeLoggedIn from "./ThemeLoggedIn";
 import { WP_GET } from "./WPAPI";
+import { Base64 } from "js-base64"
 
 export default function ProfilePage({ navigation, storedToken, setLoggedin}) {
     let userId;
+    
     const tokenParse = function (token) {
         let base64Url = token.split('.')[1];
-        let decoded = JSON.parse(atob(base64Url));    
+        let decoded = JSON.parse(Base64.decode(base64Url));    
         return decoded["data"].user.id;
     };
     userId = tokenParse(storedToken);
