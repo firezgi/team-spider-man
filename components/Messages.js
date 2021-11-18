@@ -65,11 +65,11 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
   const userList = userData.map((user, index) => (
     <View key={index}>
       <Pressable onPress={() => setSelectedUser(user)}>
-        <Text>{user.name}</Text>
+        <Text style={styles.singleListName}>{user.name}</Text>
       </Pressable>
     </View>
   ));
-
+// hi
   const MessageWindow = () => {
     return selectedUser ? (
       <View>
@@ -77,8 +77,8 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
           style={styles.image}
           source={{ uri: selectedUser.avatar_urls?.["24"] }}
         />
-        <ScrollView>{messageArr ? generateChat : null}</ScrollView>
-        <Text>{selectedUser.name}</Text>
+        <Text style={styles.singleUser}>{selectedUser.name}</Text>
+        <ScrollView style={styles.messageContent}>{messageArr ? generateChat : null}</ScrollView>
       </View>
     ) : null;
   };
@@ -113,6 +113,37 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
 }
 
 const styles = StyleSheet.create({
+  messageContent:{
+    margin: 10, 
+    borderRadius: 8,
+    display: "flex",
+    borderWidth: 3,
+    backgroundColor: "#fff",
+  },
+  singleListName: {
+    margin: 10,
+    borderRadius: 10,
+    display: "flex",
+    borderWidth: 3,
+    backgroundColor: "#fff",
+    padding: 5,
+  },
+  singleUser: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+    borderRadius: 8,
+    display: "flex",
+    borderWidth: 3,
+    backgroundColor: "#fff",
+  },
+  userList: {
+    display: "flex",
+    flexDirection: "row",
+
+
+  },
   container: {
     // flex: 1,
     // backgroundColor: "#fff",
@@ -120,11 +151,20 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   sidebar: {
-    // float: "left",
+    flexWrap: 'wrap',
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    // borderWidth: 3,
+    // backgroundColor: "#fff",
   },
   image: {
-    // height: 24,
-    // width: 24,
+        // height: 50,
+        // width: 50,
+        // margin: 5,
+        // borderRadius: 10,
+        // borderColor: '#000',
+        // borderWidth: 3,
   },
   textContainer: {
     backgroundColor: "#fff",
@@ -143,7 +183,11 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "blue",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 10,
+    alignItems: "center",
+    backgroundColor: "#16769E",
     padding: 2,
     margin: 2,
     width: "15%",
@@ -154,5 +198,9 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     margin: 20,
+    backgroundColor: "white",
+    borderWidth: 3,
+    borderRadius: 10,
+    borderColor: "black"
   },
 });

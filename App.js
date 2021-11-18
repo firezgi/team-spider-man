@@ -100,7 +100,7 @@ export default function App() {
               <EditProfile
                 {...props}
                 component={EditProfile}
-                setStoredToken={setStoredToken}
+                storedToken={storedToken}
                 loggedIn={loggedIn}
                 setLoggedin={setLoggedin}
               />
