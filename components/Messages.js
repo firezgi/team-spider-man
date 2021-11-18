@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     width: "50%",
-    backgroundColor: "gray",
     margin: 10,
     textAlign: "center",
   },

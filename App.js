@@ -115,18 +115,7 @@ export default function App() {
                 setLoggedin={setLoggedin}
               />
             )}
-          </Stack.Screen>
-          <Stack.Screen name="PhotoGallery">
-            {(props) => (
-              <PhotoGallery
-                {...props}
-                component={PhotoGallery}
-                loggedIn={loggedIn}
-                setLoggedin={setLoggedin}
-              />
-            )}
           </Stack.Screen> 
-          <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Rules" component={Rules} />
           <Stack.Screen name="Contact" component={Contact} />
