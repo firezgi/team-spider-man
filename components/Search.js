@@ -103,10 +103,15 @@ const Search = ({ navigation, setLoggedin }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#E64E21",
   },
   itemStyle: {
-    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+    display: "flex",
+    borderWidth: 3,
+    backgroundColor: "#fff",
+    padding: 5,
   },
 });
 

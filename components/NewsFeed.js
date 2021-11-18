@@ -148,15 +148,19 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   buttons: {
+    justifyContent: "center",
     flexDirection: "row",
     width: "50%",
     alignItems: "center",
   },
   button: {
+    justifyContent: "center",
+    borderRadius: 5,
+    borderWidth: 2,
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: "#16769E",
     padding: 2,
-    margin: 2,
+    margin: 10,
     width: "15%",
     height: 20,
   },
