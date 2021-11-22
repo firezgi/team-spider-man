@@ -1,0 +1,39 @@
+{
+  "files": {
+    "app.js": "/team-spider-man/static/js/app.bfb2773f.chunk.js",
+    "app.js.map": "/team-spider-man/static/js/app.bfb2773f.chunk.js.map",
+    "runtime~app.js": "/team-spider-man/static/js/runtime~app.31f80cc1.js",
+    "runtime~app.js.map": "/team-spider-man/static/js/runtime~app.31f80cc1.js.map",
+    "static/js/2.504176fa.chunk.js": "/team-spider-man/static/js/2.504176fa.chunk.js",
+    "static/js/2.504176fa.chunk.js.map": "/team-spider-man/static/js/2.504176fa.chunk.js.map",
+    "fonts/AntDesign.ttf": "/team-spider-man/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/team-spider-man/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/team-spider-man/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/team-spider-man/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/team-spider-man/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/team-spider-man/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/team-spider-man/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/team-spider-man/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/team-spider-man/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/team-spider-man/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/team-spider-man/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/team-spider-man/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/team-spider-man/favicon-16.png",
+    "favicon-32.png": "/team-spider-man/favicon-32.png",
+    "favicon.ico": "/team-spider-man/favicon.ico",
+    "index.html": "/team-spider-man/index.html",
+    "manifest.json": "/team-spider-man/manifest.json",
+    "serve.json": "/team-spider-man/serve.json",
+    "static/js/2.504176fa.chunk.js.LICENSE.txt": "/team-spider-man/static/js/2.504176fa.chunk.js.LICENSE.txt",
+    "static/media/bell.png": "/team-spider-man/static/media/bell.cf04af27.png",
+    "static/media/heart.png": "/team-spider-man/static/media/heart.23b5c2c0.png",
+    "static/media/marvelSpace.png": "/team-spider-man/static/media/marvelSpace.6871511b.png",
+    "static/media/rocket.png": "/team-spider-man/static/media/rocket.d2f3bf41.png",
+    "static/media/star.png": "/team-spider-man/static/media/star.69c71386.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.31f80cc1.js",
+    "static/js/2.504176fa.chunk.js",
+    "static/js/app.bfb2773f.chunk.js"
+  ]
+}
