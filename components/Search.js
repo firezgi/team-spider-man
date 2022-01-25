@@ -23,7 +23,6 @@ const Search = ({ navigation, setLoggedin }) => {
       setMasterDataSource(data);
     });
   }, []);
-  
   const searchFilterFunction = (text) => {
     
     if (text) {
@@ -46,8 +45,7 @@ const Search = ({ navigation, setLoggedin }) => {
     return (
       // Flat List Item
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-        {/* {item.id}
-        {"."}   */}
+        
         <Image
           style={{
             width: 90, 

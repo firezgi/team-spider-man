@@ -86,7 +86,6 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
       >
         <Text style={styles.singleListName}>{user.name}</Text>
       </Pressable>
-      {console.log(selectedUserId)}
     </View>
   ));
 
@@ -181,10 +180,6 @@ const styles = StyleSheet.create({
   image: {
     // height: 50,
     // width: 50,
-    // margin: 5,
-    // borderRadius: 10,
-    // borderColor: '#000',
-    // borderWidth: 3,
   },
   textContainer: {
     backgroundColor: "#fff",

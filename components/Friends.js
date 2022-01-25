@@ -12,7 +12,6 @@ function Friends({ navigation, setLoggedin }) {
         WP_GET('members')
         .then((data) => {
             setFriends(data);
-            console.log(data);
         });
     }, []);
 
