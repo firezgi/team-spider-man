@@ -48,7 +48,9 @@ export const WP_GET = (type, queryStringVars = "", token) => {
     buildOptions("GET", null, token)
   )
     .then((response) => response.json())
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 };
 
 export const WP_POST = (type, queryStringVars = "",data, token) => {
@@ -68,5 +70,7 @@ export const WP_POST = (type, queryStringVars = "",data, token) => {
       buildOptions("POST", data, token)
     )
       .then((response) => response.json())
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };

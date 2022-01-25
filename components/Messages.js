@@ -86,7 +86,6 @@ export default function Messages({ navigation, storedToken, setLoggedin }) {
       >
         <Text style={styles.singleListName}>{user.name}</Text>
       </Pressable>
-      {console.log(selectedUserId)}
     </View>
   ));
 

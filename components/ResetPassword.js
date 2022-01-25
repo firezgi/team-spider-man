@@ -36,7 +36,6 @@ export const ResetPassword = ({ navigation }) => {
             />
             <Button
                 title="Reset password"
-                onPress={() => console.log("username: ", signupUsername, "Current Password: ", currentPassword, "New Password: ", newPassword, "Verified Password: ", verifyNewPassword)}
                 onPress={() => navigation.navigate({SignupPage})}
             />
         </View>

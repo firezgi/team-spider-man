@@ -23,7 +23,6 @@ const Search = ({ navigation, setLoggedin }) => {
       setMasterDataSource(data);
     });
   }, []);
-  // console.log(MasterDataSource);
   const searchFilterFunction = (text) => {
     // Check if searched text is not blank
     if (text) {
@@ -49,8 +48,7 @@ const Search = ({ navigation, setLoggedin }) => {
     return (
       // Flat List Item
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-        {/* {item.id}
-        {"."}   */}
+        
         <Image
           style={{
             width: 90, 
@@ -64,19 +62,6 @@ const Search = ({ navigation, setLoggedin }) => {
       </Text>
     );
   };
-
-  // const ItemSeparatorView = () => {
-  //   return (
-  //     // Flat List Item Separator
-  //     <View
-  //       style={{
-  //         height: 0.5,
-  //         width: "100%",
-  //         backgroundColor: "#C8C8C8",
-  //       }}
-  //     />
-  //   );
-  // };
 
   const getItem = (item) => {
     // Function for click on an item
@@ -100,7 +85,7 @@ const Search = ({ navigation, setLoggedin }) => {
           <FlatList
             data={filteredDataSource}
             keyExtractor={(item, index) => index.toString()}
-            // ItemSeparatorComponent={ItemSeparatorView}
+
             renderItem={ItemView}
           />
         </View>
