@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/team-spider-man/static/js/app.bfb2773f.chunk.js",
-    "app.js.map": "/team-spider-man/static/js/app.bfb2773f.chunk.js.map",
+    "app.js": "/team-spider-man/static/js/app.cefcede4.chunk.js",
+    "app.js.map": "/team-spider-man/static/js/app.cefcede4.chunk.js.map",
     "runtime~app.js": "/team-spider-man/static/js/runtime~app.31f80cc1.js",
     "runtime~app.js.map": "/team-spider-man/static/js/runtime~app.31f80cc1.js.map",
     "static/js/2.504176fa.chunk.js": "/team-spider-man/static/js/2.504176fa.chunk.js",
@@ -34,6 +34,6 @@
   "entrypoints": [
     "static/js/runtime~app.31f80cc1.js",
     "static/js/2.504176fa.chunk.js",
-    "static/js/app.bfb2773f.chunk.js"
+    "static/js/app.cefcede4.chunk.js"
   ]
 }
